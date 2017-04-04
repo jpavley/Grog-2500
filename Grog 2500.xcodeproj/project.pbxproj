@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5AD1DB891E93F92D00A3187E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1DB881E93F92D00A3187E /* AppDelegate.swift */; };
+		5AD1DB8B1E93F92D00A3187E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1DB8A1E93F92D00A3187E /* ViewController.swift */; };
+		5AD1DB8E1E93F92D00A3187E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD1DB8C1E93F92D00A3187E /* Main.storyboard */; };
+		5AD1DB911E93F92D00A3187E /* Grog_2500.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1DB8F1E93F92D00A3187E /* Grog_2500.xcdatamodeld */; };
+		5AD1DB931E93F92D00A3187E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD1DB921E93F92D00A3187E /* Assets.xcassets */; };
+		5AD1DB961E93F92D00A3187E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD1DB941E93F92D00A3187E /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5AD1DB851E93F92D00A3187E /* Grog 2500.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Grog 2500.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD1DB881E93F92D00A3187E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5AD1DB8A1E93F92D00A3187E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5AD1DB8D1E93F92D00A3187E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5AD1DB901E93F92D00A3187E /* Grog_2500.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Grog_2500.xcdatamodel; sourceTree = "<group>"; };
+		5AD1DB921E93F92D00A3187E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5AD1DB951E93F92D00A3187E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5AD1DB971E93F92D00A3187E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5AD1DB821E93F92D00A3187E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5AD1DB7C1E93F92D00A3187E = {
+			isa = PBXGroup;
+			children = (
+				5AD1DB871E93F92D00A3187E /* Grog 2500 */,
+				5AD1DB861E93F92D00A3187E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5AD1DB861E93F92D00A3187E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5AD1DB851E93F92D00A3187E /* Grog 2500.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5AD1DB871E93F92D00A3187E /* Grog 2500 */ = {
+			isa = PBXGroup;
+			children = (
+				5AD1DB881E93F92D00A3187E /* AppDelegate.swift */,
+				5AD1DB8A1E93F92D00A3187E /* ViewController.swift */,
+				5AD1DB8C1E93F92D00A3187E /* Main.storyboard */,
+				5AD1DB921E93F92D00A3187E /* Assets.xcassets */,
+				5AD1DB941E93F92D00A3187E /* LaunchScreen.storyboard */,
+				5AD1DB971E93F92D00A3187E /* Info.plist */,
+				5AD1DB8F1E93F92D00A3187E /* Grog_2500.xcdatamodeld */,
+			);
+			path = "Grog 2500";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5AD1DB841E93F92D00A3187E /* Grog 2500 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AD1DB9A1E93F92D00A3187E /* Build configuration list for PBXNativeTarget "Grog 2500" */;
+			buildPhases = (
+				5AD1DB811E93F92D00A3187E /* Sources */,
+				5AD1DB821E93F92D00A3187E /* Frameworks */,
+				5AD1DB831E93F92D00A3187E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Grog 2500";
+			productName = "Grog 2500";
+			productReference = 5AD1DB851E93F92D00A3187E /* Grog 2500.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5AD1DB7D1E93F92D00A3187E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "John Pavley";
+				TargetAttributes = {
+					5AD1DB841E93F92D00A3187E = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = QZ7SMYA7GB;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5AD1DB801E93F92D00A3187E /* Build configuration list for PBXProject "Grog 2500" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5AD1DB7C1E93F92D00A3187E;
+			productRefGroup = 5AD1DB861E93F92D00A3187E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5AD1DB841E93F92D00A3187E /* Grog 2500 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5AD1DB831E93F92D00A3187E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AD1DB961E93F92D00A3187E /* LaunchScreen.storyboard in Resources */,
+				5AD1DB931E93F92D00A3187E /* Assets.xcassets in Resources */,
+				5AD1DB8E1E93F92D00A3187E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5AD1DB811E93F92D00A3187E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AD1DB8B1E93F92D00A3187E /* ViewController.swift in Sources */,
+				5AD1DB911E93F92D00A3187E /* Grog_2500.xcdatamodeld in Sources */,
+				5AD1DB891E93F92D00A3187E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5AD1DB8C1E93F92D00A3187E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AD1DB8D1E93F92D00A3187E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5AD1DB941E93F92D00A3187E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5AD1DB951E93F92D00A3187E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5AD1DB981E93F92D00A3187E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5AD1DB991E93F92D00A3187E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5AD1DB9B1E93F92D00A3187E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QZ7SMYA7GB;
+				INFOPLIST_FILE = "Grog 2500/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pavley.Grog-2500";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5AD1DB9C1E93F92D00A3187E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QZ7SMYA7GB;
+				INFOPLIST_FILE = "Grog 2500/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pavley.Grog-2500";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5AD1DB801E93F92D00A3187E /* Build configuration list for PBXProject "Grog 2500" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AD1DB981E93F92D00A3187E /* Debug */,
+				5AD1DB991E93F92D00A3187E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5AD1DB9A1E93F92D00A3187E /* Build configuration list for PBXNativeTarget "Grog 2500" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AD1DB9B1E93F92D00A3187E /* Debug */,
+				5AD1DB9C1E93F92D00A3187E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5AD1DB8F1E93F92D00A3187E /* Grog_2500.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5AD1DB901E93F92D00A3187E /* Grog_2500.xcdatamodel */,
+			);
+			currentVersion = 5AD1DB901E93F92D00A3187E /* Grog_2500.xcdatamodel */;
+			path = Grog_2500.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5AD1DB7D1E93F92D00A3187E /* Project object */;
+}
