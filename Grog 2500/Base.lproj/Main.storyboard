@@ -87,17 +87,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S6C-nu-laO">
-                                <rect key="frame" x="16" y="437" width="316" height="30"/>
+                                <rect key="frame" x="16" y="437" width="305" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⏎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoD-w3-6zd">
-                                <rect key="frame" x="340" y="446.5" width="19" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Mll-HY-rA9">
                                 <rect key="frame" x="231" y="475" width="128" height="184"/>
                                 <subviews>
@@ -153,7 +147,7 @@
                                                     <constraint firstAttribute="width" constant="60" id="qQI-V1-YxY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Help">
+                                                <state key="normal" title="Menu">
                                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
@@ -252,6 +246,9 @@
                                                 <state key="normal" title="In">
                                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="inButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s4b-Sl-GkE"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9K3-xF-KcA">
                                                 <rect key="frame" x="68" y="0.0" width="60" height="32"/>
@@ -264,6 +261,9 @@
                                                 <state key="normal" title="Out">
                                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="outButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="arJ-S5-jPm"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -281,6 +281,9 @@
                                                 <state key="normal" title="Up">
                                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="upButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zem-n7-LWW"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbJ-QQ-SKo">
                                                 <rect key="frame" x="68" y="0.0" width="60" height="32"/>
@@ -293,6 +296,9 @@
                                                 <state key="normal" title="Down">
                                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="downButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uPu-Q3-lZ3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -307,6 +313,9 @@
                                         <state key="normal" title="North">
                                             <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="northButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3nb-6B-cOJ"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0cv-3S-50C">
                                         <rect key="frame" x="0.0" y="114" width="128" height="32"/>
@@ -322,6 +331,9 @@
                                                 <state key="normal" title="West">
                                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="westButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JWr-7C-iZM"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DCn-gn-Op6">
                                                 <rect key="frame" x="68" y="0.0" width="60" height="32"/>
@@ -334,6 +346,9 @@
                                                 <state key="normal" title="East">
                                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="eastButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R4M-Z1-z0h"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -348,6 +363,9 @@
                                         <state key="normal" title="South">
                                             <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="southButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N6s-gz-NMS"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -355,31 +373,51 @@
                                     <constraint firstAttribute="height" constant="184" id="J1W-7F-1GO"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="644-cX-g0l">
+                                <rect key="frame" x="329" y="437" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Cky-f8-bbN"/>
+                                    <constraint firstAttribute="width" constant="30" id="jsB-iR-Ibx"/>
+                                </constraints>
+                                <state key="normal" title="⏎"/>
+                                <connections>
+                                    <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hxj-ZC-hWf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="iRU-Bv-Cxp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="1JF-SI-jrH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OrY-y8-5NP" secondAttribute="trailing" constant="-2" id="3XG-zn-UgW"/>
-                            <constraint firstAttribute="trailing" secondItem="W20-OA-pq8" secondAttribute="trailing" constant="16" id="5g0-ay-dwx"/>
+                            <constraint firstItem="644-cX-g0l" firstAttribute="top" secondItem="W20-OA-pq8" secondAttribute="bottom" constant="8" id="6Aq-Lc-8tY"/>
                             <constraint firstAttribute="leadingMargin" secondItem="iRU-Bv-Cxp" secondAttribute="leading" id="7D1-sc-J0p"/>
+                            <constraint firstAttribute="trailing" secondItem="W20-OA-pq8" secondAttribute="trailing" constant="16" id="7vS-F0-kwT"/>
+                            <constraint firstAttribute="trailing" secondItem="644-cX-g0l" secondAttribute="trailing" constant="16" id="CRe-Ub-BPr"/>
                             <constraint firstAttribute="trailing" secondItem="Mll-HY-rA9" secondAttribute="trailing" constant="16" id="CX2-be-KYd"/>
                             <constraint firstItem="svr-Gx-dBC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="37" id="F0d-hK-pgO"/>
-                            <constraint firstItem="S6C-nu-laO" firstAttribute="top" secondItem="W20-OA-pq8" secondAttribute="bottom" constant="8" id="GAT-4F-Rhb"/>
-                            <constraint firstItem="WoD-w3-6zd" firstAttribute="leading" secondItem="S6C-nu-laO" secondAttribute="trailing" constant="8" id="HjG-Od-bJa"/>
-                            <constraint firstItem="W20-OA-pq8" firstAttribute="top" secondItem="svr-Gx-dBC" secondAttribute="bottom" constant="8" id="M7H-N8-r8H"/>
-                            <constraint firstAttribute="trailing" secondItem="WoD-w3-6zd" secondAttribute="trailing" constant="16" id="MTr-QW-hur"/>
+                            <constraint firstItem="W20-OA-pq8" firstAttribute="top" secondItem="svr-Gx-dBC" secondAttribute="bottom" constant="8" id="Jei-3B-ZGh"/>
+                            <constraint firstItem="W20-OA-pq8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="KSw-oq-yt4"/>
                             <constraint firstAttribute="leadingMargin" secondItem="svr-Gx-dBC" secondAttribute="leading" id="NNz-lg-mSI"/>
-                            <constraint firstItem="DEB-ds-Idg" firstAttribute="top" secondItem="WoD-w3-6zd" secondAttribute="bottom" constant="8" id="NWc-vN-Ybp"/>
+                            <constraint firstItem="Mll-HY-rA9" firstAttribute="top" secondItem="644-cX-g0l" secondAttribute="bottom" constant="8" id="OM9-Qk-lsR"/>
+                            <constraint firstItem="DEB-ds-Idg" firstAttribute="top" secondItem="S6C-nu-laO" secondAttribute="bottom" constant="8" id="QzC-Dg-uRh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Mll-HY-rA9" secondAttribute="bottom" constant="8" id="RlE-OA-KAo"/>
-                            <constraint firstItem="DEB-ds-Idg" firstAttribute="top" secondItem="S6C-nu-laO" secondAttribute="bottom" constant="8" id="cC5-sm-hUz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DEB-ds-Idg" secondAttribute="bottom" constant="8" id="fiZ-YW-ZYF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="svr-Gx-dBC" secondAttribute="trailing" constant="20" id="lmE-bw-EaL"/>
-                            <constraint firstItem="W20-OA-pq8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="myT-w8-xEt"/>
+                            <constraint firstItem="644-cX-g0l" firstAttribute="leading" secondItem="S6C-nu-laO" secondAttribute="trailing" constant="8" id="rGC-hH-gZ0"/>
                             <constraint firstItem="OrY-y8-5NP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="tDi-Jz-A7s"/>
-                            <constraint firstItem="S6C-nu-laO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="trL-ps-hD6"/>
                             <constraint firstItem="DEB-ds-Idg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="uSU-4u-Vw3"/>
+                            <constraint firstItem="S6C-nu-laO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="we8-i3-j2m"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="command" destination="S6C-nu-laO" id="N3d-dk-F6Y"/>
+                        <outlet property="health" destination="SFl-jx-btC" id="WZL-hW-SUA"/>
+                        <outlet property="location" destination="svr-Gx-dBC" id="GcK-OV-7ZP"/>
+                        <outlet property="score" destination="JTL-93-kjz" id="hXc-lu-eFl"/>
+                        <outlet property="status" destination="iLa-ho-XMy" id="vey-pU-UnM"/>
+                        <outlet property="story" destination="W20-OA-pq8" id="aKO-RS-GKh"/>
+                        <outlet property="time" destination="a5V-j8-NbE" id="IHn-ml-vSD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

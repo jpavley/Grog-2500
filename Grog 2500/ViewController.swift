@@ -9,6 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // user labels
+    
+    @IBOutlet weak var score: UILabel!
+    @IBOutlet weak var health: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var status: UILabel!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var story: UITextView!
+    @IBOutlet weak var command: UITextField!
+    
+    // system functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +31,36 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // button functions
+    
+    @IBAction func submit(_ sender: Any) {
+    }
+    
+    @IBAction func inButton(_ sender: Any) {
+    }
+    
+    @IBAction func outButton(_ sender: Any) {
+    }
 
-
+    @IBAction func upButton(_ sender: Any) {
+    }
+    
+    @IBAction func downButton(_ sender: Any) {
+    }
+    
+    @IBAction func northButton(_ sender: Any) {
+    }
+    
+    @IBAction func westButton(_ sender: Any) {
+    }
+    
+    @IBAction func eastButton(_ sender: Any) {
+    }
+    
+    @IBAction func southButton(_ sender: Any) {
+    }
+    
+    
 }
 
