@@ -8,17 +8,17 @@
 
 import Foundation
 
-class GregGameEngine {
+class GrogGameEngine {
     var score: Int
-    var health: Double
-    var secondsRemaining: Int
+    var moves: Int
+    var status: String
     var storyText: String
     var player: GrogGamePlayer
     
     init() {
         score = 0
-        health = 0
-        secondsRemaining = 0
+        moves = 0
+        status = "ready"
         storyText = ""
         player = GrogGamePlayer()
     }

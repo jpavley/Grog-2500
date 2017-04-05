@@ -19,14 +19,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var story: UITextView!
     
+    // game vars
+    var game = GrogGameEngine()
+    
     // UI functions
     
     func initUI() {
-        score.text = "🎼 0"
-        health.text = "💚 100%"
-        time.text = "⏳ 00:00"
-        status.text = "🎮 Ready"
-        location.text = "🗺 Nowhere"
+        score.text = "🎼 \(game.score)"
+        health.text = "💚 \(game.player.health)%"
+        time.text = "🚶‍♀️\(game.moves)"
+        status.text = "🎮 \(game.status)"
+        location.text = "🗺 \(game.player.location)"
         story.text = ""
     }
     

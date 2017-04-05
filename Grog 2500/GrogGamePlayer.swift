@@ -9,12 +9,12 @@
 import Foundation
 
 class GrogGamePlayer {
-    var playerStatus:String
-    var playerLocation:String
+    var health:Int
+    var location:String
     
     init() {
-        playerStatus = "ready"
-        playerLocation = "nowhere"
+        health = 100
+        location = "nowhere"
     }
     
     func update() {
