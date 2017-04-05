@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,7 +19,7 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iRU-Bv-Cxp">
@@ -48,7 +48,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OrY-y8-5NP">
-                                <rect key="frame" x="219" y="28" width="142" height="21"/>
+                                <rect key="frame" x="164" y="28" width="142" height="21"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⌛️ 0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5V-j8-NbE">
                                         <rect key="frame" x="0.0" y="0.0" width="67" height="21"/>
@@ -73,13 +73,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🗺 No Man's Land: Scary House: Libary: Closet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svr-Gx-dBC">
-                                <rect key="frame" x="16" y="57" width="323" height="14.5"/>
+                                <rect key="frame" x="16" y="57" width="268" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W20-OA-pq8">
-                                <rect key="frame" x="16" y="87.5" width="343" height="371.5"/>
+                                <rect key="frame" x="16" y="87.5" width="288" height="272.5"/>
                                 <color key="backgroundColor" red="0.18833893449155792" green="0.17630884429510121" blue="0.49183058375634514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down.</string>
                                 <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,7 +87,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Mll-HY-rA9">
-                                <rect key="frame" x="231" y="475" width="128" height="184"/>
+                                <rect key="frame" x="176" y="376" width="128" height="184"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mi1-4m-Ih7">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="32"/>
@@ -224,7 +224,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="DEB-ds-Idg">
-                                <rect key="frame" x="16" y="475" width="128" height="184"/>
+                                <rect key="frame" x="16" y="376" width="128" height="184"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dl0-3a-pf9">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="32"/>

@@ -13,6 +13,8 @@
 		5AD1DB911E93F92D00A3187E /* Grog_2500.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5AD1DB8F1E93F92D00A3187E /* Grog_2500.xcdatamodeld */; };
 		5AD1DB931E93F92D00A3187E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AD1DB921E93F92D00A3187E /* Assets.xcassets */; };
 		5AD1DB961E93F92D00A3187E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AD1DB941E93F92D00A3187E /* LaunchScreen.storyboard */; };
+		B8577D6F1E9529F000597C31 /* GrogGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */; };
+		B8577D711E952AEE00597C31 /* GrogGamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		5AD1DB921E93F92D00A3187E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AD1DB951E93F92D00A3187E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AD1DB971E93F92D00A3187E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogGameEngine.swift; sourceTree = "<group>"; };
+		B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogGamePlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				5AD1DB941E93F92D00A3187E /* LaunchScreen.storyboard */,
 				5AD1DB971E93F92D00A3187E /* Info.plist */,
 				5AD1DB8F1E93F92D00A3187E /* Grog_2500.xcdatamodeld */,
+				B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */,
+				B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */,
 			);
 			path = "Grog 2500";
 			sourceTree = "<group>";
@@ -140,8 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8577D711E952AEE00597C31 /* GrogGamePlayer.swift in Sources */,
 				5AD1DB8B1E93F92D00A3187E /* ViewController.swift in Sources */,
 				5AD1DB911E93F92D00A3187E /* Grog_2500.xcdatamodeld in Sources */,
+				B8577D6F1E9529F000597C31 /* GrogGameEngine.swift in Sources */,
 				5AD1DB891E93F92D00A3187E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +314,7 @@
 				5AD1DB9C1E93F92D00A3187E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

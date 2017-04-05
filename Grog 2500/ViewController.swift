@@ -24,9 +24,9 @@ class ViewController: UIViewController {
     func initUI() {
         score.text = "🎼 0"
         health.text = "💚 100%"
-        time.text = "⏳ 00:00:00"
-        status.text = "🎮 not started"
-        location.text = "🗺 nowhere yet"
+        time.text = "⏳ 00:00"
+        status.text = "🎮 Ready"
+        location.text = "🗺 Nowhere"
         story.text = ""
     }
     
