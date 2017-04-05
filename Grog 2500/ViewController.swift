@@ -52,9 +52,10 @@ class ViewController: UIViewController {
     // button functions
     
     @IBAction func commandButton(_ sender: Any) {
-        let buttonID = (sender as AnyObject).tag!
+        // let buttonID = (sender as AnyObject).tag!
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
-        story.text = "button '\(buttonLabel)' id \(buttonID)"
+        
+        story.text = story.text + " \(buttonLabel)"
     }
     
     
