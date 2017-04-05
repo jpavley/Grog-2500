@@ -51,29 +51,14 @@ class ViewController: UIViewController {
     
     // button functions
     
-    @IBAction func inButton(_ sender: Any) {
+    @IBAction func commandButton(_ sender: Any) {
+        let buttonID = (sender as AnyObject).tag!
+        let buttonLabel = (sender as! UIButton).titleLabel!.text!
+        story.text = "button '\(buttonLabel)' id \(buttonID)"
     }
     
-    @IBAction func outButton(_ sender: Any) {
-    }
-
-    @IBAction func upButton(_ sender: Any) {
-    }
     
-    @IBAction func downButton(_ sender: Any) {
-    }
     
-    @IBAction func northButton(_ sender: Any) {
-    }
-    
-    @IBAction func westButton(_ sender: Any) {
-    }
-    
-    @IBAction func eastButton(_ sender: Any) {
-    }
-    
-    @IBAction func southButton(_ sender: Any) {
-    }
     
     
 }
