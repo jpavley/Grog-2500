@@ -305,7 +305,6 @@
                                         </state>
                                         <connections>
                                             <action selector="commandButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XiA-Ch-fCl"/>
-                                            <action selector="eastButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rxz-aF-lYK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="118" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vk2-Sp-6g8">
