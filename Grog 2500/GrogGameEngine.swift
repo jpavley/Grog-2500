@@ -19,7 +19,7 @@ class GrogGameEngine {
         score = 0
         moves = 0
         status = "ready"
-        storyText = "You are in a dark room. "
+        storyText = "You are in a dark room. There is a cat, a bed, a lamp, and a light switch here. Maybe touching one of these things will do something interesting?\n>"
         player = GrogGamePlayer()
     }
     

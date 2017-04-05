@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         time.text = "🚶‍♀️\(game.moves)"
         status.text = "🎮 \(game.status)"
         location.text = "🗺 \(game.player.location)"
-        story.text = ""
+        story.text = game.storyText
     }
     
     // system functions
@@ -38,6 +38,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
         initUI()
     }
 
