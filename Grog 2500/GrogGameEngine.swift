@@ -19,7 +19,7 @@ class GrogGameEngine {
         score = 0
         moves = 0
         status = "ready"
-        storyText = ""
+        storyText = "You are in a dark room. "
         player = GrogGamePlayer()
     }
     
