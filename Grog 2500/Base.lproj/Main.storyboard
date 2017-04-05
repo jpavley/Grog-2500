@@ -79,7 +79,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W20-OA-pq8">
-                                <rect key="frame" x="16" y="80" width="343" height="387"/>
+                                <rect key="frame" x="16" y="87.5" width="343" height="371.5"/>
                                 <color key="backgroundColor" red="0.18833893449155792" green="0.17630884429510121" blue="0.49183058375634514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down.</string>
                                 <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -371,7 +371,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="iRU-Bv-Cxp" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="1JF-SI-jrH"/>
-                            <constraint firstItem="DEB-ds-Idg" firstAttribute="top" secondItem="W20-OA-pq8" secondAttribute="bottom" constant="8" id="2VN-FA-ecm"/>
+                            <constraint firstItem="DEB-ds-Idg" firstAttribute="top" secondItem="W20-OA-pq8" secondAttribute="bottom" constant="16" id="2VN-FA-ecm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OrY-y8-5NP" secondAttribute="trailing" constant="-2" id="3XG-zn-UgW"/>
                             <constraint firstAttribute="leadingMargin" secondItem="iRU-Bv-Cxp" secondAttribute="leading" id="7D1-sc-J0p"/>
                             <constraint firstAttribute="trailing" secondItem="W20-OA-pq8" secondAttribute="trailing" constant="16" id="9Ra-nC-DCw"/>
@@ -380,7 +380,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="svr-Gx-dBC" secondAttribute="leading" id="NNz-lg-mSI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Mll-HY-rA9" secondAttribute="bottom" constant="8" id="RlE-OA-KAo"/>
                             <constraint firstItem="W20-OA-pq8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="cFR-WQ-ab6"/>
-                            <constraint firstItem="W20-OA-pq8" firstAttribute="top" secondItem="svr-Gx-dBC" secondAttribute="bottom" constant="8" id="cHy-JT-lbg"/>
+                            <constraint firstItem="W20-OA-pq8" firstAttribute="top" secondItem="svr-Gx-dBC" secondAttribute="bottom" constant="16" id="cHy-JT-lbg"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DEB-ds-Idg" secondAttribute="bottom" constant="8" id="fiZ-YW-ZYF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="svr-Gx-dBC" secondAttribute="trailing" constant="20" id="lmE-bw-EaL"/>
                             <constraint firstItem="OrY-y8-5NP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="tDi-Jz-A7s"/>

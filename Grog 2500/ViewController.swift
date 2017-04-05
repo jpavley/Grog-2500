@@ -18,13 +18,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var story: UITextView!
-    @IBOutlet weak var command: UITextField!
+    
+    // UI functions
+    
+    func initUI() {
+        score.text = "🎼 0"
+        health.text = "💚 100%"
+        time.text = "⏳ 00:00:00"
+        status.text = "🎮 not started"
+        location.text = "🗺 nowhere yet"
+        story.text = ""
+    }
     
     // system functions
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        initUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,9 +44,6 @@ class ViewController: UIViewController {
     }
     
     // button functions
-    
-    @IBAction func submit(_ sender: Any) {
-    }
     
     @IBAction func inButton(_ sender: Any) {
     }
