@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     
     @IBOutlet var actionButtonCollection: [UIButton]!
     
-    
     // game vars
     var game = GrogGameEngine()
     
