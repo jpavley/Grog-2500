@@ -8,6 +8,25 @@
 
 import Foundation
 
-class GrogStorybook {
+struct GrogCommands {
+    let name: String
+    let commandID: Int
+    let nextPageID: Int
+    let healthCost: Int
+    let pointsAward: Int
+}
+
+struct GrogPage {
+    let name: String
+    let pageID: Int
+    let storyText: String?
+    let commands: [GrogCommands]?
+    
+}
+
+struct GrogStorybook {
+    let name: String
+    let storyID: Int
+    let pages: [GrogPage]
     
 }
