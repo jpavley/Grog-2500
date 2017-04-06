@@ -19,6 +19,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var story: UITextView!
     
+    // action buttons
+    
+    @IBOutlet var actionButtonCollection: [UIButton]!
+    
+    
     // game vars
     var game = GrogGameEngine()
     
@@ -39,7 +44,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+        for actionButton in actionButtonCollection {
+            actionButton.setTitle("", for: .normal)
+        }
         
         initUI()
     }
@@ -57,10 +64,6 @@ class ViewController: UIViewController {
         
         story.text = story.text + " \(buttonLabel)"
     }
-    
-    
-    
-    
     
 }
 
