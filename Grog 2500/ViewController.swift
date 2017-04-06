@@ -35,6 +35,10 @@ class ViewController: UIViewController {
         status.text = "🎮 \(game.status)"
         location.text = "🗺 \(game.player.location)"
         story.text = game.storyText
+        
+        for actionButton in actionButtonCollection {
+            actionButton.setTitle("", for: .normal)
+        }
     }
     
     // system functions
@@ -42,10 +46,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        for actionButton in actionButtonCollection {
-            actionButton.setTitle("", for: .normal)
-        }
         
         initUI()
     }
