@@ -47,6 +47,8 @@ class ViewController: UIViewController {
                 
                 // output the storybook page text
                 story.text = story.text + page.storyText + game!.prompt
+                
+                // TODO: Scroll to bottom of text view
             }
 
         }
@@ -74,10 +76,10 @@ class ViewController: UIViewController {
     }
     
     func initStory() -> GrogStorybook? {
-        let cmd1 = GrogCommand(name: "Cat", commandID: 100, nextPageID: 1001, healthCost: -2, pointsAward: -1)
-        let cmd2 = GrogCommand(name: "Switch", commandID: 105, nextPageID: 1002, healthCost: -2, pointsAward: -2)
-        let cmd3 = GrogCommand(name: "Bed", commandID: 110, nextPageID: 1003, healthCost: 4, pointsAward: 4)
-        let cmd4 = GrogCommand(name: "Restart", commandID: 112, nextPageID: 1000, healthCost: 0, pointsAward: 0)
+        let cmd1 = GrogCommand(name: "Cat", commandID: 100, nextPageID: 1001, healthCost: -2, pointsAward: -1, action: .jump)
+        let cmd2 = GrogCommand(name: "Switch", commandID: 105, nextPageID: 1002, healthCost: -2, pointsAward: -2, action: .jump)
+        let cmd3 = GrogCommand(name: "Bed", commandID: 110, nextPageID: 1003, healthCost: 4, pointsAward: 4, action: .jump)
+        let cmd4 = GrogCommand(name: "Restart", commandID: 112, nextPageID: 1000, healthCost: 0, pointsAward: 0, action: .clear)
         
         let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall here. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3])
         
@@ -117,7 +119,7 @@ class ViewController: UIViewController {
         // output the label
         story.text = story.text + " \(buttonLabel) \n"
         
-        // take an action based on the command
+        // update the game and take an action based on the command
         if let page = game?.storybook.pages.filter({ $0.pageID == currentPageID })[0] {
             
             // get the commend based on button press
@@ -129,10 +131,23 @@ class ViewController: UIViewController {
             game?.score = (game?.score)! + cmd.pointsAward
             game?.moves = (game?.moves)! + 1
             
-            // go to the next page
+            // take action based on the command
             let nextPage = game?.storybook.pages.filter {$0.pageID == cmd.nextPageID }[0]
-            currentPageID = (nextPage?.pageID)!
-            loadUI()
+
+            switch cmd.action {
+            case .clear:
+                // clear the output and go to the next page
+                story.text = ""
+                currentPageID = (nextPage?.pageID)!
+                loadUI()
+            case .jump:
+                // go to the next page
+                currentPageID = (nextPage?.pageID)!
+                loadUI()
+            case .noop: break
+                // stay on the same page
+            }
+            
         }
         
         

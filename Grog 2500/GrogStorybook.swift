@@ -8,12 +8,17 @@
 
 import Foundation
 
+enum StoryAction {
+    case jump, clear, noop
+}
+
 struct GrogCommand {
     let name: String
     let commandID: Int
     let nextPageID: Int
     let healthCost: Int
     let pointsAward: Int
+    let action: StoryAction
 }
 
 struct GrogPage {
