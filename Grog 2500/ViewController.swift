@@ -24,27 +24,30 @@ class ViewController: UIViewController {
     @IBOutlet var actionButtonCollection: [UIButton]!
     
     // game vars
-    var game:GrogGameEngine?
+    var game: GrogGameEngine?
+    var currentPageID = -1
     
     // UI functions
     
-    func loadUI(pageID: Int) {
+    func loadUI() {
         
         if let storybook = initStory() {
             
             // get a game and storybook page
-            let game = GrogGameEngine(storybook: storybook)
-            let page = game.storybook.pages.filter { $0.pageID == pageID }[0]
+            game = GrogGameEngine(storybook: storybook)
             
-            // update the game from storybook data
-            game.player.location = page.name
+            if let page = game?.storybook.pages.filter({ $0.pageID == currentPageID })[0] {
             
-            // update the user interface from game and storybook data
-            updateUIStatus(with: game)
-            updateCommandButtons(with: page.commands)
-            
-            // output the storybook page text
-            story.text = page.storyText + game.prompt
+                // update the game from storybook data
+                game!.player.location = page.name
+                
+                // update the user interface from game and storybook data
+                updateUIStatus(with: game!)
+                updateCommandButtons(with: page.commands)
+                
+                // output the storybook page text
+                story.text = story.text + page.storyText + game!.prompt
+            }
 
         }
     }
@@ -78,7 +81,7 @@ class ViewController: UIViewController {
         
         let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall here. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3])
         
-        let page2 = GrogPage(name: "Cat Scratch", pageID: 1001, storyText: "You reach out to pet the cat but it scraches you hand with its wicked sharp claws and runs out of the room.", commands: [cmd2, cmd3])
+        let page2 = GrogPage(name: "Cat Scratch", pageID: 1001, storyText: "You reach out to pet the cat but it scraches your hand with its wicked sharp claws and runs out of the room. You might want to clean that wound when you get a chance.", commands: [cmd2, cmd3])
         
         let page3 = GrogPage(name: "Pop Bang", pageID: 1002, storyText: "The lamp on the nightstand glows bightly, so brightly that it expodes in a shower of sparks and the room is plunged into total darkness.", commands: [cmd3])
         
@@ -94,7 +97,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        loadUI(pageID: 1000)
+        currentPageID = 1000
+        loadUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -105,21 +109,30 @@ class ViewController: UIViewController {
     // button functions
     
     @IBAction func commandButton(_ sender: Any) {
+        
+        // get the ID and label of the touched button
         let buttonID = (sender as AnyObject).tag!
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
         
-        story.text = story.text + " \(buttonLabel)"
+        // output the label
+        story.text = story.text + " \(buttonLabel) \n"
         
-        if let commandList = game?.storybook.pages[0].commands {
+        // take an action based on the command
+        if let page = game?.storybook.pages.filter({ $0.pageID == currentPageID })[0] {
             
-            let cmd = commandList.filter { $0.commandID == buttonID }
-            game?.player.health = (game?.player.health)! + cmd[0].healthCost
-            game?.score = (game?.score)! + cmd[0].pointsAward
-            let nextPage = game?.storybook.pages.filter {$0.pageID == cmd[0].nextPageID }
-            game?.player.location = (nextPage?[0].name)!
+            // get the commend based on button press
+            let commandList = page.commands
+            let cmd = commandList.filter { $0.commandID == buttonID }[0]
             
-            //TODO: Update the story
+            // update game and player data
+            game?.player.health = (game?.player.health)! + cmd.healthCost
+            game?.score = (game?.score)! + cmd.pointsAward
+            game?.moves = (game?.moves)! + 1
             
+            // go to the next page
+            let nextPage = game?.storybook.pages.filter {$0.pageID == cmd.nextPageID }[0]
+            currentPageID = (nextPage?.pageID)!
+            loadUI()
         }
         
         

@@ -61,7 +61,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W20-OA-pq8">
                                 <rect key="frame" x="16" y="87.5" width="288" height="251.5"/>
                                 <color key="backgroundColor" red="0.18833893449155792" green="0.17630884429510121" blue="0.49183058375634514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <string key="text">You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down. You are in a dim room. There is a bed with a cat sleeping on it. There is a light switch on the wall. There is a window with the shade drawn down.</string>
                                 <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
