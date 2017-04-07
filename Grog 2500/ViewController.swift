@@ -28,31 +28,45 @@ class ViewController: UIViewController {
     
     // UI functions
     
-    func initUI() {
+    func loadUI(pageID: Int) {
         
         if let storybook = initStory() {
-        
+            
+            // get a game and storybook page
             let game = GrogGameEngine(storybook: storybook)
+            let page = game.storybook.pages.filter { $0.pageID == pageID }[0]
             
-            game.player.location = game.storybook.pages[0].name
+            // update the game from storybook data
+            game.player.location = page.name
             
-            score.text = "🎼 \(game.score)"
-            health.text = "💚 \(game.player.health)%"
-            time.text = "🚶‍♀️\(game.moves)"
-            status.text = "🎮 \(game.status)"
-            location.text = "🗺 \(game.player.location)"
-            story.text = game.storybook.pages[0].storyText
+            // update the user interface from game and storybook data
+            updateUIStatus(with: game)
+            updateCommandButtons(with: page.commands)
             
-            for actionButton in actionButtonCollection {
-                actionButton.setTitle("", for: .normal)
-            }
-            
-            let commandList = game.storybook.pages[0].commands
-            
-            for cmd in commandList {
-                let btn = view.viewWithTag(cmd.commandID) as! UIButton
-                btn.setTitle(cmd.name, for: .normal)
-            }
+            // output the storybook page text
+            story.text = page.storyText + game.prompt
+
+        }
+    }
+    
+    func updateUIStatus(with game:GrogGameEngine) {
+        score.text = "🎼 \(game.score)"
+        health.text = "💚 \(game.player.health)%"
+        time.text = "🚶‍♀️\(game.moves)"
+        status.text = "🎮 \(game.status)"
+        location.text = "🗺 \(game.player.location)"
+    }
+    
+    func updateCommandButtons(with commandList:[GrogCommand]) {
+        // clear
+        for actionButton in actionButtonCollection {
+            actionButton.setTitle("", for: .normal)
+        }
+        
+        // map
+        for cmd in commandList {
+            let btn = view.viewWithTag(cmd.commandID) as! UIButton
+            btn.setTitle(cmd.name, for: .normal)
         }
     }
     
@@ -80,8 +94,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        initUI()
-        initStory()
+        loadUI(pageID: 1000)
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,10 +105,24 @@ class ViewController: UIViewController {
     // button functions
     
     @IBAction func commandButton(_ sender: Any) {
-        // let buttonID = (sender as AnyObject).tag!
+        let buttonID = (sender as AnyObject).tag!
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
         
         story.text = story.text + " \(buttonLabel)"
+        
+        if let commandList = game?.storybook.pages[0].commands {
+            
+            let cmd = commandList.filter { $0.commandID == buttonID }
+            game?.player.health = (game?.player.health)! + cmd[0].healthCost
+            game?.score = (game?.score)! + cmd[0].pointsAward
+            let nextPage = game?.storybook.pages.filter {$0.pageID == cmd[0].nextPageID }
+            game?.player.location = (nextPage?[0].name)!
+            
+            //TODO: Update the story
+            
+        }
+        
+        
     }
     
 }
