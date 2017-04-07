@@ -49,6 +49,8 @@ class ViewController: UIViewController {
                 story.text = story.text + page.storyText + game!.prompt
                 
                 // TODO: Scroll to bottom of text view
+                let range = NSMakeRange(story.text.characters.count - 1, 1)
+                story.scrollRangeToVisible(range)
             }
 
         }
