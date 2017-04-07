@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GrogCommands {
+struct GrogCommand {
     let name: String
     let commandID: Int
     let nextPageID: Int
@@ -19,8 +19,8 @@ struct GrogCommands {
 struct GrogPage {
     let name: String
     let pageID: Int
-    let storyText: String?
-    let commands: [GrogCommands]?
+    let storyText: String
+    let commands: [GrogCommand]
     
 }
 
@@ -28,5 +28,4 @@ struct GrogStorybook {
     let name: String
     let storyID: Int
     let pages: [GrogPage]
-    
 }

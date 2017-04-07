@@ -12,14 +12,15 @@ class GrogGameEngine {
     var score: Int
     var moves: Int
     var status: String
-    var storyText: String
+    var storybook: GrogStorybook
     var player: GrogGamePlayer
+    var prompt = "\n>"
     
-    init() {
+    init(storybook: GrogStorybook) {
         score = 0
         moves = 0
         status = "ready"
-        storyText = "You are in a dark room. There is a cat, a bed, a lamp, and a light switch here. Maybe touching one of these things will do something interesting?\n>"
+        self.storybook = storybook
         player = GrogGamePlayer()
     }
     
