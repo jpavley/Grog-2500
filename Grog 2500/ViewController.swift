@@ -71,6 +71,7 @@ class ViewController: UIViewController {
         for actionButton in actionButtonCollection {
             actionButton.setTitle("", for: .normal)
             actionButton.isEnabled = false
+            actionButton.backgroundColor = UIColor.clear
         }
         
         // map
@@ -78,6 +79,8 @@ class ViewController: UIViewController {
             let btn = view.viewWithTag(cmd.commandID) as! UIButton
             btn.setTitle(cmd.name, for: .normal)
             btn.isEnabled = true
+            btn.backgroundColor = UIColor.clear
+            btn.setTitleColor(UIColor.black, for: .normal)
         }
     }
     
