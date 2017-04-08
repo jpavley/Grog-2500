@@ -60,6 +60,8 @@ class ViewController: UIViewController {
             // output the storybook page text
             story.text = story.text + page.storyText + game!.prompt
             
+            // TODO: Scroll to the bottom is broken when emojis are added
+            
             // if the texts overfills the screen scroll to the buttom
 //            let range = NSMakeRange(story.text.characters.count - 1, 1)
 //            story.scrollRangeToVisible(range)
@@ -76,6 +78,9 @@ class ViewController: UIViewController {
     }
     
     func updateCommandButtons(with commandList:[GrogCommand]) {
+        
+        // TODO: Buttons width not log engough when emojis are added to button labels
+        
         // clear
         for actionButton in actionButtonCollection {
             actionButton.setTitle("", for: .normal)
@@ -175,7 +180,7 @@ class ViewController: UIViewController {
             game!.currentPageID = nextPage.pageID
             loadUI()
         case .swap: break
-            // TODO: Support multiple storybooks
+            // TODO: Ready to implement swap!!!
         }
     }
 }
