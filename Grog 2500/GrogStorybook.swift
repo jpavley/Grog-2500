@@ -10,6 +10,7 @@ import Foundation
 
 let doneButtonID = 119
 let noPage = -1
+let noStory = -1
 
 enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same storybook

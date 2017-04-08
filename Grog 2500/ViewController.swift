@@ -132,10 +132,6 @@ class ViewController: UIViewController {
         // get the ID and label of the touched button
         let buttonID = (sender as AnyObject).tag!
         
-        // output the label
-        let buttonLabel = (sender as! UIButton).titleLabel!.text!
-        story.text = story.text + " \(buttonLabel) \n"
-        
         // update the game and take an action based on the command
         if let page = game?.storybook.pages.filter({ $0.pageID == currentPageID })[0] {
             
@@ -160,6 +156,10 @@ class ViewController: UIViewController {
                 game = nil
                 loadUI()
             case .jump:
+                // output the label
+                let buttonLabel = (sender as! UIButton).titleLabel!.text!
+                story.text = story.text + " \(buttonLabel) \n"
+                
                 // go to the next page
                 currentPageID = nextPage.pageID
                 loadUI()
