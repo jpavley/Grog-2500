@@ -12,21 +12,24 @@ class GrogGameEngine {
     var score: Int
     var moves: Int
     var status: String
-    var storybook: GrogStorybook
     var player: GrogGamePlayer
-    var prompt = "\n>"
     
+    var storybooks = [GrogStorybook]()
     var currentStoryID: Int
     var currentPageID: Int
     var previousStoryID: Int
     var previousPageID: Int
     
+    let prompt = "\n>"
+    
     init(storybook: GrogStorybook) {
         score = 0
         moves = 0
         status = "ready"
-        self.storybook = storybook
+        
         player = GrogGamePlayer()
+        
+        storybooks.append(storybook)
         currentStoryID = storybook.storyID
         currentPageID = storybook.pages[0].pageID
         previousPageID = noPage

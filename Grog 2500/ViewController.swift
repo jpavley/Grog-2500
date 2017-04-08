@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     
     // game vars
     var game: GrogGameEngine?
-    var currentStoryID = noStory
     
     // UI functions
     
@@ -38,24 +37,29 @@ class ViewController: UIViewController {
                 game = GrogGameEngine(storybook: storybook)
             }
             
-            if let page = game?.storybook.pages.filter({ $0.pageID == game!.currentPageID })[0] {
+            let page = getCurrentPageFromCurrentStory()
             
-                // update the game from storybook data
-                game!.player.location = page.name
-                
-                // update the user interface from game and storybook data
-                updateUIStatus()
-                updateCommandButtons(with: page.commands)
-                
-                // output the storybook page text
-                story.text = story.text + page.storyText + game!.prompt
-                
-                // TODO: Scroll to bottom of text view
-                let range = NSMakeRange(story.text.characters.count - 1, 1)
-                story.scrollRangeToVisible(range)
-            }
-
+            // update the game from storybook data
+            game!.player.location = page.name
+            
+            // update the user interface from game and storybook data
+            updateUIStatus()
+            updateCommandButtons(with: page.commands)
+            
+            // output the storybook page text
+            story.text = story.text + page.storyText + game!.prompt
+            
+            // if the texts overfills the screen scroll to the buttom
+            let range = NSMakeRange(story.text.characters.count - 1, 1)
+            story.scrollRangeToVisible(range)
+            
         }
+    }
+    
+    func getCurrentPageFromCurrentStory() -> GrogPage {
+        let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }[0]
+        let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID })[0]
+        return page
     }
     
     func updateUIStatus() {
@@ -111,13 +115,13 @@ class ViewController: UIViewController {
     }
     
     // system functions
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadUI()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -131,46 +135,42 @@ class ViewController: UIViewController {
         let buttonID = (sender as AnyObject).tag!
         
         // update the game and take an action based on the command
-        if let page = game?.storybook.pages.filter({ $0.pageID == game!.currentPageID })[0] {
+        let page = getCurrentPageFromCurrentStory()
+        
+        // get the commend based on button press
+        let commandList = page.commands
+        let cmd = commandList.filter { $0.commandID == buttonID }[0]
+        
+        // update game and player data
+        game!.player.health = game!.player.health + cmd.healthCost
+        game!.score = game!.score + cmd.pointsAward
+        game!.moves = game!.moves + 1
+        game!.status = "playing"
+        
+        // take action based on the command
+        let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }[0]
+        let nextPage = currentStory.pages.filter {$0.pageID == cmd.nextPageID }[0]
+        
+        switch cmd.action {
+        case .clear:
+            // clear the output and go to the next page
+            story.text = ""
             
-            // get the commend based on button press
-            let commandList = page.commands
-            let cmd = commandList.filter { $0.commandID == buttonID }[0]
+            // restart the game and go to the next page
+            game!.currentPageID = nextPage.pageID
+            game = nil
+            loadUI()
+        case .jump:
+            // output the label
+            let buttonLabel = (sender as! UIButton).titleLabel!.text!
+            story.text = story.text + " \(buttonLabel) \n"
             
-            // update game and player data
-            game!.player.health = game!.player.health + cmd.healthCost
-            game!.score = game!.score + cmd.pointsAward
-            game!.moves = game!.moves + 1
-            game!.status = "playing"
-            
-            // take action based on the command
-            let nextPage = game!.storybook.pages.filter {$0.pageID == cmd.nextPageID }[0]
-
-            switch cmd.action {
-            case .clear:
-                // clear the output and go to the next page
-                story.text = ""
-                
-                // restart the game and go to the next page
-                game!.currentPageID = nextPage.pageID
-                game = nil
-                loadUI()
-            case .jump:
-                // output the label
-                let buttonLabel = (sender as! UIButton).titleLabel!.text!
-                story.text = story.text + " \(buttonLabel) \n"
-                
-                // go to the next page
-                game!.currentPageID = nextPage.pageID
-                loadUI()
-            case .swap: break
-                // TODO: Support multiple storybooks
-            }
-            
+            // go to the next page
+            game!.currentPageID = nextPage.pageID
+            loadUI()
+        case .swap: break
+            // TODO: Support multiple storybooks
         }
-        
-        
     }
-    
 }
 
