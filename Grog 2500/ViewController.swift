@@ -45,8 +45,8 @@ class ViewController: UIViewController {
                 
             }
             
-            let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }[0]
-            let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID })[0]
+            let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
+            let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID }).first!
             
             // update the game from storybook data
             game!.player.location = page.name
@@ -145,12 +145,12 @@ class ViewController: UIViewController {
     @IBAction func commandButton(_ sender: Any) {
         
         let buttonID = (sender as AnyObject).tag!
-        let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }[0]
-        let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID })[0]
+        let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
+        let page = currentStory.pages.filter { $0.pageID == game!.currentPageID }.first!
         
         // get the commend based on button press
         let commandList = page.commands
-        let cmd = commandList.filter { $0.commandID == buttonID }[0]
+        let cmd = commandList.filter { $0.commandID == buttonID }.first!
         
         // update game and player data
         game!.player.health = game!.player.health + cmd.healthCost
@@ -160,7 +160,7 @@ class ViewController: UIViewController {
         
         switch cmd.action {
         case .clear:
-            let nextPage = currentStory.pages.filter { $0.pageID == cmd.nextPageID }[0]
+            let nextPage = currentStory.pages.filter { $0.pageID == cmd.nextPageID }.first!
             
             // clear the output and go to the next page
             story.text = ""
@@ -170,7 +170,7 @@ class ViewController: UIViewController {
             game = nil
             loadUI()
         case .jump:
-            let nextPage = currentStory.pages.filter { $0.pageID == cmd.nextPageID }[0]
+            let nextPage = currentStory.pages.filter { $0.pageID == cmd.nextPageID }.first!
             
             // output the label
             let buttonLabel = (sender as! UIButton).titleLabel!.text!
