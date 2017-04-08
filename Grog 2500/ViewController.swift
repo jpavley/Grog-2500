@@ -34,7 +34,9 @@ class ViewController: UIViewController {
         if let storybook = initStory() {
             
             // get a game and storybook page
-            game = GrogGameEngine(storybook: storybook)
+            if game == nil {
+                game = GrogGameEngine(storybook: storybook)
+            }
             
             if let page = game?.storybook.pages.filter({ $0.pageID == currentPageID })[0] {
             
@@ -132,8 +134,6 @@ class ViewController: UIViewController {
             game!.player.health = game!.player.health + cmd.healthCost
             game!.score = game!.score + cmd.pointsAward
             game!.moves = game!.moves + 1
-            
-            // updateUIStatus(with: game!)
             
             // take action based on the command
             let nextPage = game!.storybook.pages.filter {$0.pageID == cmd.nextPageID }[0]
