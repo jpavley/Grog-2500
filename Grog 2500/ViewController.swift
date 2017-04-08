@@ -30,14 +30,23 @@ class ViewController: UIViewController {
     
     func loadUI() {
         
-        if let storybook = initStory() {
+        if let storybooks = initStories() {
             
-            // get a game and storybook page
+            // get the game and and the main storybook
             if game == nil {
-                game = GrogGameEngine(storybook: storybook)
+                // main storybook is always the first
+                game = GrogGameEngine(storybook: storybooks.first!)
+                
+                // if there are anyother stories just add them to the list
+                let subStories = storybooks.dropFirst()
+                for story in subStories {
+                    game!.storybooks.append(story)
+                }
+                
             }
             
-            let page = getCurrentPageFromCurrentStory()
+            let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }[0]
+            let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID })[0]
             
             // update the game from storybook data
             game!.player.location = page.name
@@ -45,6 +54,8 @@ class ViewController: UIViewController {
             // update the user interface from game and storybook data
             updateUIStatus()
             updateCommandButtons(with: page.commands)
+            story.backgroundColor = currentStory.theme.screenColor
+            story.textColor = currentStory.theme.textColor
             
             // output the storybook page text
             story.text = story.text + page.storyText + game!.prompt
@@ -54,12 +65,6 @@ class ViewController: UIViewController {
             story.scrollRangeToVisible(range)
             
         }
-    }
-    
-    func getCurrentPageFromCurrentStory() -> GrogPage {
-        let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }[0]
-        let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID })[0]
-        return page
     }
     
     func updateUIStatus() {
@@ -88,7 +93,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func initStory() -> GrogStorybook? {
+    func initStories() -> [GrogStorybook]? {
         
         // Main storybook
         let theme1 = GrogTheme(screenColor: UIColor.blue, textColor: UIColor.cyan)
@@ -113,7 +118,7 @@ class ViewController: UIViewController {
         let page5 = GrogPage(name: "Help", pageID: 2000, storyText: "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?", commands: [cmd6])
         let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5], theme: theme2)
         
-        return mainStorybook
+        return [mainStorybook, helpStorybook]
         
     }
     
@@ -134,11 +139,9 @@ class ViewController: UIViewController {
     
     @IBAction func commandButton(_ sender: Any) {
         
-        // get the ID and label of the touched button
         let buttonID = (sender as AnyObject).tag!
-        
-        // update the game and take an action based on the command
-        let page = getCurrentPageFromCurrentStory()
+        let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }[0]
+        let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID })[0]
         
         // get the commend based on button press
         let commandList = page.commands
@@ -149,9 +152,6 @@ class ViewController: UIViewController {
         game!.score = game!.score + cmd.pointsAward
         game!.moves = game!.moves + 1
         game!.status = "playing"
-        
-        // get the current story
-        let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }[0]
         
         switch cmd.action {
         case .clear:
