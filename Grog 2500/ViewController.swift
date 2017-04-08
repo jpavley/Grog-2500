@@ -70,12 +70,14 @@ class ViewController: UIViewController {
         // clear
         for actionButton in actionButtonCollection {
             actionButton.setTitle("", for: .normal)
+            actionButton.isEnabled = false
         }
         
         // map
         for cmd in commandList {
             let btn = view.viewWithTag(cmd.commandID) as! UIButton
             btn.setTitle(cmd.name, for: .normal)
+            btn.isEnabled = true
         }
     }
     
@@ -118,9 +120,9 @@ class ViewController: UIViewController {
         
         // get the ID and label of the touched button
         let buttonID = (sender as AnyObject).tag!
-        let buttonLabel = (sender as! UIButton).titleLabel!.text!
         
         // output the label
+        let buttonLabel = (sender as! UIButton).titleLabel!.text!
         story.text = story.text + " \(buttonLabel) \n"
         
         // update the game and take an action based on the command
