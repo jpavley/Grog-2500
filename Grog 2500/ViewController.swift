@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                 game!.player.location = page.name
                 
                 // update the user interface from game and storybook data
-                updateUIStatus(with: game!)
+                updateUIStatus()
                 updateCommandButtons(with: page.commands)
                 
                 // output the storybook page text
@@ -56,12 +56,12 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateUIStatus(with game:GrogGameEngine) {
-        score.text = "🎼 \(game.score)"
-        health.text = "💚 \(game.player.health)%"
-        time.text = "🚶‍♀️\(game.moves)"
-        status.text = "🎮 \(game.status)"
-        location.text = "🗺 \(game.player.location)"
+    func updateUIStatus() {
+        score.text = "🎼 \(game!.score)"
+        health.text = "💚 \(game!.player.health)%"
+        time.text = "🚶‍♀️\(game!.moves)"
+        status.text = "🎮 \(game!.status)"
+        location.text = "🗺 \(game!.player.location)"
     }
     
     func updateCommandButtons(with commandList:[GrogCommand]) {
@@ -129,22 +129,24 @@ class ViewController: UIViewController {
             let cmd = commandList.filter { $0.commandID == buttonID }[0]
             
             // update game and player data
-            game?.player.health = (game?.player.health)! + cmd.healthCost
-            game?.score = (game?.score)! + cmd.pointsAward
-            game?.moves = (game?.moves)! + 1
+            game!.player.health = game!.player.health + cmd.healthCost
+            game!.score = game!.score + cmd.pointsAward
+            game!.moves = game!.moves + 1
+            
+            // updateUIStatus(with: game!)
             
             // take action based on the command
-            let nextPage = game?.storybook.pages.filter {$0.pageID == cmd.nextPageID }[0]
+            let nextPage = game!.storybook.pages.filter {$0.pageID == cmd.nextPageID }[0]
 
             switch cmd.action {
             case .clear:
                 // clear the output and go to the next page
                 story.text = ""
-                currentPageID = (nextPage?.pageID)!
+                currentPageID = nextPage.pageID
                 loadUI()
             case .jump:
                 // go to the next page
-                currentPageID = (nextPage?.pageID)!
+                currentPageID = nextPage.pageID
                 loadUI()
             case .noop: break
                 // stay on the same page
