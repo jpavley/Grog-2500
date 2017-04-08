@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 let doneButtonID = 119
 let noPage = -1
@@ -16,6 +17,11 @@ enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same storybook
     case clear  // restart the current storybook
     case swap   // jump from the current storybook to the current page in a different storybook
+}
+
+struct GrogTheme {
+    let screenColor: UIColor
+    let textColor: UIColor
 }
 
 struct GrogCommand {
@@ -39,4 +45,5 @@ struct GrogStorybook {
     let name: String
     let storyID: Int
     let pages: [GrogPage]
+    let theme: GrogTheme
 }
