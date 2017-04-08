@@ -61,8 +61,8 @@ class ViewController: UIViewController {
             story.text = story.text + page.storyText + game!.prompt
             
             // if the texts overfills the screen scroll to the buttom
-            let range = NSMakeRange(story.text.characters.count - 1, 1)
-            story.scrollRangeToVisible(range)
+//            let range = NSMakeRange(story.text.characters.count - 1, 1)
+//            story.scrollRangeToVisible(range)
             
         }
     }
@@ -98,11 +98,11 @@ class ViewController: UIViewController {
         // Main storybook
         let theme1 = GrogTheme(screenColor: UIColor.blue, textColor: UIColor.cyan)
         
-        let cmd1 = GrogCommand(name: "Cat", commandID: 100, nextPageID: 1001, healthCost: -2, pointsAward: -1, action: .jump)
-        let cmd2 = GrogCommand(name: "Switch", commandID: 105, nextPageID: 1002, healthCost: -2, pointsAward: -2, action: .jump)
-        let cmd3 = GrogCommand(name: "Bed", commandID: 110, nextPageID: 1003, healthCost: 4, pointsAward: 4, action: .jump)
-        let cmd4 = GrogCommand(name: "Restart", commandID: 112, nextPageID: 1000, healthCost: 0, pointsAward: 0, action: .clear)
-        let cmd5 = GrogCommand(name: "Help", commandID: doneButtonID, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
+        let cmd1 = GrogCommand(name: "Cat 😺", commandID: 100, nextPageID: 1001, healthCost: -2, pointsAward: -1, action: .jump)
+        let cmd2 = GrogCommand(name: "Switch 💡", commandID: 105, nextPageID: 1002, healthCost: -2, pointsAward: -2, action: .jump)
+        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: 110, nextPageID: 1003, healthCost: 4, pointsAward: 4, action: .jump)
+        let cmd4 = GrogCommand(name: "Restart 🎬", commandID: 112, nextPageID: 1000, healthCost: 0, pointsAward: 0, action: .clear)
+        let cmd5 = GrogCommand(name: "Help ❓", commandID: doneButtonID, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
         
         let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall here. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3, cmd5])
         let page2 = GrogPage(name: "Cat Scratch", pageID: 1001, storyText: "You reach out to pet the cat but it scraches your hand with its wicked sharp claws and runs out of the room. You might want to clean that wound when you get a chance.", commands: [cmd2, cmd3, cmd5])
