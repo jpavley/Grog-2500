@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
     // game vars
     var game: GrogGameEngine?
-    var currentPageID = -1
+    var currentStoryID = noStory
     
     // UI functions
     
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
                 game = GrogGameEngine(storybook: storybook)
             }
             
-            if let page = game?.storybook.pages.filter({ $0.pageID == currentPageID })[0] {
+            if let page = game?.storybook.pages.filter({ $0.pageID == game!.currentPageID })[0] {
             
                 // update the game from storybook data
                 game!.player.location = page.name
@@ -115,8 +115,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        currentPageID = 1000
         loadUI()
     }
 
@@ -133,7 +131,7 @@ class ViewController: UIViewController {
         let buttonID = (sender as AnyObject).tag!
         
         // update the game and take an action based on the command
-        if let page = game?.storybook.pages.filter({ $0.pageID == currentPageID })[0] {
+        if let page = game?.storybook.pages.filter({ $0.pageID == game!.currentPageID })[0] {
             
             // get the commend based on button press
             let commandList = page.commands
@@ -152,7 +150,9 @@ class ViewController: UIViewController {
             case .clear:
                 // clear the output and go to the next page
                 story.text = ""
-                currentPageID = nextPage.pageID
+                
+                // restart the game and go to the next page
+                game!.currentPageID = nextPage.pageID
                 game = nil
                 loadUI()
             case .jump:
@@ -161,7 +161,7 @@ class ViewController: UIViewController {
                 story.text = story.text + " \(buttonLabel) \n"
                 
                 // go to the next page
-                currentPageID = nextPage.pageID
+                game!.currentPageID = nextPage.pageID
                 loadUI()
             case .swap: break
                 // TODO: Support multiple storybooks
