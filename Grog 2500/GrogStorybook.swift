@@ -8,14 +8,19 @@
 
 import Foundation
 
+let doneButtonID = 119
+let noPage = -1
+
 enum StoryAction {
-    case jump, clear, noop
+    case jump   // jump from current storybook page to a different page in the same storybook
+    case clear  // restart the current storybook
+    case swap   // jump from the current storybook to the current page in a different storybook
 }
 
 struct GrogCommand {
     let name: String
     let commandID: Int
-    let nextPageID: Int
+    var nextPageID: Int
     let healthCost: Int
     let pointsAward: Int
     let action: StoryAction
