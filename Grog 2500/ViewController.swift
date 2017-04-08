@@ -136,6 +136,7 @@ class ViewController: UIViewController {
             game!.player.health = game!.player.health + cmd.healthCost
             game!.score = game!.score + cmd.pointsAward
             game!.moves = game!.moves + 1
+            game!.status = "playing"
             
             // take action based on the command
             let nextPage = game!.storybook.pages.filter {$0.pageID == cmd.nextPageID }[0]
@@ -145,6 +146,7 @@ class ViewController: UIViewController {
                 // clear the output and go to the next page
                 story.text = ""
                 currentPageID = nextPage.pageID
+                game = nil
                 loadUI()
             case .jump:
                 // go to the next page
