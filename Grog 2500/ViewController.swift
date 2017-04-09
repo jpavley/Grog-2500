@@ -82,7 +82,7 @@ class ViewController: UIViewController {
             
             // output the storybook page text
             story.text = story.text + page.storyText + game!.prompt
-                        
+            
             // if the texts overfills the screen scroll to the buttom
             let range = NSMakeRange(story.text.characters.count - 1, 1)
             story.scrollRangeToVisible(range)
@@ -125,11 +125,11 @@ class ViewController: UIViewController {
         // Main storybook
         let theme1 = GrogTheme(screenColor: UIColor.blue, textColor: UIColor.cyan)
         
-        let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, nextPageID: 1001, healthCost: -2, pointsAward: -1, action: .jump)
-        let cmd2 = GrogCommand(name: "Switch 💡", commandID: r2c2, nextPageID: 1002, healthCost: -2, pointsAward: -2, action: .jump)
-        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, nextPageID: 1003, healthCost: 4, pointsAward: 4, action: .jump)
-        let cmd4 = GrogCommand(name: "Restart 🎬", commandID: r4c1, nextPageID: 1000, healthCost: 0, pointsAward: 0, action: .clear)
-        let cmd5 = GrogCommand(name: "Help ❓", commandID: r5c3, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
+        let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, nextStoryID: noStory, nextPageID: 1001, healthCost: -2, pointsAward: -1, action: .jump)
+        let cmd2 = GrogCommand(name: "Switch 💡", commandID: r2c2, nextStoryID: noStory, nextPageID: 1002, healthCost: -2, pointsAward: -2, action: .jump)
+        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, nextStoryID: noStory, nextPageID: 1003, healthCost: 4, pointsAward: 4, action: .jump)
+        let cmd4 = GrogCommand(name: "Restart 🎬", commandID: r4c1, nextStoryID: noStory, nextPageID: 1000, healthCost: 0, pointsAward: 0, action: .clear)
+        let cmd5 = GrogCommand(name: "Help ❓", commandID: r5c3, nextStoryID: 20, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
         
         let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall here. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3, cmd5])
         let page2 = GrogPage(name: "Cat Scratch", pageID: 1001, storyText: "You reach out to pet the cat but it scraches your hand with its wicked sharp claws and runs out of the room. You might want to clean that wound when you get a chance.", commands: [cmd2, cmd3, cmd5])
@@ -138,10 +138,9 @@ class ViewController: UIViewController {
         
         let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: [page1, page2, page3, page4], theme: theme1)
         
-        
         // Help storybook
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
-        let cmd6 = GrogCommand(name: "Yes", commandID: r5c3, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
+        let cmd6 = GrogCommand(name: "Yes", commandID: r5c3, nextStoryID: 10, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
         let page5 = GrogPage(name: "Help", pageID: 2000, storyText: "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?", commands: [cmd6])
         let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5], theme: theme2)
         
@@ -201,8 +200,28 @@ class ViewController: UIViewController {
             // go to the next page
             game!.currentPageID = nextPage.pageID
             loadUI()
-        case .swap: break
-            // TODO: Ready to implement swap!!!
+        case .swap:
+            
+            // temporarily save the current page ID to use and the previous page ID (later)
+            let savedCurrentPageID = game!.currentPageID
+            
+            // set the current story ID the command's next story ID
+            game!.currentStoryID = cmd.nextStoryID
+            
+            // if the previous page ID was not saved before then just go the first page of the next story
+            // otherwise set the previous page ID as the current page ID
+            if game!.previousPageID == noPage {
+                let nextStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
+                game!.currentPageID = nextStory.pages.first!.pageID
+            } else {
+                game!.currentPageID = game!.previousPageID
+            }
+            
+            // now its safe to store the original current page ID as the previous page ID
+            game!.previousPageID = savedCurrentPageID
+            
+            story.text = ""
+            loadUI()
         }
     }
 }

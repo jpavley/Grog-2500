@@ -26,6 +26,7 @@ struct GrogTheme {
 struct GrogCommand {
     let name: String
     let commandID: Int
+    let nextStoryID: Int
     let nextPageID: Int
     let healthCost: Int
     let pointsAward: Int
