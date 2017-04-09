@@ -82,13 +82,14 @@ class ViewController: UIViewController {
             
             // output the storybook page text
             story.text = story.text + page.storyText + game!.prompt
-            
-            // TODO: Scroll to the bottom is broken when emojis are added
-            
+                        
             // if the texts overfills the screen scroll to the buttom
-            //            let range = NSMakeRange(story.text.characters.count - 1, 1)
-            //            story.scrollRangeToVisible(range)
+            let range = NSMakeRange(story.text.characters.count - 1, 1)
+            story.scrollRangeToVisible(range)
             
+            // NOTE: Need to disable and then enable scrolling on a UITextView for proper rendering of forced scroll
+            story.isScrollEnabled = false
+            story.isScrollEnabled = true
         }
     }
     
@@ -101,8 +102,6 @@ class ViewController: UIViewController {
     }
     
     func updateCommandButtons(with commandList:[GrogCommand]) {
-        
-        // TODO: Buttons width not log engough when emojis are added to button labels
         
         // clear
         for actionButton in actionButtonCollection {
