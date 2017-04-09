@@ -23,6 +23,8 @@ struct GrogTheme {
     let textColor: UIColor
 }
 
+// TODO: Simplify GrogCommand and GrogGameEngine by creating a GrogAction struct that contains nextPageID, nextStoryID, etc
+
 struct GrogCommand {
     let name: String
     let commandID: Int

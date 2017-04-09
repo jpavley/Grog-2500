@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     // UI functions
     
-    func loadUI() {
+    func loadUI(dontPrint: Bool) {
         
         if let storybooks = initStories() {
             
@@ -80,8 +80,12 @@ class ViewController: UIViewController {
             story.backgroundColor = currentStory.theme.screenColor
             story.textColor = currentStory.theme.textColor
             
+            // TODO: Seperate printing to the screen from loading the UI so I don't need a don't print flag
+            
             // output the storybook page text
-            story.text = story.text + page.storyText + game!.prompt
+            if !dontPrint {
+                story.text = story.text + page.storyText + game!.prompt
+            }
             
             // if the texts overfills the screen scroll to the buttom
             let range = NSMakeRange(story.text.characters.count - 1, 1)
@@ -153,7 +157,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        loadUI()
+        loadUI(dontPrint: false)
     }
     
     override func didReceiveMemoryWarning() {
@@ -189,7 +193,7 @@ class ViewController: UIViewController {
             // restart the game and go to the next page
             game!.currentPageID = nextPage.pageID
             game = nil
-            loadUI()
+            loadUI(dontPrint: false)
         case .jump:
             let nextPage = currentStory.pages.filter { $0.pageID == cmd.nextPageID }.first!
             
@@ -199,11 +203,14 @@ class ViewController: UIViewController {
             
             // go to the next page
             game!.currentPageID = nextPage.pageID
-            loadUI()
+            loadUI(dontPrint: false)
         case .swap:
             
-            // temporarily save the current page ID to use and the previous page ID (later)
+            // temporarily save the current page ID to use as the previous page ID (later)
             let savedCurrentPageID = game!.currentPageID
+            
+            // save the current story text to use as the previous story text (later)
+            let savedStoryText = story.text!
             
             // set the current story ID the command's next story ID
             game!.currentStoryID = cmd.nextStoryID
@@ -220,8 +227,15 @@ class ViewController: UIViewController {
             // now its safe to store the original current page ID as the previous page ID
             game!.previousPageID = savedCurrentPageID
             
-            story.text = ""
-            loadUI()
+            // if there is previous story text then disable printing to the screen
+            let dontPrint = (game!.previousStoryText != "")
+            
+            // restore the original previous story text and then update the previous story text to the saved story text from above
+            story.text = game!.previousStoryText
+            game!.previousStoryText = savedStoryText
+            
+            // load the UI
+            loadUI(dontPrint: dontPrint)
         }
     }
 }

@@ -18,6 +18,7 @@ class GrogGameEngine {
     var currentStoryID: Int
     var currentPageID: Int
     var previousPageID: Int
+    var previousStoryText: String
     
     let prompt = "\n>"
     
@@ -32,6 +33,7 @@ class GrogGameEngine {
         currentStoryID = storybook.storyID
         currentPageID = storybook.pages[0].pageID
         previousPageID = noPage
+        previousStoryText = ""
     }
     
     func update() {
