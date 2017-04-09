@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-let doneButtonID = 119
 let noPage = -1
 let noStory = -1
 

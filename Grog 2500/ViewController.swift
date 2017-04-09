@@ -10,6 +10,29 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    // constants for command button tags/IDs
+    
+    let r1c1 = 100
+    let r1c2 = 101
+    let r1c3 = 102
+    
+    let r2c1 = 103
+    let r2c2 = 104
+    let r2c3 = 105
+    
+    let r3c1 = 106
+    let r3c2 = 107
+    let r3c3 = 108
+    
+    let r4c1 = 109
+    let r4c2 = 110
+    let r4c3 = 111
+    
+    let r5c1 = 112
+    let r5c2 = 113
+    let r5c3 = 114
+    
+    
     // user labels
     
     @IBOutlet weak var score: UILabel!
@@ -63,8 +86,8 @@ class ViewController: UIViewController {
             // TODO: Scroll to the bottom is broken when emojis are added
             
             // if the texts overfills the screen scroll to the buttom
-//            let range = NSMakeRange(story.text.characters.count - 1, 1)
-//            story.scrollRangeToVisible(range)
+            //            let range = NSMakeRange(story.text.characters.count - 1, 1)
+            //            story.scrollRangeToVisible(range)
             
         }
     }
@@ -103,11 +126,11 @@ class ViewController: UIViewController {
         // Main storybook
         let theme1 = GrogTheme(screenColor: UIColor.blue, textColor: UIColor.cyan)
         
-        let cmd1 = GrogCommand(name: "Cat 😺", commandID: 100, nextPageID: 1001, healthCost: -2, pointsAward: -1, action: .jump)
-        let cmd2 = GrogCommand(name: "Switch 💡", commandID: 105, nextPageID: 1002, healthCost: -2, pointsAward: -2, action: .jump)
-        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: 110, nextPageID: 1003, healthCost: 4, pointsAward: 4, action: .jump)
-        let cmd4 = GrogCommand(name: "Restart 🎬", commandID: 112, nextPageID: 1000, healthCost: 0, pointsAward: 0, action: .clear)
-        let cmd5 = GrogCommand(name: "Help ❓", commandID: doneButtonID, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
+        let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, nextPageID: 1001, healthCost: -2, pointsAward: -1, action: .jump)
+        let cmd2 = GrogCommand(name: "Switch 💡", commandID: r2c2, nextPageID: 1002, healthCost: -2, pointsAward: -2, action: .jump)
+        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, nextPageID: 1003, healthCost: 4, pointsAward: 4, action: .jump)
+        let cmd4 = GrogCommand(name: "Restart 🎬", commandID: r4c1, nextPageID: 1000, healthCost: 0, pointsAward: 0, action: .clear)
+        let cmd5 = GrogCommand(name: "Help ❓", commandID: r5c3, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
         
         let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall here. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3, cmd5])
         let page2 = GrogPage(name: "Cat Scratch", pageID: 1001, storyText: "You reach out to pet the cat but it scraches your hand with its wicked sharp claws and runs out of the room. You might want to clean that wound when you get a chance.", commands: [cmd2, cmd3, cmd5])
@@ -119,7 +142,7 @@ class ViewController: UIViewController {
         
         // Help storybook
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
-        let cmd6 = GrogCommand(name: "Yes", commandID: doneButtonID, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
+        let cmd6 = GrogCommand(name: "Yes", commandID: r5c3, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
         let page5 = GrogPage(name: "Help", pageID: 2000, storyText: "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?", commands: [cmd6])
         let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5], theme: theme2)
         
