@@ -99,10 +99,28 @@ class ViewController: UIViewController {
     
     func updateUIStatus() {
         score.text = "🎼 \(game!.score)"
-        health.text = "💚 \(game!.player.health)%"
+        updateHealthUI()
         time.text = "🚶‍♀️\(game!.moves)"
         status.text = "🎮 \(game!.status)"
         location.text = "🗺 \(game!.player.location)"
+    }
+    
+    func updateHealthUI() {
+        var heart = "💚"
+        if game!.player.health > 100 {
+            heart = "💙"
+        } else if game!.player.health > 50 {
+            heart = "💚"
+        } else if game!.player.health > 25 {
+            heart = "💛"
+        } else if game!.player.health > 15 {
+            heart = "❤️"
+        } else if game!.player.health > 10 {
+            heart = "💔"
+        } else if game!.player.health > 5 {
+            heart = "🖤"
+        }
+        health.text = "\(heart) \(game!.player.health)%"
     }
     
     func updateCommandButtons(with commandList:[GrogCommand]) {
@@ -135,9 +153,9 @@ class ViewController: UIViewController {
         let act4 = GrogAction(nextStoryID: noStory, nextPageID: 1000, action: .clear)
         let act5 = GrogAction(nextStoryID: 20, nextPageID: noPage, action: .swap)
         
-        let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, healthCost: -2, pointsAward: -1, action: act1)
-        let cmd2 = GrogCommand(name: "Switch 💡", commandID: r2c2, healthCost: -2, pointsAward: -2, action: act2)
-        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, healthCost: 4, pointsAward: 4, action: act3)
+        let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, healthCost: -50, pointsAward: -10, action: act1)
+        let cmd2 = GrogCommand(name: "Switch 💡", commandID: r2c2, healthCost: -30, pointsAward: -20, action: act2)
+        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, healthCost: 40, pointsAward: 40, action: act3)
         let cmd4 = GrogCommand(name: "Restart 🎬", commandID: r4c1, healthCost: 0, pointsAward: 0, action: act4)
         let cmd5 = GrogCommand(name: "Help ❓", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act5)
         
