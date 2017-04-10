@@ -83,6 +83,7 @@ class ViewController: UIViewController {
             let range = NSMakeRange(story.text.characters.count - 1, 1)
             story.scrollRangeToVisible(range)
             
+            // TODO: Continue to have the issue were the UITextView is not scrolloing to the button
             // NOTE: Need to disable and then enable scrolling on a UITextView for proper rendering of forced scroll
             story.isScrollEnabled = false
             story.isScrollEnabled = true
@@ -128,11 +129,17 @@ class ViewController: UIViewController {
         // Main storybook
         let theme1 = GrogTheme(screenColor: UIColor.blue, textColor: UIColor.cyan)
         
-        let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, nextStoryID: noStory, nextPageID: 1001, healthCost: -2, pointsAward: -1, action: .jump)
-        let cmd2 = GrogCommand(name: "Switch 💡", commandID: r2c2, nextStoryID: noStory, nextPageID: 1002, healthCost: -2, pointsAward: -2, action: .jump)
-        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, nextStoryID: noStory, nextPageID: 1003, healthCost: 4, pointsAward: 4, action: .jump)
-        let cmd4 = GrogCommand(name: "Restart 🎬", commandID: r4c1, nextStoryID: noStory, nextPageID: 1000, healthCost: 0, pointsAward: 0, action: .clear)
-        let cmd5 = GrogCommand(name: "Help ❓", commandID: r5c3, nextStoryID: 20, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
+        let act1 = GrogAction(nextStoryID: noStory, nextPageID: 1001, action: .jump)
+        let act2 = GrogAction(nextStoryID: noStory, nextPageID: 1002, action: .jump)
+        let act3 = GrogAction(nextStoryID: noStory, nextPageID: 1003, action: .jump)
+        let act4 = GrogAction(nextStoryID: noStory, nextPageID: 1000, action: .jump)
+        let act5 = GrogAction(nextStoryID: 20, nextPageID: noPage, action: .swap)
+        
+        let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, healthCost: -2, pointsAward: -1, action: act1)
+        let cmd2 = GrogCommand(name: "Switch 💡", commandID: r2c2, healthCost: -2, pointsAward: -2, action: act2)
+        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, healthCost: 4, pointsAward: 4, action: act3)
+        let cmd4 = GrogCommand(name: "Restart 🎬", commandID: r4c1, healthCost: 0, pointsAward: 0, action: act4)
+        let cmd5 = GrogCommand(name: "Help ❓", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act5)
         
         let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall here. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3, cmd5])
         let page2 = GrogPage(name: "Cat Scratch", pageID: 1001, storyText: "You reach out to pet the cat but it scraches your hand with its wicked sharp claws and runs out of the room. You might want to clean that wound when you get a chance.", commands: [cmd2, cmd3, cmd5])
@@ -144,14 +151,20 @@ class ViewController: UIViewController {
         // Help storybook
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
         
-        let cmd6 = GrogCommand(name: "Yes 👍", commandID: r5c3, nextStoryID: 10, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
-        let cmd7 = GrogCommand(name: "No 👎", commandID: r5c2, nextStoryID: noStory, nextPageID: 2001, healthCost: 0, pointsAward: 0, action: .jump)
-        let cmd8 = GrogCommand(name: "Go On 👂", commandID: r5c3, nextStoryID: noStory, nextPageID: 2002, healthCost: 0, pointsAward: 0, action: .jump)
+        let act6 = GrogAction(nextStoryID: 10, nextPageID: noPage, action: .swap)
+        let act7 = GrogAction(nextStoryID: noStory, nextPageID: 2001, action: .jump)
+        let act8 = GrogAction(nextStoryID: noStory, nextPageID: 2002, action: .jump)
+        let act9 = GrogAction(nextStoryID: noStory, nextPageID: 2003, action: .jump)
+        let act10 = GrogAction(nextStoryID: noStory, nextPageID: 2000, action: .jump)
+        
+        let cmd6 = GrogCommand(name: "Yes 👍", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act6)
+        let cmd7 = GrogCommand(name: "No 👎", commandID: r5c2, healthCost: 0, pointsAward: 0, action: act7)
+        let cmd8 = GrogCommand(name: "Go On 👂", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act8)
         
         // TODO: Special page ID that signals just go to the next page, so that cmds can be reused
         
-        let cmd9 = GrogCommand(name: "Go On 👂", commandID: r5c3, nextStoryID: noStory, nextPageID: 2003, healthCost: 0, pointsAward: 0, action: .jump)
-        let cmd10 = GrogCommand(name: "Done ✅", commandID: r5c3, nextStoryID: noStory, nextPageID: 2000, healthCost: 0, pointsAward: 0, action: .jump)
+        let cmd9 = GrogCommand(name: "Go On 👂", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act9)
+        let cmd10 = GrogCommand(name: "Done ✅", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act10)
         
         let page5 = GrogPage(name: "Help", pageID: 2000, storyText: "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?", commands: [cmd6, cmd7])
         
@@ -200,9 +213,9 @@ class ViewController: UIViewController {
         game!.moves += 1
         game!.status = "playing"
         
-        switch cmd.action {
+        switch cmd.action.action {
         case .clear:
-            let nextPage = currentStory.pages.filter { $0.pageID == cmd.nextPageID }.first!
+            let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
             
             // clear the output and go to the next page
             story.text = ""
@@ -213,8 +226,9 @@ class ViewController: UIViewController {
             game = nil
             loadUI()
             outputToScreen()
+            
         case .jump:
-            let nextPage = currentStory.pages.filter { $0.pageID == cmd.nextPageID }.first!
+            let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
             
             // output the label
             let buttonLabel = (sender as! UIButton).titleLabel!.text!
@@ -224,6 +238,7 @@ class ViewController: UIViewController {
             game!.currentPageID = nextPage.pageID
             loadUI()
             outputToScreen()
+            
         case .swap:
             
             // temporarily save the current page ID to use as the previous page ID (later)
@@ -233,7 +248,7 @@ class ViewController: UIViewController {
             let savedStoryText = story.text!
             
             // set the current story ID the command's next story ID
-            game!.currentStoryID = cmd.nextStoryID
+            game!.currentStoryID = cmd.action.nextStoryID
             
             // if the previous page ID was not saved before then just go the first page of the next story
             // otherwise set the previous page ID as the current page ID
