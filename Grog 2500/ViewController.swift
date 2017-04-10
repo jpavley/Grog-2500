@@ -159,10 +159,8 @@ class ViewController: UIViewController {
         
         let cmd6 = GrogCommand(name: "Yes 👍", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act6)
         let cmd7 = GrogCommand(name: "No 👎", commandID: r5c2, healthCost: 0, pointsAward: 0, action: act7)
-        let cmd8 = GrogCommand(name: "Go On 👂", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act8)
-        
         // TODO: Special page ID that signals just go to the next page, so that cmds can be reused
-        
+        let cmd8 = GrogCommand(name: "Go On 👂", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act8)
         let cmd9 = GrogCommand(name: "Go On 👂", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act9)
         let cmd10 = GrogCommand(name: "Done ✅", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act10)
         
