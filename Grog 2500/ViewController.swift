@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     
     // UI functions
     
-    func loadUI(dontPrint: Bool) {
+    func loadUI() {
         
         if let storybooks = initStories() {
             
@@ -79,14 +79,7 @@ class ViewController: UIViewController {
             updateCommandButtons(with: page.commands)
             story.backgroundColor = currentStory.theme.screenColor
             story.textColor = currentStory.theme.textColor
-            
-            // TODO: Seperate printing to the screen from loading the UI so I don't need a don't print flag
-            
-            // output the storybook page text
-            if !dontPrint {
-                story.text = story.text + page.storyText + game!.prompt
-            }
-            
+                        
             // if the texts overfills the screen scroll to the buttom
             let range = NSMakeRange(story.text.characters.count - 1, 1)
             story.scrollRangeToVisible(range)
@@ -95,6 +88,13 @@ class ViewController: UIViewController {
             story.isScrollEnabled = false
             story.isScrollEnabled = true
         }
+    }
+    
+    func outputToScreen() {
+        // output the storybook page text
+        let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
+        let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID }).first!
+        story.text = story.text + page.storyText + game!.prompt
     }
     
     func updateUIStatus() {
@@ -174,7 +174,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        loadUI(dontPrint: false)
+        loadUI()
+        outputToScreen()
     }
     
     override func didReceiveMemoryWarning() {
@@ -212,7 +213,8 @@ class ViewController: UIViewController {
             
             // TODO: Sometimes with clear, maybe all the time I don't want to start the game over. Maybe I need clear and home?
             game = nil
-            loadUI(dontPrint: false)
+            loadUI()
+            outputToScreen()
         case .jump:
             let nextPage = currentStory.pages.filter { $0.pageID == cmd.nextPageID }.first!
             
@@ -222,7 +224,8 @@ class ViewController: UIViewController {
             
             // go to the next page
             game!.currentPageID = nextPage.pageID
-            loadUI(dontPrint: false)
+            loadUI()
+            outputToScreen()
         case .swap:
             
             // temporarily save the current page ID to use as the previous page ID (later)
@@ -253,8 +256,12 @@ class ViewController: UIViewController {
             story.text = game!.previousStoryText
             game!.previousStoryText = savedStoryText
             
-            // load the UI
-            loadUI(dontPrint: dontPrint)
+            // load the UI and output the story
+            loadUI()
+            
+            if !dontPrint {
+                outputToScreen()
+            }
         }
     }
 }
