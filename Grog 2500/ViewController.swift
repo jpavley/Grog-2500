@@ -65,7 +65,6 @@ class ViewController: UIViewController {
                 for story in subStories {
                     game!.storybooks.append(story)
                 }
-                
             }
             
             let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
@@ -79,7 +78,7 @@ class ViewController: UIViewController {
             updateCommandButtons(with: page.commands)
             story.backgroundColor = currentStory.theme.screenColor
             story.textColor = currentStory.theme.textColor
-                        
+            
             // if the texts overfills the screen scroll to the buttom
             let range = NSMakeRange(story.text.characters.count - 1, 1)
             story.scrollRangeToVisible(range)
@@ -211,7 +210,6 @@ class ViewController: UIViewController {
             // restart the game and go to the next page
             game!.currentPageID = nextPage.pageID
             
-            // TODO: Sometimes with clear, maybe all the time I don't want to start the game over. Maybe I need clear and home?
             game = nil
             loadUI()
             outputToScreen()
