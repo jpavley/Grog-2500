@@ -132,7 +132,7 @@ class ViewController: UIViewController {
         let act1 = GrogAction(nextStoryID: noStory, nextPageID: 1001, action: .jump)
         let act2 = GrogAction(nextStoryID: noStory, nextPageID: 1002, action: .jump)
         let act3 = GrogAction(nextStoryID: noStory, nextPageID: 1003, action: .jump)
-        let act4 = GrogAction(nextStoryID: noStory, nextPageID: 1000, action: .jump)
+        let act4 = GrogAction(nextStoryID: noStory, nextPageID: 1000, action: .clear)
         let act5 = GrogAction(nextStoryID: 20, nextPageID: noPage, action: .swap)
         
         let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, healthCost: -2, pointsAward: -1, action: act1)
@@ -213,26 +213,23 @@ class ViewController: UIViewController {
         
         switch cmd.action.action {
         case .clear:
-            let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
             
-            // clear the output and go to the next page
+            // clear the output
             story.text = ""
             
-            // restart the game and go to the next page
-            game!.currentPageID = nextPage.pageID
-            
+            // restart the game
             game = nil
             loadUI()
             outputToScreen()
             
         case .jump:
-            let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
             
             // output the label
             let buttonLabel = (sender as! UIButton).titleLabel!.text!
             story.text = story.text + " \(buttonLabel) \n"
             
             // go to the next page
+            let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
             game!.currentPageID = nextPage.pageID
             loadUI()
             outputToScreen()
