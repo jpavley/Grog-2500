@@ -146,16 +146,24 @@ class ViewController: UIViewController {
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
         
         let cmd6 = GrogCommand(name: "Yes 👍", commandID: r5c3, nextStoryID: 10, nextPageID: noPage, healthCost: 0, pointsAward: 0, action: .swap)
-        let cmd7 = GrogCommand(name: "No 👎", commandID: r5c2, nextStoryID: 10, nextPageID: 2001, healthCost: 0, pointsAward: 0, action: .jump)
-        let cmd8 = GrogCommand(name: "Done", commandID: r5c3, nextStoryID: 10, nextPageID: 2000, healthCost: 0, pointsAward: 0, action: .clear)
+        let cmd7 = GrogCommand(name: "No 👎", commandID: r5c2, nextStoryID: noStory, nextPageID: 2001, healthCost: 0, pointsAward: 0, action: .jump)
+        let cmd8 = GrogCommand(name: "Go On 👂", commandID: r5c3, nextStoryID: noStory, nextPageID: 2002, healthCost: 0, pointsAward: 0, action: .jump)
+        
+        // TODO: Special page ID that signals just go to the next page, so that cmds can be reused
+        
+        let cmd9 = GrogCommand(name: "Go On 👂", commandID: r5c3, nextStoryID: noStory, nextPageID: 2003, healthCost: 0, pointsAward: 0, action: .jump)
+        let cmd10 = GrogCommand(name: "Done", commandID: r5c3, nextStoryID: noStory, nextPageID: 2000, healthCost: 0, pointsAward: 0, action: .jump)
         
         let page5 = GrogPage(name: "Help", pageID: 2000, storyText: "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?", commands: [cmd6, cmd7])
         
         // TODO: for really long text a signal that says "don't automatically scroll to the button of the screen"
         
-        let page6 = GrogPage(name: "About Grog 2500", pageID: 2001, storyText: "Ah, you need a little convincing? Good! I like skeptical people! This is the story of Grog 2500, the app you're running on your phone. Back in the day, before GPUs and 4K screens kids of all ages enjoyed playing text  games. Classic games like Adventure and Zork. You can still play these game, with emulation. But truly new 21st centry text games have not come into being even though people are reading and typing more than ever before. Social media and messaging app have become so ubuquious that life itself has become one big text game. So we, the author's behind Grog 2500, decided it was time to update the old text adventure game paradigm for the modern age, like with emojis, verticality, and an interaction style designed for the phone. That's about it. Go run along and play nice now.", commands: [cmd8])
-        
-        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6], theme: theme2)
+        let page6 = GrogPage(name: "About Grog 2500", pageID: 2001, storyText: "Ah, you need a little convincing? Good! I like skeptical people! This is the story of Grog 2500, the app that's running on your phone. Back in the day, before GPUs and 4K screens, kids of all ages enjoyed playing text  games. Classic games like Adventure and Zork. You can still play these games, with emulation.", commands: [cmd8])
+        let page7 = GrogPage(name: "About Grog 2500", pageID: 2002, storyText: "But truly new 21st centry text games have not come into being, even though people are reading and typing more than ever before. Social media and messaging apps have become so ubuquious that life itself has become one big text game.", commands: [cmd9])
+        let page8 = GrogPage(name: "About Grog 2500", pageID: 2003, storyText: "So we, the author behind Grog 2500, decided it was time to update the old text adventure game paradigm for the modern age, with emojis, verticality, and an interaction style designed for the phone. That's about it. Go run along and play nice now.", commands: [cmd10])
+
+
+        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2)
         
         return [mainStorybook, helpStorybook]
         
