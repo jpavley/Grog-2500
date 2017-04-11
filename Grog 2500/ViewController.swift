@@ -79,22 +79,32 @@ class ViewController: UIViewController {
             story.backgroundColor = currentStory.theme.screenColor
             story.textColor = currentStory.theme.textColor
             
-            // if the texts overfills the screen scroll to the buttom
-            let range = NSMakeRange(story.text.characters.count - 1, 1)
-            story.scrollRangeToVisible(range)
-            
-            // TODO: Continue to have the issue were the UITextView is not scrolloing to the button
-            // NOTE: Need to disable and then enable scrolling on a UITextView for proper rendering of forced scroll
-            story.isScrollEnabled = false
-            story.isScrollEnabled = true
+//            // if the texts overfills the screen scroll to the buttom
+//            let range = NSMakeRange(story.text.characters.count - 1, 1)
+//            story.scrollRangeToVisible(range)
+//            
+//            // TODO: Continue to have the issue were the UITextView is not scrolloing to the button
+//            // NOTE: Need to disable and then enable scrolling on a UITextView for proper rendering of forced scroll
+//            story.isScrollEnabled = false
+//            story.isScrollEnabled = true
         }
     }
     
     func outputToScreen() {
         // output the storybook page text
+        
         let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
         let page = currentStory.pages.filter({ $0.pageID == game!.currentPageID }).first!
         story.text = story.text + page.storyText + game!.prompt
+        
+        // if the texts overfills the screen scroll to the buttom
+        let range = NSMakeRange(story.text.characters.count+100, 1)
+        story.scrollRangeToVisible(range)
+        
+        // NOTE: Need to disable and then enable scrolling on a UITextView for proper rendering of forced scroll
+        story.isScrollEnabled = false
+        story.isScrollEnabled = true
+
     }
     
     func updateUIStatus() {
