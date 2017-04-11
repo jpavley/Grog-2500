@@ -39,5 +39,13 @@ class GrogGameEngine {
     func update() {
         // engine update
         player.update()
+        
+        // player health management
+        if player.health <= 0 {
+            player.health = 0
+            print("game over")
+        } else if player.health >= 100 {
+            player.health = 100
+        }
     }
 }

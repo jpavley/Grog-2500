@@ -238,14 +238,7 @@ class ViewController: UIViewController {
         
         switch cmd.action.action {
         case .clear:
-            
-            // clear the output
-            story.text = ""
-            
-            // restart the game
-            game = nil
-            loadUI()
-            outputToScreen()
+            clearGame()
             
         case .jump:
             
@@ -297,6 +290,16 @@ class ViewController: UIViewController {
             }
         }
         game!.update()
+    }
+    
+    func clearGame() {
+        // clear the output
+        story.text = ""
+        
+        // restart the game
+        game = nil
+        loadUI()
+        outputToScreen()
     }
 }
 
