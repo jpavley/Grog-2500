@@ -165,7 +165,7 @@ class ViewController: UIViewController {
         
         let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, healthCost: -50, pointsAward: -10, action: act1)
         let cmd2 = GrogCommand(name: "Switch 💡", commandID: r2c2, healthCost: -50, pointsAward: -20, action: act2)
-        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, healthCost: 10, pointsAward: 40, action: act3)
+        let cmd3 = GrogCommand(name: "Bed 🛏", commandID: r3c3, healthCost: 10, pointsAward: 110, action: act3)
         let cmd4 = GrogCommand(name: "Restart 🎬", commandID: r4c1, healthCost: 0, pointsAward: 0, action: act4)
         let cmd5 = GrogCommand(name: "Help ❓", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act5)
         
