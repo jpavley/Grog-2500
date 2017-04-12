@@ -164,14 +164,19 @@ class ViewController: UIViewController {
         let cmd4 = GrogCommand(name: "Restart 🎬", commandID: r4c1, healthCost: 0, pointsAward: 0, action: act4)
         let cmd5 = GrogCommand(name: "Help ❓", commandID: r5c3, healthCost: 0, pointsAward: 0, action: act5)
         
-        let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall here. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3, cmd5])
+        let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3, cmd5])
         let page2 = GrogPage(name: "Cat Scratch", pageID: 1001, storyText: "You reach out to pet the cat but it scraches your hand with its wicked sharp claws and runs out of the room. You might want to clean that wound when you get a chance.", commands: [cmd2, cmd3, cmd5])
         let page3 = GrogPage(name: "Pop Bang", pageID: 1002, storyText: "The lamp on the nightstand glows bightly, so brightly that it expodes in a shower of sparks and the room is plunged into total darkness.", commands: [cmd3, cmd5])
         let page4 = GrogPage(name: "Back to Bed", pageID: 1003, storyText: "You crawl into bed and pull the covers over your head. It's warm and comfy. So comfy that the cat curls up to sleep on your stomach.", commands: [cmd4, cmd5])
+        let page9 = GrogPage(name: "You're a Winner", pageID: 1004, storyText: "You've won the game by going back to bed. Nice work!", commands: [cmd4, cmd5])
+        let page10 = GrogPage(name: "You're a Winner", pageID: 1005, storyText: "You've won the game by going back to bed. And you made the decision quickly so you get extra points! Good Job!", commands: [cmd4, cmd5])
+        let page11 = GrogPage(name: "You're a Loser", pageID: 1006, storyText: "You've lost the game because you have died. You're health is 0%. Better luck next time.", commands: [cmd4, cmd5])
+        let page12 = GrogPage(name: "You're a Loser", pageID: 1007, storyText: "You've lost the game because you ran out of points. You're health is 0%. Maybe you should make better choices", commands: [cmd4, cmd5])
         
         let budget1 = GrogBudget(score: 50, health: 50, moves: 2)
+        let endgame1 = GrogEndGame(successPage: 1004, successExtraPointsPage: 1005, failNoHealthPage: 1006, failNoPointsPage: 1007)
         
-        let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: [page1, page2, page3, page4], theme: theme1, budget: budget1, tracking: true)
+        let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: [page1, page2, page3, page4, page9, page10, page11, page12], theme: theme1, budget: budget1, endGame: endgame1, tracking: true)
         
         // Help storybook
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
@@ -195,8 +200,9 @@ class ViewController: UIViewController {
         let page8 = GrogPage(name: "About Grog 2500", pageID: 2003, storyText: "So we, the author behind Grog 2500, decided it was time to update the old text adventure game paradigm for the modern age, with emojis, verticality, and an interaction style designed for the phone. That's about it. Go run along and play nice now.", commands: [cmd10])
 
         let budget2 = GrogBudget(score: noBudget, health: noBudget, moves: noBudget)
+        let endgame2 = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
 
-        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2, budget: budget2, tracking: false)
+        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2, budget: budget2, endGame: endgame2, tracking: false)
         
         return [mainStorybook, helpStorybook]
         
@@ -220,6 +226,7 @@ class ViewController: UIViewController {
     
     @IBAction func commandButton(_ sender: Any) {
         
+        var dontPrint = false
         let buttonID = (sender as AnyObject).tag!
         let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
         let page = currentStory.pages.filter { $0.pageID == game!.currentPageID }.first!
@@ -247,8 +254,6 @@ class ViewController: UIViewController {
             // go to the next page
             let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
             game!.currentPageID = nextPage.pageID
-            loadUI()
-            outputToScreen()
             
         case .swap:
             
@@ -274,20 +279,24 @@ class ViewController: UIViewController {
             game!.previousPageID = savedCurrentPageID
             
             // if there is previous story text then disable printing to the screen
-            let dontPrint = (game!.previousStoryText != "")
+            dontPrint = (game!.previousStoryText != "")
             
             // restore the original previous story text and then update the previous story text to the saved story text from above
             story.text = game!.previousStoryText
             game!.previousStoryText = savedStoryText
             
-            // load the UI and output the story
-            loadUI()
-            
-            if !dontPrint {
-                outputToScreen()
-            }
         }
-        game!.update()
+        
+        // because of .clear (which sets the game to nil) check for nil
+        if game != nil {
+            game!.update()
+        }
+        
+        // load the UI and output the story
+        loadUI()
+        if !dontPrint {
+            outputToScreen()
+        }
     }
     
     func clearGame() {
@@ -296,8 +305,6 @@ class ViewController: UIViewController {
         
         // restart the game
         game = nil
-        loadUI()
-        outputToScreen()
     }
 }
 
