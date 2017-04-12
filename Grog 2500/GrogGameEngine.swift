@@ -25,12 +25,13 @@ class GrogGameEngine {
     let prompt = "\n>"
     
     init(storybook: GrogStorybook) {
-        score = 0
+        score = storybook.budget.score
         moves = 0
-        movesGoal = 100
+        movesGoal = storybook.budget.moves
         status = "ready"
         
         player = GrogGamePlayer()
+        player.health = storybook.budget.health
         gameOver = false
         
         storybooks.append(storybook)
@@ -44,30 +45,34 @@ class GrogGameEngine {
         // engine update
         player.update()
         
-        // player health management
-        if player.health <= 0 {
-            player.health = 0
-            print("game over: you lose, you died")
-            gameOver = true
-            status = "Loser"
-        } else if player.health >= 100 {
-            player.health = 100
-        }
+        let story = storybooks.filter { $0.storyID == currentStoryID }.first!
         
-        // game score management
-        if score <= 0 {
-            score = 0
-            print("game over")
-            gameOver = true
-            status = "Loser"
-        } else if score >= 100 {
-            if moves <= movesGoal {
-                print("award extra points for hitting moves goal")
+        if story.tracking {
+            
+            // player health management
+            if player.health <= 0 {
+                player.health = 0
+                print("game over: health <= 0")
+                gameOver = true
+                status = "Loser"
+            } else if player.health >= 100 {
+                player.health = 100
             }
-            print("game over: you win on points")
-            gameOver = true
-            status = "Winning"
+            
+            // game score management
+            if score <= 0 {
+                score = 0
+                print("game over: score <= 0")
+                gameOver = true
+                status = "Loser"
+            } else if score >= 100 {
+                if moves <= movesGoal {
+                    print("extra reward: moves <= movesGoal")
+                }
+                print("game over: score >= 100")
+                gameOver = true
+                status = "Winning"
+            }
         }
-        
     }
 }

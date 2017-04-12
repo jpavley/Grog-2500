@@ -11,11 +11,18 @@ import UIKit
 
 let noPage = -1
 let noStory = -1
+let noBudget = -1
 
 enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same storybook
     case clear  // restart the current storybook
     case swap   // jump from the current storybook to the current page in a different storybook
+}
+
+struct GrogBudget {
+    let score: Int
+    let health: Int
+    let moves: Int
 }
 
 struct GrogTheme {
@@ -50,4 +57,6 @@ struct GrogStorybook {
     let storyID: Int
     let pages: [GrogPage]
     let theme: GrogTheme
+    let budget: GrogBudget
+    let tracking: Bool
 }

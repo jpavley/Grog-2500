@@ -79,14 +79,6 @@ class ViewController: UIViewController {
             story.backgroundColor = currentStory.theme.screenColor
             story.textColor = currentStory.theme.textColor
             
-//            // if the texts overfills the screen scroll to the buttom
-//            let range = NSMakeRange(story.text.characters.count - 1, 1)
-//            story.scrollRangeToVisible(range)
-//            
-//            // TODO: Continue to have the issue were the UITextView is not scrolloing to the button
-//            // NOTE: Need to disable and then enable scrolling on a UITextView for proper rendering of forced scroll
-//            story.isScrollEnabled = false
-//            story.isScrollEnabled = true
         }
     }
     
@@ -110,12 +102,15 @@ class ViewController: UIViewController {
     func updateUIStatus() {
         score.text = "🎼 \(game!.score)"
         updateHealthUI()
-        time.text = "🚶‍♀️\(game!.moves)"
+        time.text = "🚶‍♀️\(game!.moves)/\(game!.movesGoal)"
         status.text = "🎮 \(game!.status)"
         location.text = "🗺 \(game!.player.location)"
     }
     
     func updateHealthUI() {
+        
+        // TODO: Use switch statement and ranges as this is confusing
+        
         var heart = "💚"
         if game!.player.health > 100 {
             heart = "💙"
@@ -174,7 +169,9 @@ class ViewController: UIViewController {
         let page3 = GrogPage(name: "Pop Bang", pageID: 1002, storyText: "The lamp on the nightstand glows bightly, so brightly that it expodes in a shower of sparks and the room is plunged into total darkness.", commands: [cmd3, cmd5])
         let page4 = GrogPage(name: "Back to Bed", pageID: 1003, storyText: "You crawl into bed and pull the covers over your head. It's warm and comfy. So comfy that the cat curls up to sleep on your stomach.", commands: [cmd4, cmd5])
         
-        let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: [page1, page2, page3, page4], theme: theme1)
+        let budget1 = GrogBudget(score: 50, health: 50, moves: 2)
+        
+        let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: [page1, page2, page3, page4], theme: theme1, budget: budget1, tracking: true)
         
         // Help storybook
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
@@ -197,8 +194,9 @@ class ViewController: UIViewController {
         let page7 = GrogPage(name: "About Grog 2500", pageID: 2002, storyText: "But truly new 21st centry text games have not come into being, even though people are reading and typing more than ever before. Social media and messaging apps have become so ubuquious that life itself has become one big text game.", commands: [cmd9])
         let page8 = GrogPage(name: "About Grog 2500", pageID: 2003, storyText: "So we, the author behind Grog 2500, decided it was time to update the old text adventure game paradigm for the modern age, with emojis, verticality, and an interaction style designed for the phone. That's about it. Go run along and play nice now.", commands: [cmd10])
 
+        let budget2 = GrogBudget(score: noBudget, health: noBudget, moves: noBudget)
 
-        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2)
+        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2, budget: budget2, tracking: false)
         
         return [mainStorybook, helpStorybook]
         
