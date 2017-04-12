@@ -59,7 +59,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W20-OA-pq8">
-                                <rect key="frame" x="16" y="90" width="288" height="254"/>
+                                <rect key="frame" x="0.0" y="90" width="320" height="254"/>
                                 <color key="backgroundColor" red="0.18833893449155792" green="0.17630884429510121" blue="0.49183058375634514" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -292,14 +292,14 @@
                             <constraint firstAttribute="leadingMargin" secondItem="svr-Gx-dBC" secondAttribute="leading" id="NNz-lg-mSI"/>
                             <constraint firstItem="3MD-Ht-1BJ" firstAttribute="width" secondItem="fnN-dr-vqj" secondAttribute="width" id="NxB-bt-3Pn"/>
                             <constraint firstItem="ULW-l5-c9o" firstAttribute="width" secondItem="rts-Ov-RVL" secondAttribute="width" id="Sg8-iN-87k"/>
-                            <constraint firstAttribute="trailing" secondItem="W20-OA-pq8" secondAttribute="trailing" constant="16" id="WoQ-Em-TAN"/>
+                            <constraint firstAttribute="trailing" secondItem="W20-OA-pq8" secondAttribute="trailing" id="WoQ-Em-TAN"/>
                             <constraint firstItem="1WM-qL-GyH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="a9l-RQ-EEN"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qFY-QL-aqn" secondAttribute="bottom" constant="16" id="bAZ-7y-pTV"/>
                             <constraint firstItem="ta3-2A-uTo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="bOz-DJ-66B"/>
                             <constraint firstItem="rts-Ov-RVL" firstAttribute="width" secondItem="3MD-Ht-1BJ" secondAttribute="width" id="beB-6c-zWN"/>
                             <constraint firstItem="qFY-QL-aqn" firstAttribute="top" secondItem="lLF-NG-xpy" secondAttribute="bottom" constant="8" id="d62-gQ-Zy6"/>
                             <constraint firstItem="CXt-MU-BC4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="et6-kg-sC0"/>
-                            <constraint firstItem="W20-OA-pq8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="f2I-Kw-rSY"/>
+                            <constraint firstItem="W20-OA-pq8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f2I-Kw-rSY"/>
                             <constraint firstItem="dpg-VD-lCg" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.28" id="hVm-s7-Jme"/>
                             <constraint firstItem="lLF-NG-xpy" firstAttribute="top" secondItem="CXt-MU-BC4" secondAttribute="bottom" constant="8" id="iS1-xo-F7z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="svr-Gx-dBC" secondAttribute="trailing" constant="20" id="lmE-bw-EaL"/>
