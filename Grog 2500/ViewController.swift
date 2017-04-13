@@ -109,22 +109,25 @@ class ViewController: UIViewController {
     
     func updateHealthUI() {
         
-        // TODO: Use switch statement and ranges as this is confusing
+        var heart:String
         
-        var heart = "💚"
-        if game!.player.health > 100 {
-            heart = "💙"
-        } else if game!.player.health > 50 {
-            heart = "💚"
-        } else if game!.player.health > 25 {
-            heart = "💛"
-        } else if game!.player.health > 15 {
-            heart = "❤️"
-        } else if game!.player.health > 10 {
-            heart = "💔"
-        } else if game!.player.health > 5 {
+        switch game!.player.health {
+        case 0...10:
             heart = "🖤"
+        case 11...20:
+            heart = "💔"
+        case 21...30:
+            heart = "❤️"
+        case 31...40:
+            heart = "💛"
+        case 41...90:
+            heart = "💚"
+        case 91...100:
+            heart = "💙"
+       default:
+            heart = "💜"
         }
+        
         health.text = "\(heart) \(game!.player.health)%"
     }
     
