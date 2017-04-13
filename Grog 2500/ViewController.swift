@@ -120,12 +120,14 @@ class ViewController: UIViewController {
             heart = "❤️"
         case 31...40:
             heart = "💛"
-        case 41...90:
+        case 41...50:
             heart = "💚"
-        case 91...100:
+        case 51...80:
             heart = "💙"
-       default:
+        case 81...100:
             heart = "💜"
+       default:
+            heart = "🖤"
         }
         
         health.text = "\(heart) \(game!.player.health)%"
