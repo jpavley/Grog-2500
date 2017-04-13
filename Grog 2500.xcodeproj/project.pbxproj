@@ -27,7 +27,7 @@
 		5AD1DB921E93F92D00A3187E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AD1DB951E93F92D00A3187E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AD1DB971E93F92D00A3187E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B814E0F01E9EE57A004FE936 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		B814E0F31E9FFFC0004FE936 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogGameEngine.swift; sourceTree = "<group>"; };
 		B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogGamePlayer.swift; sourceTree = "<group>"; };
 		B8577D721E9670C300597C31 /* GrogStorybook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogStorybook.swift; sourceTree = "<group>"; };
@@ -49,6 +49,7 @@
 			children = (
 				5AD1DB871E93F92D00A3187E /* Grog 2500 */,
 				5AD1DB861E93F92D00A3187E /* Products */,
+				B814E0F31E9FFFC0004FE936 /* Readme.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,7 +74,6 @@
 				B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */,
 				B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */,
 				B8577D721E9670C300597C31 /* GrogStorybook.swift */,
-				B814E0F01E9EE57A004FE936 /* Readme.md */,
 			);
 			path = "Grog 2500";
 			sourceTree = "<group>";
