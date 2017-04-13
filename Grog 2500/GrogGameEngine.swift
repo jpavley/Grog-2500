@@ -52,7 +52,6 @@ class GrogGameEngine {
             // player health management
             if player.health <= 0 {
                 player.health = 0
-                print("game over: health <= 0")
                 gameOver = true
                 status = "Fail"
                 currentPageID = story.endGame.failNoHealthPage
@@ -63,16 +62,15 @@ class GrogGameEngine {
             // game score management
             if score <= 0 {
                 score = 0
-                print("game over: score <= 0")
                 gameOver = true
                 status = "Fail"
                 currentPageID = story.endGame.failNoPointsPage
             } else if score >= 100 {
                 if moves <= movesGoal {
-                    print("extra reward: moves <= movesGoal")
                     currentPageID = story.endGame.successExtraPointsPage
+                    gameOver = true
+                    status = "Winning"
                 } else {
-                    print("game over: score >= 100")
                     gameOver = true
                     status = "Winning"
                     currentPageID = story.endGame.successPage
