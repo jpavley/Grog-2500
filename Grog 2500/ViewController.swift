@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         // NOTE: Need to disable and then enable scrolling on a UITextView for proper rendering of forced scroll
         story.isScrollEnabled = false
         story.isScrollEnabled = true
-
+        
     }
     
     func updateUIStatus() {
@@ -121,7 +121,7 @@ class ViewController: UIViewController {
             heart = "💙"
         case 81...100:
             heart = "💜"
-       default:
+        default:
             heart = "🖤"
         }
         
@@ -188,7 +188,7 @@ class ViewController: UIViewController {
         let act7 = GrogAction(nextStoryID: noStory, nextPageID: 2001, action: .jump)
         let act8 = GrogAction(nextStoryID: noStory, nextPageID: 2002, action: .jump)
         let act9 = GrogAction(nextStoryID: noStory, nextPageID: 2003, action: .jump)
-        let act10 = GrogAction(nextStoryID: noStory, nextPageID: 2000, action: .jump)
+        let act10 = GrogAction(nextStoryID: 10, nextPageID: noPage, action: .swap)
         
         let cmd6 = GrogCommand(name: "Yes 👍", commandID: r4c3, healthCost: 0, pointsAward: 0, action: act6)
         let cmd7 = GrogCommand(name: "No 👎", commandID: r4c2, healthCost: 0, pointsAward: 0, action: act7)
@@ -197,14 +197,14 @@ class ViewController: UIViewController {
         let cmd10 = GrogCommand(name: "Done ✅", commandID: r4c3, healthCost: 0, pointsAward: 0, action: act10)
         
         let page5 = GrogPage(name: "Help", pageID: 2000, storyText: "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?", commands: [cmd6, cmd7])
-                
+        
         let page6 = GrogPage(name: "About Grog 2500", pageID: 2001, storyText: "Ah, you need a little convincing? Good! I like skeptical people! This is the story of Grog 2500, the app that's running on your phone. Back in the day, before GPUs and 4K screens, kids of all ages enjoyed playing text  games. Classic games like Adventure and Zork. You can still play these games, with emulation.", commands: [cmd8])
         let page7 = GrogPage(name: "About Grog 2500", pageID: 2002, storyText: "But truly new 21st centry text games have not come into being, even though people are reading and typing more than ever before. Social media and messaging apps have become so ubuquious that life itself has become one big text game.", commands: [cmd9])
         let page8 = GrogPage(name: "About Grog 2500", pageID: 2003, storyText: "So we, the author behind Grog 2500, decided it was time to update the old text adventure game paradigm for the modern age, with emojis, verticality, and an interaction style designed for the phone. That's about it. Go run along and play nice now.", commands: [cmd10])
-
+        
         let budget2 = GrogBudget(score: noBudget, health: noBudget, moves: noBudget)
         let endgame2 = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
-
+        
         let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2, budget: budget2, endGame: endgame2, tracking: false)
         
         return [mainStorybook, helpStorybook]
@@ -252,7 +252,10 @@ class ViewController: UIViewController {
             jumpPage(sender: sender, currentStory: currentStory, cmd: cmd)
             
         case .swap:
-            swapStory(cmd: cmd)
+            swapStory(currentStory: currentStory, cmd: cmd)
+            
+        case .incr:
+            incrementPage(sender: sender, currentStory: currentStory)
         }
     }
     
@@ -270,7 +273,7 @@ class ViewController: UIViewController {
     func jumpPage(sender: Any, currentStory: GrogStorybook, cmd: GrogCommand) {
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
         let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
-
+        
         story.text = story.text + " \(buttonLabel) \n"
         game!.currentPageID = nextPage.pageID
         
@@ -285,17 +288,40 @@ class ViewController: UIViewController {
             loadUI()
             outputToScreen()
         }
-
     }
     
-    func swapStory(cmd: GrogCommand) {
+    func incrementPage(sender: Any, currentStory: GrogStorybook) {
+        let buttonLabel = (sender as! UIButton).titleLabel!.text!
+        let nextPageID = game!.currentPageID + 1
+        
+        story.text = story.text + " \(buttonLabel) \n"
+        game!.currentPageID = nextPageID
+        
+        // load the UI and output the story
+        loadUI()
+        outputToScreen()
+        
+        // update the game and check for game over
+        game!.update()
+        if currentStory.tracking && game!.gameOver {
+            story.text = story.text + " 🎲 \n"
+            loadUI()
+            outputToScreen()
+        }
+        
+    }
+    
+    func swapStory(currentStory: GrogStorybook, cmd: GrogCommand) {
         let nextStoryID = cmd.action.nextStoryID
-
+        
         // temporarily save the current page ID to use as the previous page ID (later)
         let savedCurrentPageID = game!.currentPageID
         
         // save the current story text to use as the previous story text (later)
-        let savedStoryText = story.text!
+        var savedStoryText = ""
+        if currentStory.tracking {
+            savedStoryText = story.text!
+        }
         
         // set the current story ID the command's next story ID
         game!.currentStoryID = nextStoryID
@@ -310,7 +336,11 @@ class ViewController: UIViewController {
         }
         
         // now its safe to store the original current page ID as the previous page ID
-        game!.previousPageID = savedCurrentPageID
+        if currentStory.tracking {
+            game!.previousPageID = savedCurrentPageID
+        } else {
+            game!.previousPageID = noPage
+        }
         
         // if there is previous story text then disable printing to the screen
         let dontPrint = (game!.previousStoryText != "")
@@ -324,7 +354,7 @@ class ViewController: UIViewController {
         if !dontPrint {
             outputToScreen()
         }
-
+        
     }
 }
 

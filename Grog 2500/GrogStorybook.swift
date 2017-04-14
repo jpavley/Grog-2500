@@ -15,8 +15,9 @@ let noBudget = -1
 
 enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same storybook
-    case clear  // restart the current storybook
+    case clear  // restart the current game and storybooks
     case swap   // jump from the current storybook to the current page in a different storybook
+    case incr   // increment the current page number and jump to there
 }
 
 struct GrogEndGame {
@@ -66,5 +67,5 @@ struct GrogStorybook {
     let theme: GrogTheme
     let budget: GrogBudget
     let endGame: GrogEndGame
-    let tracking: Bool
+    let tracking: Bool         // Don't update stats if false
 }
