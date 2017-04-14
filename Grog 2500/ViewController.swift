@@ -229,7 +229,6 @@ class ViewController: UIViewController {
     
     @IBAction func commandButton(_ sender: Any) {
         
-        var dontPrint = false
         let buttonID = (sender as AnyObject).tag!
         let currentStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
         let page = currentStory.pages.filter { $0.pageID == game!.currentPageID }.first!
@@ -245,71 +244,16 @@ class ViewController: UIViewController {
         game!.status = "playing"
         
         switch cmd.action.action {
+            
         case .clear:
             clearGame()
             
         case .jump:
-            
-            // output the label
-            let buttonLabel = (sender as! UIButton).titleLabel!.text!
-            story.text = story.text + " \(buttonLabel) \n"
-            
-            // go to the next page
-            let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
-            game!.currentPageID = nextPage.pageID
+            jumpPage(sender: sender, currentStory: currentStory, cmd: cmd)
             
         case .swap:
-            
-            // temporarily save the current page ID to use as the previous page ID (later)
-            let savedCurrentPageID = game!.currentPageID
-            
-            // save the current story text to use as the previous story text (later)
-            let savedStoryText = story.text!
-            
-            // set the current story ID the command's next story ID
-            game!.currentStoryID = cmd.action.nextStoryID
-            
-            // if the previous page ID was not saved before then just go the first page of the next story
-            // otherwise set the previous page ID as the current page ID
-            if game!.previousPageID == noPage {
-                let nextStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
-                game!.currentPageID = nextStory.pages.first!.pageID
-            } else {
-                game!.currentPageID = game!.previousPageID
-            }
-            
-            // now its safe to store the original current page ID as the previous page ID
-            game!.previousPageID = savedCurrentPageID
-            
-            // if there is previous story text then disable printing to the screen
-            dontPrint = (game!.previousStoryText != "")
-            
-            // restore the original previous story text and then update the previous story text to the saved story text from above
-            story.text = game!.previousStoryText
-            game!.previousStoryText = savedStoryText
-            
+            swapStory(cmd: cmd)
         }
-        
-        // load the UI and output the story
-        loadUI()
-        if !dontPrint {
-            outputToScreen()
-        }
-        
-        // because of .clear (which sets the game to nil) check for nil
-        if game != nil {
-            game!.update()
-            if game!.gameOver {
-                
-                // if the cat is over let the user know
-                
-                // TODO: Add a delay before outputting this info to the screen
-                story.text = story.text + " 🎲 \n"
-                loadUI()
-                outputToScreen()
-            }
-        }
-
     }
     
     func clearGame() {
@@ -318,6 +262,69 @@ class ViewController: UIViewController {
         
         // restart the game
         game = nil
+        
+        loadUI()
+        outputToScreen()
+    }
+    
+    func jumpPage(sender: Any, currentStory: GrogStorybook, cmd: GrogCommand) {
+        let buttonLabel = (sender as! UIButton).titleLabel!.text!
+        let nextPage = currentStory.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
+
+        story.text = story.text + " \(buttonLabel) \n"
+        game!.currentPageID = nextPage.pageID
+        
+        // load the UI and output the story
+        loadUI()
+        outputToScreen()
+        
+        // update the game and check for game over
+        game!.update()
+        if game!.gameOver {
+            story.text = story.text + " 🎲 \n"
+            loadUI()
+            outputToScreen()
+        }
+
+    }
+    
+    func swapStory(cmd: GrogCommand) {
+        let nextStoryID = cmd.action.nextStoryID
+
+        // temporarily save the current page ID to use as the previous page ID (later)
+        let savedCurrentPageID = game!.currentPageID
+        
+        // save the current story text to use as the previous story text (later)
+        let savedStoryText = story.text!
+        
+        // set the current story ID the command's next story ID
+        game!.currentStoryID = nextStoryID
+        
+        // if the previous page ID was not saved before then just go the first page of the next story
+        // otherwise set the previous page ID as the current page ID
+        if game!.previousPageID == noPage {
+            let nextStory = game!.storybooks.filter { $0.storyID == game!.currentStoryID }.first!
+            game!.currentPageID = nextStory.pages.first!.pageID
+        } else {
+            game!.currentPageID = game!.previousPageID
+        }
+        
+        // now its safe to store the original current page ID as the previous page ID
+        game!.previousPageID = savedCurrentPageID
+        
+        // if there is previous story text then disable printing to the screen
+        let dontPrint = (game!.previousStoryText != "")
+        
+        // restore the original previous story text and then update the previous story text to the saved story text from above
+        story.text = game!.previousStoryText
+        game!.previousStoryText = savedStoryText
+        
+        // load the UI and output the story
+        loadUI()
+        if !dontPrint {
+            outputToScreen()
+        }
+
     }
 }
 
