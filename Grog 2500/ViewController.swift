@@ -238,10 +238,14 @@ class ViewController: UIViewController {
         let cmd = commandList.filter { $0.commandID == buttonID }.first!
         
         // update game and player data
-        game!.player.health += cmd.healthCost
-        game!.score += cmd.pointsAward
-        game!.moves += 1
-        game!.status = "playing"
+        if currentStory.tracking {
+            game!.player.health += cmd.healthCost
+            game!.score += cmd.pointsAward
+            game!.moves += 1
+            game!.status = "playing"
+        } else {
+            game!.status = "paused"
+        }
         
         switch cmd.action.action {
             
