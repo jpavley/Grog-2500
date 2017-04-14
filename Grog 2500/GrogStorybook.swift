@@ -67,5 +67,4 @@ struct GrogStorybook {
     let budget: GrogBudget
     let endGame: GrogEndGame
     let tracking: Bool
-    let gameOver: Bool
 }
