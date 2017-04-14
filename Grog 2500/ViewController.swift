@@ -152,12 +152,12 @@ class ViewController: UIViewController {
         // Main storybook
         let theme1 = GrogTheme(screenColor: UIColor.blue, textColor: UIColor.cyan)
         
-        let act1 = GrogAction(nextStoryID: noStory, nextPageID: 1001, action: .jump)
-        let act2 = GrogAction(nextStoryID: noStory, nextPageID: 1002, action: .jump)
-        let act3 = GrogAction(nextStoryID: noStory, nextPageID: 1003, action: .jump)
-        let act11 = GrogAction(nextStoryID: noStory, nextPageID: 1008, action: .jump)
-        let act4 = GrogAction(nextStoryID: noStory, nextPageID: 1000, action: .clear)
-        let act5 = GrogAction(nextStoryID: 20, nextPageID: noPage, action: .swap)
+        let act1 = GrogAction(nextStoryID: noStory, nextPageID: 1001, action: .jump, nextStatus: "playing")
+        let act2 = GrogAction(nextStoryID: noStory, nextPageID: 1002, action: .jump, nextStatus: "playing")
+        let act3 = GrogAction(nextStoryID: noStory, nextPageID: 1003, action: .jump, nextStatus: "playing")
+        let act11 = GrogAction(nextStoryID: noStory, nextPageID: 1008, action: .jump, nextStatus: "playing")
+        let act4 = GrogAction(nextStoryID: noStory, nextPageID: 1000, action: .clear, nextStatus: "ready")
+        let act5 = GrogAction(nextStoryID: 20, nextPageID: noPage, action: .swap, nextStatus: "paused")
         
         let cmd1 = GrogCommand(name: "Cat 😺", commandID: r1c1, healthCost: -50, pointsAward: -10, action: act1)
         let cmd2 = GrogCommand(name: "Switch 💡", commandID: r1c2, healthCost: -50, pointsAward: -20, action: act2)
@@ -184,11 +184,11 @@ class ViewController: UIViewController {
         // Help storybook
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
         
-        let act6 = GrogAction(nextStoryID: 10, nextPageID: noPage, action: .swap)
-        let act7 = GrogAction(nextStoryID: noStory, nextPageID: 2001, action: .jump)
-        let act8 = GrogAction(nextStoryID: noStory, nextPageID: 2002, action: .jump)
-        let act9 = GrogAction(nextStoryID: noStory, nextPageID: 2003, action: .jump)
-        let act10 = GrogAction(nextStoryID: 10, nextPageID: noPage, action: .swap)
+        let act6 = GrogAction(nextStoryID: 10, nextPageID: noPage, action: .swap, nextStatus: "paused")
+        let act7 = GrogAction(nextStoryID: noStory, nextPageID: 2001, action: .jump, nextStatus: "paused")
+        let act8 = GrogAction(nextStoryID: noStory, nextPageID: 2002, action: .jump, nextStatus: "paused")
+        let act9 = GrogAction(nextStoryID: noStory, nextPageID: 2003, action: .jump, nextStatus: "paused")
+        let act10 = GrogAction(nextStoryID: 10, nextPageID: noPage, action: .swap, nextStatus: "playing")
         
         let cmd6 = GrogCommand(name: "Yes 👍", commandID: r4c3, healthCost: 0, pointsAward: 0, action: act6)
         let cmd7 = GrogCommand(name: "No 👎", commandID: r4c2, healthCost: 0, pointsAward: 0, action: act7)
@@ -242,9 +242,6 @@ class ViewController: UIViewController {
             game!.player.health += cmd.healthCost
             game!.score += cmd.pointsAward
             game!.moves += 1
-            game!.status = "playing"
-        } else {
-            game!.status = "paused"
         }
         
         switch cmd.action.action {
@@ -280,6 +277,8 @@ class ViewController: UIViewController {
         
         story.text = story.text + " \(buttonLabel) \n"
         game!.currentPageID = nextPage.pageID
+        game!.status = cmd.action.nextStatus
+
         
         // load the UI and output the story
         loadUI()
@@ -300,6 +299,7 @@ class ViewController: UIViewController {
         
         story.text = story.text + " \(buttonLabel) \n"
         game!.currentPageID = nextPageID
+        // NOTE: No game!.status change from one page to the next
         
         // load the UI and output the story
         loadUI()
@@ -320,6 +320,7 @@ class ViewController: UIViewController {
         
         // temporarily save the current page ID to use as the previous page ID (later)
         let savedCurrentPageID = game!.currentPageID
+        let savedStatus = game!.status
         
         // save the current story text to use as the previous story text (later)
         var savedStoryText = ""
@@ -329,6 +330,10 @@ class ViewController: UIViewController {
         
         // set the current story ID the command's next story ID
         game!.currentStoryID = nextStoryID
+        
+        // TODO: Figure out how to update status (when to use previousStatus and when to use nextStatus)
+        game!.status = game!.previousStatus != "" ? game!.previousStatus : "Paused"
+
         
         // if the previous page ID was not saved before then just go the first page of the next story
         // otherwise set the previous page ID as the current page ID
@@ -342,6 +347,7 @@ class ViewController: UIViewController {
         // now its safe to store the original current page ID as the previous page ID
         if currentStory.tracking {
             game!.previousPageID = savedCurrentPageID
+            game!.previousStatus = savedStatus
         } else {
             game!.previousPageID = noPage
         }

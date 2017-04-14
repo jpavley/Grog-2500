@@ -12,6 +12,7 @@ import UIKit
 let noPage = -1
 let noStory = -1
 let noBudget = -1
+let noStatus = ""
 
 enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same storybook
@@ -42,6 +43,7 @@ struct GrogAction {
     let nextStoryID: Int
     let nextPageID: Int
     let action: StoryAction
+    let nextStatus: String
 }
 
 struct GrogCommand {
