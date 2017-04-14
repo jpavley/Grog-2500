@@ -179,7 +179,7 @@ class ViewController: UIViewController {
         let budget1 = GrogBudget(score: 50, health: 50, moves: 1)
         let endgame1 = GrogEndGame(successPage: 1004, successExtraPointsPage: 1005, failNoHealthPage: 1006, failNoPointsPage: 1007)
         
-        let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: [page1, page2, page3, page4, page9, page10, page11, page12, page13], theme: theme1, budget: budget1, endGame: endgame1, tracking: true)
+        let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: [page1, page2, page3, page4, page9, page10, page11, page12, page13], theme: theme1, budget: budget1, endGame: endgame1, tracking: true, gameOver: false)
         
         // Help storybook
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
@@ -205,7 +205,7 @@ class ViewController: UIViewController {
         let budget2 = GrogBudget(score: noBudget, health: noBudget, moves: noBudget)
         let endgame2 = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
 
-        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2, budget: budget2, endGame: endgame2, tracking: false)
+        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2, budget: budget2, endGame: endgame2, tracking: false, gameOver: false)
         
         return [mainStorybook, helpStorybook]
         
