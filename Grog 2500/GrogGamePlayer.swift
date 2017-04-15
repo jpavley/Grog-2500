@@ -8,11 +8,15 @@
 
 import Foundation
 
+let noPlayer = -1
+
 class GrogGamePlayer {
-    var health:Int
-    var location:String
+    var playerID: Int
+    var health: Int
+    var location: String
     
     init() {
+        playerID = noPlayer
         health = 100
         location = "nowhere"
     }
