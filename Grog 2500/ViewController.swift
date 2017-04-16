@@ -58,13 +58,14 @@ class ViewController: UIViewController {
         }
         
         // get all the things!
-        let state = game!.gameStates.filter { $0.stateID == game!.currentStorybookID }.first!
-        let player = game!.players.filter { $0.playerID == game!.currentStorybookID }.first!
-        let storybook = game!.storybooks.filter { $0.storyID == game!.currentStorybookID }.first!
-        let page = storybook.pages.filter({ $0.pageID == state.currentPageID }).first!
+        var player = game!.players[game!.currentStorybookID]!
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+        let state = game!.gameStates[game!.currentStorybookID]!
+        let page = storybook.pages[state.currentPageID]!
         
         // update the game from storybook data
         player.location = page.name
+        game!.players.updateValue(player, forKey: game!.currentStorybookID)
         
         // update the user interface from game and storybook data
         updateUIStatus()
@@ -76,19 +77,28 @@ class ViewController: UIViewController {
     
     func outputToScreen() {
         // get all the things!
-        let state = game!.gameStates.filter { $0.stateID == game!.currentStorybookID }.first!
-        let storybook = game!.storybooks.filter { $0.storyID == game!.currentStorybookID }.first!
-        let page = storybook.pages.filter { $0.pageID == state.currentPageID }.first!
-        var storyText = game!.storyTexts.filter { $0.storyTextID == game!.currentStorybookID }.first!
-
-        // output the storybook page text
-        story.text = story.text + page.storyText + game!.prompt
+        var storyText = game!.storyTexts[game!.currentStorybookID]!
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+        let state = game!.gameStates[game!.currentStorybookID]!
+        let page = storybook.pages[state.currentPageID]!
         
-        // also add the ouput to the storyText associated with this story
-        storyText.text = story.text
+        
+        // DEBUG
+        print("in storyText: \(storyText)")
+
+        // Add the ouput to the storyText associated with this story and update
+        storyText += page.storyText + game!.prompt
+        game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
+        
+        // DEBUG
+        print("out storyText: \(game!.currentStorybookID)")
+        
+        
+        // output the storybook page text
+        story.text = storyText
         
         // if the texts overfills the screen scroll to the buttom
-        let range = NSMakeRange(story.text.characters.count+100, 1)
+        let range = NSMakeRange(story.text.characters.count + 100, 1)
         story.scrollRangeToVisible(range)
         
         // NOTE: Need to disable and then enable scrolling on a UITextView for proper rendering of forced scroll
@@ -99,8 +109,8 @@ class ViewController: UIViewController {
     
     func updateUIStatus() {
         // get all the things!
-        let state = game!.gameStates.filter { $0.stateID == game!.currentStorybookID }.first!
-        let player = game!.players.filter { $0.playerID == game!.currentStorybookID }.first!
+        let player = game!.players[game!.currentStorybookID]!
+        let state = game!.gameStates[game!.currentStorybookID]!
 
         score.text = "🎼 \(state.score)"
         updateHealthUI()
@@ -111,7 +121,7 @@ class ViewController: UIViewController {
     
     func updateHealthUI() {
         // get all the things!
-        let player = game!.players.filter { $0.playerID == game!.currentStorybookID }.first!
+        let player = game!.players[game!.currentStorybookID]!
         
         var heart:String
         
@@ -188,7 +198,19 @@ class ViewController: UIViewController {
         let budget1 = GrogBudget(score: 50, health: 50, moves: 1)
         let endgame1 = GrogEndGame(successPage: 1004, successExtraPointsPage: 1005, failNoHealthPage: 1006, failNoPointsPage: 1007)
         
-        let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: [page1, page2, page3, page4, page9, page10, page11, page12, page13], theme: theme1, budget: budget1, endGame: endgame1, tracking: true)
+        let mainPages = [
+            page1.pageID : page1,
+            page2.pageID : page2,
+            page3.pageID : page3,
+            page4.pageID : page4,
+            page13.pageID : page13,
+            page9.pageID : page9,
+            page10.pageID : page10,
+            page11.pageID : page11,
+            page12.pageID : page12,
+        ]
+        
+        let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: mainPages, firstPage: 1000, theme: theme1, budget: budget1, endGame: endgame1, tracking: true)
         
         // Help storybook
         let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
@@ -214,7 +236,14 @@ class ViewController: UIViewController {
         let budget2 = GrogBudget(score: noBudget, health: noBudget, moves: noBudget)
         let endgame2 = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
         
-        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: [page5, page6, page7, page8], theme: theme2, budget: budget2, endGame: endgame2, tracking: false)
+        let helpPages = [
+            page5.pageID : page5,
+            page6.pageID : page6,
+            page7.pageID : page7,
+            page8.pageID : page8,
+        ]
+        
+        let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: helpPages, firstPage: 2000, theme: theme2, budget: budget2, endGame: endgame2, tracking: false)
         
         return [mainStorybook, helpStorybook]
         
@@ -238,11 +267,10 @@ class ViewController: UIViewController {
     
     @IBAction func commandButton(_ sender: Any) {
         // get all the things!
-        var state = game!.gameStates.filter { $0.stateID == game!.currentStorybookID }.first!
-        let storybook = game!.storybooks.filter { $0.storyID == game!.currentStorybookID }.first!
-        let page = storybook.pages.filter({ $0.pageID == state.currentPageID }).first!
-        let player = game!.players.filter { $0.playerID == game!.currentStorybookID }.first!
-        
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+        var state = game!.gameStates[game!.currentStorybookID]!
+        let page = storybook.pages[state.currentPageID]!
+        var player = game!.players[game!.currentStorybookID]!
         let buttonID = (sender as AnyObject).tag!
         
         // get the commend based on button press
@@ -256,6 +284,10 @@ class ViewController: UIViewController {
             state.moves += 1
         }
         
+        // keep the game engine updated!
+        game!.players.updateValue(player, forKey: game!.currentStorybookID)
+        game!.gameStates.updateValue(state, forKey: game!.currentStorybookID)
+        
         switch cmd.action.action {
             
         case .clear:
@@ -266,9 +298,6 @@ class ViewController: UIViewController {
             
         case .swap:
             swapStory(cmd: cmd)
-            
-        case .incr:
-            incrementPage(sender: sender, currentStory: storybook)
         }
     }
     
@@ -285,56 +314,41 @@ class ViewController: UIViewController {
     
     func jumpPage(sender: Any, cmd: GrogCommand) {
         // get all the things!
-        var state = game!.gameStates.filter { $0.stateID == game!.currentStorybookID }.first!
-        let storybook = game!.storybooks.filter { $0.storyID == game!.currentStorybookID }.first!
-
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+        var storyText = game!.storyTexts[game!.currentStorybookID]!
+        var state = game!.gameStates[game!.currentStorybookID]!
+        let nextPage = storybook.pages[cmd.action.nextPageID]!
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
-        let nextPage = storybook.pages.filter { $0.pageID == cmd.action.nextPageID }.first!
         
-        story.text = story.text + " \(buttonLabel) \n"
+        // local update to the story text to display the command touched
+        storyText += " \(buttonLabel) \n"
+        game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
+        story.text = storyText
+        
+        // update to the next page and status
         state.currentPageID = nextPage.pageID
         state.status = cmd.action.nextStatus
+        game!.gameStates.updateValue(state, forKey: game!.currentStorybookID)
 
         
-        // load the UI and output the story
+        // load the UI and output the story for the next page
         loadUI()
         outputToScreen()
         
         // update the game and check for game over
         game!.update()
         if storybook.tracking && state.gameOver {
-            story.text = story.text + " 🎲 \n"
+            
+            // local update if needed to display that the game is over
+            storyText += " 🎲 \n"
+            game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
+            story.text = storyText
+            
             loadUI()
             outputToScreen()
         }
     }
-    
-    func incrementPage(sender: Any, currentStory: GrogStorybook) {
-        // get all the things!
-        var state = game!.gameStates.filter { $0.stateID == game!.currentStorybookID }.first!
-        let storybook = game!.storybooks.filter { $0.storyID == game!.currentStorybookID }.first!
-
-        let buttonLabel = (sender as! UIButton).titleLabel!.text!
-        let nextPageID = state.currentPageID + 1
         
-        story.text = story.text + " \(buttonLabel) \n"
-        state.currentPageID = nextPageID
-        // NOTE: No status change from one page to the next
-        
-        // load the UI and output the story
-        loadUI()
-        outputToScreen()
-        
-        // update the game and check for game over
-        game!.update()
-        if storybook.tracking && state.gameOver {
-            story.text = story.text + " 🎲 \n"
-            loadUI()
-            outputToScreen()
-        }
-        
-    }
-    
     func swapStory(cmd: GrogCommand) {
         let nextStoryID = cmd.action.nextStoryID
         game!.currentStorybookID = nextStoryID

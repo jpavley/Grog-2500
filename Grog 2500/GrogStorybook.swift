@@ -18,7 +18,6 @@ enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same storybook
     case clear  // restart the current game and storybooks
     case swap   // jump from the current storybook to the current page in a different storybook
-    case incr   // increment the current page number and jump to there
 }
 
 struct GrogEndGame {
@@ -65,7 +64,8 @@ struct GrogPage {
 struct GrogStorybook {
     let name: String
     let storyID: Int
-    let pages: [GrogPage]
+    let pages: [Int:GrogPage]
+    let firstPage: Int
     let theme: GrogTheme
     let budget: GrogBudget
     let endGame: GrogEndGame

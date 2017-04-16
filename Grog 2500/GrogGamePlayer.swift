@@ -10,7 +10,7 @@ import Foundation
 
 let noPlayer = -1
 
-class GrogGamePlayer {
+struct GrogGamePlayer {
     var playerID: Int
     var health: Int
     var location: String

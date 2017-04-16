@@ -8,90 +8,83 @@
 
 import Foundation
 
+typealias GrogStoryID = Int
+typealias GrogStoryBackingStore = String
+
+let noID = -1
+let noValue = -1
+
 struct GrogGameState {
-    var stateID: Int
+    var stateID: GrogStoryID
     var score: Int
     var moves: Int
     var movesGoal: Int
     var status: String
     var gameOver: Bool
-    var currentPageID: Int
+    var currentPageID: GrogStoryID
     
     init() {
-        stateID = 0
-        score = 0
-        moves = 0
-        movesGoal = 0
+        stateID = noID
+        score = noValue
+        moves = noValue
+        movesGoal = noValue
         status = ""
         gameOver = false
-        currentPageID = 0
-    }
-}
-
-struct GrogStoryText {
-    var storyTextID: Int
-    var text: String
-    
-    init() {
-        storyTextID = 0
-        text = ""
+        currentPageID = noPage
     }
 }
 
 class GrogGameEngine {
     
-    // three core lists so that a story's overall state can be swapped in and out of the UI
-    var storybooks = [GrogStorybook]()
-    var gameStates = [GrogGameState]()
-    var players = [GrogGamePlayer]()
-    var storyTexts = [GrogStoryText]()
+    // core dictionaries so that a story's overall state can be swapped in and out of the UI
+    var storybooks = [GrogStoryID:GrogStorybook]()
+    var players    = [GrogStoryID:GrogGamePlayer]()
+    var gameStates = [GrogStoryID:GrogGameState]()
+    var storyTexts = [GrogStoryID:GrogStoryBackingStore]()
     
     // associated storybook, game state, and player all have the same ID
-    var currentStorybookID: Int
+    var currentStorybookID: GrogStoryID
     let prompt = "\n>"
     
-    init(storybooks: [GrogStorybook], startStoryID: Int) {
+    init(storybooks: [GrogStorybook], startStoryID: GrogStoryID) {
         
         currentStorybookID = startStoryID
         
-        for story in storybooks {
+        for storybook in storybooks {
             
             // add the storybook to the storybooks
-            self.storybooks.append(story)
+            self.storybooks.updateValue(storybook, forKey: storybook.storyID)
             
             // create and add a game state for each storybook
             
             var gameState = GrogGameState()
-            gameState.stateID = story.storyID
-            gameState.score = story.budget.score
+            gameState.stateID = storybook.storyID
+            gameState.score = storybook.budget.score
             gameState.moves = 0
-            gameState.movesGoal = story.budget.moves
+            gameState.movesGoal = storybook.budget.moves
             gameState.status = "ready"
             gameState.gameOver = false
-            gameState.currentPageID = story.pages.first!.pageID
-            gameStates.append(gameState)
+            gameState.currentPageID = storybook.firstPage
+            gameStates.updateValue(gameState, forKey: storybook.storyID)
             
             // create and add a player for each storybook
             
-            let player = GrogGamePlayer()
-            player.playerID = story.storyID
-            player.health = story.budget.health
-            player.location = story.pages.first!.name
-            players.append(player)
+            var player = GrogGamePlayer()
+            player.playerID = storybook.storyID
+            player.health = storybook.budget.health
+            player.location = storybook.pages[gameState.currentPageID]!.name
+            players.updateValue(player, forKey: storybook.storyID)
             
             // create and add a story text for each storybook
-            var storyText = GrogStoryText()
-            storyText.storyTextID = story.storyID
-            storyText.text = ""
-            storyTexts.append(storyText)
+            storyTexts = [currentStorybookID:""]
         }
     }
     
     func update() {
         // get all the things!
-        var state = gameStates.filter { $0.stateID == currentStorybookID }.first!
-        let player = players.filter { $0.playerID == currentStorybookID }.first!
-        let storybook = storybooks.filter { $0.storyID == currentStorybookID }.first!
+        var state = gameStates[currentStorybookID]!
+        var player = players[currentStorybookID]!
+        let storybook = storybooks[currentStorybookID]!
         
         player.update()
         
@@ -124,6 +117,9 @@ class GrogGameEngine {
                     state.currentPageID = storybook.endGame.successPage
                 }
             }
+            
+            gameStates.updateValue(state, forKey: currentStorybookID)
+            players.updateValue(player, forKey: currentStorybookID)
         }
     }
 }
