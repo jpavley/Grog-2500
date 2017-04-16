@@ -76,7 +76,7 @@ class GrogGameEngine {
             players.updateValue(player, forKey: storybook.storyID)
             
             // create and add a story text for each storybook
-            storyTexts = [currentStorybookID:""]
+            storyTexts.updateValue("", forKey: storybook.storyID)
         }
     }
     

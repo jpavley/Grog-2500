@@ -355,6 +355,11 @@ class ViewController: UIViewController {
     }
         
     func swapStory(cmd: GrogCommand) {
+        
+        // TODO: Moves are being counted in .swaping!
+        // TODO: Text is repeated in .swaping!
+        // TODO: Status UI is not propertly updated in .swaping! (for a non-tracked story)
+        
         let nextStoryID = cmd.action.nextStoryID
         game!.currentStorybookID = nextStoryID
         
