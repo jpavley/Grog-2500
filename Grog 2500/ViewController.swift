@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
         
         // DEBUG
-        print("out storyText: \(game!.currentStorybookID)")
+        print("out storyText: \(storyText)")
         
         
         // output the storybook page text
@@ -337,11 +337,16 @@ class ViewController: UIViewController {
         
         // update the game and check for game over
         game!.update()
-        if storybook.tracking && state.gameOver {
+        
+        // after an update the state/story might have changed!
+        let updatedState = game!.gameStates[game!.currentStorybookID]!
+        var updatedStoryText = game!.storyTexts[game!.currentStorybookID]!
+        
+        if storybook.tracking && updatedState.gameOver {
             
             // local update if needed to display that the game is over
-            storyText += " 🎲 \n"
-            game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
+            updatedStoryText += " 🎲 \n"
+            game!.storyTexts.updateValue(updatedStoryText, forKey: game!.currentStorybookID)
             story.text = storyText
             
             loadUI()
