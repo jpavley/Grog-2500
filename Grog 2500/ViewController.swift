@@ -289,11 +289,15 @@ class ViewController: UIViewController {
             game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
         }
         
+        print("\(storybook.name) tracking: \(storybook.tracking)")
+        
         // load the UI and output the story
-        // loadUI()
+        if storybook.tracking {
+            loadUI()
+        } else {
+            updateCommandButtons(with: page.commands)
+        }
         updateTheme()
-        updateCommandButtons(with: page.commands)
-        // calcStoryText()
         outputToScreen()
         
     }
