@@ -73,6 +73,7 @@ struct GrogCommand {
     let name: String
     let commandID: Int
     let healthCost: Int
+    let movesCost: Int
     let pointsAward: Int
     let action: GrogAction
 }

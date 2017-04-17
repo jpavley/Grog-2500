@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     // TODO: Create an app and document icons
     // TODO: Add sound effects
     // TODO: Add animation effects
+    // TODO: Move all the game logic out of this here ViewController and into the Game Engine
     
     // UI functions
     
@@ -194,7 +195,7 @@ class ViewController: UIViewController {
         if storybook.tracking {
             player.health += cmd.healthCost
             state.score += cmd.pointsAward
-            state.moves += 1
+            state.moves += cmd.movesCost
         }
         
         // keep the game engine updated!
@@ -288,9 +289,7 @@ class ViewController: UIViewController {
             storyText += page.storyText + game!.prompt
             game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
         }
-        
-        print("\(storybook.name) tracking: \(storybook.tracking)")
-        
+                
         // load the UI and output the story
         if storybook.tracking {
             loadUI()
