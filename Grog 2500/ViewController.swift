@@ -69,10 +69,14 @@ class ViewController: UIViewController {
         
         // update the user interface from game and storybook data
         updateUIStatus()
+        
         updateCommandButtons(with: page.commands)
+    }
+    
+    func updateTheme() {
+        let storybook = game!.storybooks[game!.currentStorybookID]!
         story.backgroundColor = storybook.theme.screenColor
         story.textColor = storybook.theme.textColor
-            
     }
     
     func outputToScreen() {
@@ -106,14 +110,18 @@ class ViewController: UIViewController {
     
     func updateUIStatus() {
         // get all the things!
-        let player = game!.players[game!.currentStorybookID]!
-        let state = game!.gameStates[game!.currentStorybookID]!
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+        
+        if storybook.tracking {
+            let player = game!.players[game!.currentStorybookID]!
+            let state = game!.gameStates[game!.currentStorybookID]!
 
-        score.text = "🎼 \(state.score)"
-        updateHealthUI()
-        time.text = "🚶‍♀️\(state.moves)/\(state.movesGoal)"
-        status.text = "🎮 \(state.status)"
-        location.text = "🗺 \(player.location)"
+            score.text = "🎼 \(state.score)"
+            updateHealthUI()
+            time.text = "🚶‍♀️\(state.moves)/\(state.movesGoal)"
+            status.text = "🎮 \(state.status)"
+            location.text = "🗺 \(player.location)"
+        }
     }
     
     func updateHealthUI() {
@@ -252,6 +260,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadUI()
+        updateTheme()
         calcStoryText()
         outputToScreen()
     }
@@ -307,6 +316,7 @@ class ViewController: UIViewController {
         game = nil
         
         loadUI()
+        updateTheme()
         calcStoryText()
         outputToScreen()
     }
@@ -332,6 +342,7 @@ class ViewController: UIViewController {
         
         // load the UI and output the story for the next page
         loadUI()
+        updateTheme()
         calcStoryText()
         outputToScreen()
         
@@ -350,15 +361,13 @@ class ViewController: UIViewController {
             story.text = storyText
             
             loadUI()
+            updateTheme()
             calcStoryText()
             outputToScreen()
         }
     }
         
     func swapStory(cmd: GrogCommand) {
-        
-        // TODO: Moves are being counted in .swaping!
-        // TODO: Status UI is not propertly updated in .swaping! (for a non-tracked story)
         
         game!.currentStorybookID = cmd.action.nextStoryID
         
@@ -375,8 +384,10 @@ class ViewController: UIViewController {
         }
         
         // load the UI and output the story
-        loadUI()
-        //calcStoryText()
+        // loadUI()
+        updateTheme()
+        updateCommandButtons(with: page.commands)
+        // calcStoryText()
         outputToScreen()
         
     }
