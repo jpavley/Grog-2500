@@ -39,4 +39,21 @@ theme, a budget, and an end game. Each storybook also has a name and unique ID.
   - Multiple fonts, font styles, or font sizes are not support
   - Storybook names should be short and sweet
   - Storybook ID should be >= 1000 up to the size of a Swift Int
+  - A game can be comeposed of multiple storybooks--as many as you like
+  - Multiple storybooks can be used for subplots, guides, help, glossaries
+  - Storybooks are not chapters as the user can consume them simultaneously
+    - Which is probably ok for non-linear chapters!
+  - Storybooks are composed of pages, which should be about a paragraph of text
+  - Pages can be associated with up to 12 commands
+    - Besure to leave room for commands that link to other stories in the same game!
+  - Commands come in 3 flavors...
+    - Clear, which restarts the game
+    - Jump, which jumps to any other page in a story
+    - Swap, which jumps to any other storybook in a game
+    - (I probably need to add intra-storybook jumping)
+  - Storybooks come with a budget and commands have costs
+    - (I need to add storybook goals and command rewards)
+  - For each outcome you want as an author you have to define both a page and commands
+    - This includes just moving the story forward or greating a problem to be solved
+    - (I need to create the ability to lock and unlock storybooks)
 
