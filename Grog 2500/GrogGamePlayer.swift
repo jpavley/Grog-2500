@@ -8,8 +8,6 @@
 
 import Foundation
 
-let noPlayer = -1
-
 struct GrogGamePlayer {
     var playerID: Int
     var health: Int

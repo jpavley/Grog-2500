@@ -11,8 +11,6 @@ import Foundation
 typealias GrogStoryID = Int
 typealias GrogStoryBackingStore = String
 
-let noID = -1
-let noValue = -1
 
 struct GrogGameState {
     var stateID: GrogStoryID

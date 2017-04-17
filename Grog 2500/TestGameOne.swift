@@ -9,25 +9,10 @@
 import Foundation
 import UIKit
 
-// constants for command button tags/IDs
+// TODO: Load this data from a JSON File
+// TODO: Load the JSON file from a web server
 
-let r1c1 = 100
-let r1c2 = 101
-let r1c3 = 102
-
-let r2c1 = 103
-let r2c2 = 104
-let r2c3 = 105
-
-let r3c1 = 106
-let r3c2 = 107
-let r3c3 = 108
-
-let r4c1 = 109
-let r4c2 = 110
-let r4c3 = 111
-
-func initStories() -> [GrogStorybook]? {
+func initTestStoryOne() -> [GrogStorybook]? {
     
     // Main storybook
     let theme1 = GrogTheme(screenColor: UIColor.blue, textColor: UIColor.cyan)

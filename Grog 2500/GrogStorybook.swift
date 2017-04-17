@@ -9,10 +9,34 @@
 import Foundation
 import UIKit
 
+// constants for uninitalized data
+
 let noPage = -1
 let noStory = -1
 let noBudget = -1
 let noStatus = ""
+let noPlayer = -1
+let noID = -1
+let noValue = -1
+
+// constants for command button tags/IDs
+
+let r1c1 = 100
+let r1c2 = 101
+let r1c3 = 102
+
+let r2c1 = 103
+let r2c2 = 104
+let r2c3 = 105
+
+let r3c1 = 106
+let r3c2 = 107
+let r3c3 = 108
+
+let r4c1 = 109
+let r4c2 = 110
+let r4c3 = 111
+
 
 enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same storybook
