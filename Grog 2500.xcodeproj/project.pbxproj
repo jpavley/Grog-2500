@@ -16,6 +16,7 @@
 		B8577D6F1E9529F000597C31 /* GrogGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */; };
 		B8577D711E952AEE00597C31 /* GrogGamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */; };
 		B8577D731E9670C300597C31 /* GrogStorybook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8577D721E9670C300597C31 /* GrogStorybook.swift */; };
+		B8DC972F1EA57FB400B8DB63 /* TestGameOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DC972E1EA57FB400B8DB63 /* TestGameOne.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogGameEngine.swift; sourceTree = "<group>"; };
 		B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogGamePlayer.swift; sourceTree = "<group>"; };
 		B8577D721E9670C300597C31 /* GrogStorybook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogStorybook.swift; sourceTree = "<group>"; };
+		B8DC972E1EA57FB400B8DB63 /* TestGameOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGameOne.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */,
 				B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */,
 				B8577D721E9670C300597C31 /* GrogStorybook.swift */,
+				B8DC972E1EA57FB400B8DB63 /* TestGameOne.swift */,
 			);
 			path = "Grog 2500";
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				B8577D711E952AEE00597C31 /* GrogGamePlayer.swift in Sources */,
 				B8577D731E9670C300597C31 /* GrogStorybook.swift in Sources */,
 				5AD1DB8B1E93F92D00A3187E /* ViewController.swift in Sources */,
+				B8DC972F1EA57FB400B8DB63 /* TestGameOne.swift in Sources */,
 				5AD1DB911E93F92D00A3187E /* Grog_2500.xcdatamodeld in Sources */,
 				B8577D6F1E9529F000597C31 /* GrogGameEngine.swift in Sources */,
 				5AD1DB891E93F92D00A3187E /* AppDelegate.swift in Sources */,
