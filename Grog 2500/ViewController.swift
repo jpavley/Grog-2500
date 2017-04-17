@@ -77,22 +77,7 @@ class ViewController: UIViewController {
     
     func outputToScreen() {
         // get all the things!
-        var storyText = game!.storyTexts[game!.currentStorybookID]!
-        let storybook = game!.storybooks[game!.currentStorybookID]!
-        let state = game!.gameStates[game!.currentStorybookID]!
-        let page = storybook.pages[state.currentPageID]!
-        
-        
-        // DEBUG
-        print("in storyText: \(storyText)")
-
-        // Add the ouput to the storyText associated with this story and update
-        storyText += page.storyText + game!.prompt
-        game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
-        
-        // DEBUG
-        print("out storyText: \(storyText)")
-        
+        let storyText = game!.storyTexts[game!.currentStorybookID]!
         
         // output the storybook page text
         story.text = storyText
@@ -105,6 +90,18 @@ class ViewController: UIViewController {
         story.isScrollEnabled = false
         story.isScrollEnabled = true
         
+    }
+    
+    func calcStoryText() {
+        // get all the things!
+        var storyText = game!.storyTexts[game!.currentStorybookID]!
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+        let state = game!.gameStates[game!.currentStorybookID]!
+        let page = storybook.pages[state.currentPageID]!
+
+        // Add the ouput to the storyText associated with this story and update
+        storyText += page.storyText + game!.prompt
+        game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
     }
     
     func updateUIStatus() {
@@ -255,6 +252,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadUI()
+        calcStoryText()
         outputToScreen()
     }
     
@@ -309,6 +307,7 @@ class ViewController: UIViewController {
         game = nil
         
         loadUI()
+        calcStoryText()
         outputToScreen()
     }
     
@@ -333,6 +332,7 @@ class ViewController: UIViewController {
         
         // load the UI and output the story for the next page
         loadUI()
+        calcStoryText()
         outputToScreen()
         
         // update the game and check for game over
@@ -350,6 +350,7 @@ class ViewController: UIViewController {
             story.text = storyText
             
             loadUI()
+            calcStoryText()
             outputToScreen()
         }
     }
@@ -357,14 +358,14 @@ class ViewController: UIViewController {
     func swapStory(cmd: GrogCommand) {
         
         // TODO: Moves are being counted in .swaping!
-        // TODO: Text is repeated in .swaping!
         // TODO: Status UI is not propertly updated in .swaping! (for a non-tracked story)
+        // TODO: Story text not updated propertly in .swapping! (need to track the current page for each story!)
         
-        let nextStoryID = cmd.action.nextStoryID
-        game!.currentStorybookID = nextStoryID
+        game!.currentStorybookID = cmd.action.nextStoryID
         
         // load the UI and output the story
         loadUI()
+        
         outputToScreen()
         
     }
