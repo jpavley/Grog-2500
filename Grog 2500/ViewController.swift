@@ -359,13 +359,24 @@ class ViewController: UIViewController {
         
         // TODO: Moves are being counted in .swaping!
         // TODO: Status UI is not propertly updated in .swaping! (for a non-tracked story)
-        // TODO: Story text not updated propertly in .swapping! (need to track the current page for each story!)
         
         game!.currentStorybookID = cmd.action.nextStoryID
         
+        // get all the things!
+        var storyText = game!.storyTexts[game!.currentStorybookID]!
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+        let state = game!.gameStates[game!.currentStorybookID]!
+        let page = storybook.pages[state.currentPageID]!
+        
+        // local update if the story has not started
+        if storyText == "" {
+            storyText += page.storyText + game!.prompt
+            game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
+        }
+        
         // load the UI and output the story
         loadUI()
-        
+        //calcStoryText()
         outputToScreen()
         
     }
