@@ -38,6 +38,12 @@ let r4c2 = 110
 let r4c3 = 111
 
 
+// TODO: add intra-storybook jumping
+// TODO: add storybook goals and command rewards)
+// TODO: create the ability to lock and unlock storybooks
+// TODO: reasonable defaults so not all fields need initialization
+
+
 enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same storybook
     case clear  // restart the current game and storybooks

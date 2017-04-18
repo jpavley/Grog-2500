@@ -25,7 +25,7 @@ Grog 2500 is a simple text adventure game platform for the mobile emoji world of
 - Mutiple game support
 - Automatic management of saving progress
 - Templating such that properties and varibles can be included in game text
-- Multile language support and internationalization
+- Multi-language support and internationalization
 - Advanced theme of UI with graphics and textures
 
 ## Game Authoring
