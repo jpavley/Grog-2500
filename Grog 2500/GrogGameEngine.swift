@@ -83,34 +83,29 @@ class GrogGameEngine {
         var state = gameStates[currentStorybookID]!
         var player = players[currentStorybookID]!
         let storybook = storybooks[currentStorybookID]!
-        
-        // goals
-        let healthFloor = 0
-        let healthCeiling = 100
-        let scoreFloor = 0
-        let scoreCeiling = 100
+        let goals = storybook.goals
         
         player.update()
         
         if storybook.tracking {
             
             // player health management
-            if player.health <= healthFloor {
-                player.health = healthFloor
+            if player.health <= goals.healthFloor {
+                player.health = goals.healthFloor
                 state.gameOver = true
                 state.status = "Fail"
                 state.currentPageID = storybook.endGame.failNoHealthPage
-            } else if player.health >= healthCeiling {
-                player.health = healthCeiling
+            } else if player.health >= goals.healthCeiling {
+                player.health = goals.healthCeiling
             }
             
             // game score management
-            if state.score <= scoreFloor {
-                state.score = scoreFloor
+            if state.score <= goals.scoreFloor {
+                state.score = goals.scoreFloor
                 state.gameOver = true
                 state.status = "Fail"
                 state.currentPageID = storybook.endGame.failNoPointsPage
-            } else if state.score >= scoreCeiling {
+            } else if state.score >= goals.scoreCeiling {
                 if state.moves <= state.movesGoal {
                     state.currentPageID = storybook.endGame.successExtraPointsPage
                     state.gameOver = true

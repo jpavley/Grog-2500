@@ -39,7 +39,6 @@ let r4c3 = 111
 
 
 // TODO: add intra-storybook jumping
-// TODO: add storybook goals and command rewards)
 // TODO: create the ability to lock and unlock storybooks
 // TODO: reasonable defaults so not all fields need initialization
 
@@ -61,6 +60,13 @@ struct GrogBudget {
     let score: Int
     let health: Int
     let moves: Int
+}
+
+struct GrogGoals {
+    let healthFloor = 0
+    let healthCeiling = 100
+    let scoreFloor = 0
+    let scoreCeiling = 100
 }
 
 struct GrogTheme {
@@ -99,6 +105,7 @@ struct GrogStorybook {
     let firstPage: Int
     let theme: GrogTheme
     let budget: GrogBudget
+    let goals: GrogGoals
     let endGame: GrogEndGame
     let tracking: Bool         // Don't update stats if false
 }

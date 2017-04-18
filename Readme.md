@@ -51,8 +51,8 @@ theme, a budget, and an end game. Each storybook also has a name and unique ID.
     - Jump, which jumps to any other page in a story
     - Swap, which jumps to any other storybook in a game
     - (I probably need to add intra-storybook jumping)
-  - Storybooks come with a budget and commands have costs
-    - (I need to add storybook goals and command rewards)
+  - Storybooks come with budgets and goals and commands have costs
+    - Use budgets, goals, and costs to create problems for users to solve
   - For each outcome you want as an author you have to define both a page and commands
     - This includes just moving the story forward or greating a problem to be solved
     - (I need to create the ability to lock and unlock storybooks)

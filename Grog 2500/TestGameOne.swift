@@ -56,7 +56,9 @@ func initTestStoryOne() -> [GrogStorybook]? {
         page12.pageID : page12,
         ]
     
-    let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: mainPages, firstPage: 1000, theme: theme1, budget: budget1, endGame: endgame1, tracking: true)
+    let goals1 = GrogGoals()
+    
+    let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: mainPages, firstPage: 1000, theme: theme1, budget: budget1, goals: goals1, endGame: endgame1, tracking: true)
     
     // Help storybook
     let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
@@ -89,7 +91,9 @@ func initTestStoryOne() -> [GrogStorybook]? {
         page8.pageID : page8,
         ]
     
-    let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: helpPages, firstPage: 2000, theme: theme2, budget: budget2, endGame: endgame2, tracking: false)
+    let goals2 = GrogGoals()
+    
+    let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: helpPages, firstPage: 2000, theme: theme2, budget: budget2, goals: goals2, endGame: endgame2, tracking: false)
     
     return [mainStorybook, helpStorybook]
     
