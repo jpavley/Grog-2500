@@ -49,6 +49,14 @@ enum StoryAction {
     case swap   // jump from the current storybook to the current page in a different storybook
 }
 
+enum CommandAvailability {
+    case always   // always show the command regardless of the state of the game (default)
+    case gameOver // only show the commend when the game is over
+    case gameOn   // only show the command when the game is in progress
+    case win      // only show the command if the game is over and the player wins
+    case lose     // onlu show the command if the game is over and the player loses
+}
+
 struct GrogEndGame {
     let successPage: Int
     let successExtraPointsPage: Int

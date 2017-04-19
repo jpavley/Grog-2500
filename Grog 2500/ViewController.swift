@@ -177,20 +177,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // button functions
-    
-    @IBAction func commandButton(_ sender: Any) {
+    func updateGameState(cmd: GrogCommand) {
         // get all the things!
         let storybook = game!.storybooks[game!.currentStorybookID]!
         var state = game!.gameStates[game!.currentStorybookID]!
-        let page = storybook.pages[state.currentPageID]!
         var player = game!.players[game!.currentStorybookID]!
-        let buttonID = (sender as AnyObject).tag!
-        
-        // get the commend based on button press
-        let commandList = page.commands
-        let cmd = commandList.filter { $0.commandID == buttonID }.first!
-        
+
         // update game and player data
         if storybook.tracking {
             player.health += cmd.healthCost
@@ -201,11 +193,25 @@ class ViewController: UIViewController {
         // keep the game engine updated!
         game!.players.updateValue(player, forKey: game!.currentStorybookID)
         game!.gameStates.updateValue(state, forKey: game!.currentStorybookID)
+    }
+    
+    // button functions
+    
+    @IBAction func commandButton(_ sender: Any) {
+        // get all the things!
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+        let state = game!.gameStates[game!.currentStorybookID]!
+        let page = storybook.pages[state.currentPageID]!
+        let buttonID = (sender as AnyObject).tag!
+        
+        // get the commend based on button press
+        let commandList = page.commands
+        let cmd = commandList.filter { $0.commandID == buttonID }.first!
         
         switch cmd.action.action {
             
         case .clear:
-            clearGame()
+            clearGame(cmd: cmd)
             
         case .jump:
             jumpPage(sender: sender, cmd: cmd)
@@ -215,7 +221,9 @@ class ViewController: UIViewController {
         }
     }
     
-    func clearGame() {
+    func clearGame(cmd: GrogCommand) {
+        updateGameState(cmd: cmd)
+        
         // clear the output
         story.text = ""
         
@@ -229,12 +237,18 @@ class ViewController: UIViewController {
     }
     
     func jumpPage(sender: Any, cmd: GrogCommand) {
+
         // get all the things!
+        game!.currentStorybookID = cmd.action.nextStoryID != noStory ? cmd.action.nextStoryID : game!.currentStorybookID
         let storybook = game!.storybooks[game!.currentStorybookID]!
         var storyText = game!.storyTexts[game!.currentStorybookID]!
         var state = game!.gameStates[game!.currentStorybookID]!
         let nextPage = storybook.pages[cmd.action.nextPageID]!
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
+        
+        if state.gameOver {
+            return
+        }
         
         // local update to the story text to display the command touched
         storyText += " \(buttonLabel) \n"
@@ -245,6 +259,8 @@ class ViewController: UIViewController {
         state.currentPageID = nextPage.pageID
         state.status = cmd.action.nextStatus
         game!.gameStates.updateValue(state, forKey: game!.currentStorybookID)
+        
+        updateGameState(cmd: cmd)
 
         
         // load the UI and output the story for the next page
@@ -275,6 +291,7 @@ class ViewController: UIViewController {
     }
         
     func swapStory(cmd: GrogCommand) {
+        updateGameState(cmd: cmd)
         
         game!.currentStorybookID = cmd.action.nextStoryID
         
