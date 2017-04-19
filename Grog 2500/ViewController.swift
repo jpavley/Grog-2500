@@ -153,11 +153,33 @@ class ViewController: UIViewController {
         
         // map
         for cmd in commandList {
-            let btn = view.viewWithTag(cmd.commandID) as! UIButton
-            btn.setTitle(cmd.name, for: .normal)
-            btn.isEnabled = true
-            btn.backgroundColor = UIColor.clear
-            btn.setTitleColor(UIColor.black, for: .normal)
+            if showCommand(availability: cmd.availability) {
+                let btn = view.viewWithTag(cmd.commandID) as! UIButton
+                btn.setTitle(cmd.name, for: .normal)
+                btn.isEnabled = true
+                btn.backgroundColor = UIColor.clear
+                btn.setTitleColor(UIColor.black, for: .normal)
+            }
+        }
+    }
+    
+    func showCommand(availability: CommandAvailability) -> Bool {
+        // get all the things
+        let state = game!.gameStates[game!.currentStorybookID]!
+        let storybook = game!.storybooks[game!.currentStorybookID]!
+
+        switch availability {
+        case .always:
+            return true
+        case .gameOn:
+            return !state.gameOver
+        case .gameOver:
+            // TODO: Differentiate between game over and storybook completed
+            return state.gameOver
+        case .lose:
+            return state.score <= storybook.goals.scoreFloor
+        case .win:
+            return state.score >= storybook.goals.scoreCeiling
         }
     }
         
