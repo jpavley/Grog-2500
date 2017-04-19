@@ -95,6 +95,7 @@ struct GrogCommand {
     let healthCost: Int
     let movesCost: Int
     let pointsAward: Int
+    let availability: CommandAvailability
     let action: GrogAction
 }
 
