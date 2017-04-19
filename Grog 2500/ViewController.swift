@@ -172,10 +172,9 @@ class ViewController: UIViewController {
         case .always:
             return true
         case .gameOn:
-            return !state.gameOver
+            return !game!.gameOver
         case .gameOver:
-            // TODO: Differentiate between game over and storybook completed
-            return state.gameOver
+            return game!.gameOver
         case .lose:
             return state.score <= storybook.goals.scoreFloor
         case .win:
@@ -228,18 +227,23 @@ class ViewController: UIViewController {
         
         // get the commend based on button press
         let commandList = page.commands
-        let cmd = commandList.filter { $0.commandID == buttonID }.first!
+        let cmd = commandList.filter { $0.commandID == buttonID }.first
         
-        switch cmd.action.action {
-            
-        case .clear:
-            clearGame(cmd: cmd)
-            
-        case .jump:
-            jumpPage(sender: sender, cmd: cmd)
-            
-        case .swap:
-            swapStory(cmd: cmd)
+        if cmd != nil {
+            let cmdAction = cmd!.action.action
+            switch cmdAction {
+                
+            case .clear:
+                clearGame(cmd: cmd!)
+                
+            case .jump:
+                jumpPage(sender: sender, cmd: cmd!)
+                
+            case .swap:
+                swapStory(cmd: cmd!)
+            }
+        }else {
+            print("cmd \(buttonID) does not exist on page \(page.pageID)")
         }
     }
     
@@ -268,9 +272,9 @@ class ViewController: UIViewController {
         let nextPage = storybook.pages[cmd.action.nextPageID]!
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
         
-        if state.gameOver {
-            return
-        }
+//        if game!.gameOver {
+//            return
+//        }
         
         // local update to the story text to display the command touched
         storyText += " \(buttonLabel) \n"
@@ -294,11 +298,10 @@ class ViewController: UIViewController {
         // update the game and check for game over
         game!.update()
         
-        // after an update the state/story might have changed!
-        let updatedState = game!.gameStates[game!.currentStorybookID]!
+        // after an update the story might have changed!
         var updatedStoryText = game!.storyTexts[game!.currentStorybookID]!
         
-        if storybook.tracking && updatedState.gameOver {
+        if storybook.tracking && game!.gameOver {
             
             // local update if needed to display that the game is over
             updatedStoryText += " 🎲 \n"

@@ -18,7 +18,7 @@ struct GrogGameState {
     var moves: Int
     var movesGoal: Int
     var status: String
-    var gameOver: Bool
+    var storybookComplete: Bool
     var currentPageID: GrogStoryID
     
     init() {
@@ -27,7 +27,7 @@ struct GrogGameState {
         moves = noValue
         movesGoal = noValue
         status = ""
-        gameOver = false
+        storybookComplete = false
         currentPageID = noPage
     }
 }
@@ -42,11 +42,13 @@ class GrogGameEngine {
     
     // associated storybook, game state, and player all have the same ID
     var currentStorybookID: GrogStoryID
+    var gameOver: Bool
     let prompt = "\n>"
     
     init(storybooks: [GrogStorybook], startStoryID: GrogStoryID) {
         
         currentStorybookID = startStoryID
+        gameOver = false
         
         for storybook in storybooks {
             
@@ -61,7 +63,7 @@ class GrogGameEngine {
             gameState.moves = 0
             gameState.movesGoal = storybook.budget.moves
             gameState.status = "ready"
-            gameState.gameOver = false
+            gameState.storybookComplete = false
             gameState.currentPageID = storybook.firstPage
             gameStates.updateValue(gameState, forKey: storybook.storyID)
             
@@ -92,7 +94,7 @@ class GrogGameEngine {
             // player health management
             if player.health <= goals.healthFloor {
                 player.health = goals.healthFloor
-                state.gameOver = true
+                gameOver = true
                 state.status = "Fail"
                 state.currentPageID = storybook.endGame.failNoHealthPage
             } else if player.health >= goals.healthCeiling {
@@ -102,16 +104,16 @@ class GrogGameEngine {
             // game score management
             if state.score <= goals.scoreFloor {
                 state.score = goals.scoreFloor
-                state.gameOver = true
+                gameOver = true
                 state.status = "Fail"
                 state.currentPageID = storybook.endGame.failNoPointsPage
             } else if state.score >= goals.scoreCeiling {
                 if state.moves <= state.movesGoal {
                     state.currentPageID = storybook.endGame.successExtraPointsPage
-                    state.gameOver = true
+                    gameOver = true
                     state.status = "Winning"
                 } else {
-                    state.gameOver = true
+                    gameOver = true
                     state.status = "Winning"
                     state.currentPageID = storybook.endGame.successPage
                 }
