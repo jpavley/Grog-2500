@@ -53,6 +53,7 @@ class ViewController: UIViewController {
         let state = game!.gameStates[game!.currentStorybookID]!
         let page = storybook.pages[state.currentPageID]!
         
+        // FIXME: Game Logic!
         // update the game from storybook data
         player.location = page.name
         game!.players.updateValue(player, forKey: game!.currentStorybookID)
@@ -93,6 +94,7 @@ class ViewController: UIViewController {
         let state = game!.gameStates[game!.currentStorybookID]!
         let page = storybook.pages[state.currentPageID]!
 
+        // FIXME: Game Logic!
         // Add the ouput to the storyText associated with this story and update
         storyText += page.storyText + game!.prompt
         game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
@@ -205,7 +207,8 @@ class ViewController: UIViewController {
         let storybook = game!.storybooks[game!.currentStorybookID]!
         var state = game!.gameStates[game!.currentStorybookID]!
         var player = game!.players[game!.currentStorybookID]!
-
+        
+        // FIXME: Game Logic!
         // update game and player data
         if storybook.tracking {
             player.health += cmd.healthCost
@@ -231,6 +234,7 @@ class ViewController: UIViewController {
         let commandList = page.commands
         let cmd = commandList.filter { $0.commandID == buttonID }.first
         
+        // FIXME: Game Logic!
         if cmd != nil {
             let cmdAction = cmd!.action.action
             switch cmdAction {
@@ -250,6 +254,7 @@ class ViewController: UIViewController {
     }
     
     func clearGame(cmd: GrogCommand) {
+        // FIXME: Game Logic!
         updateGameState(cmd: cmd)
         
         // clear the output
@@ -265,7 +270,8 @@ class ViewController: UIViewController {
     }
     
     func jumpPage(sender: Any, cmd: GrogCommand) {
-
+        // FIXME: Game Logic!
+        
         // get all the things!
         game!.currentStorybookID = cmd.action.nextStoryID != noStory ? cmd.action.nextStoryID : game!.currentStorybookID
         let storybook = game!.storybooks[game!.currentStorybookID]!
@@ -318,6 +324,8 @@ class ViewController: UIViewController {
     }
         
     func swapStory(cmd: GrogCommand) {
+        // FIXME: Game Logic!
+
         updateGameState(cmd: cmd)
         
         game!.currentStorybookID = cmd.action.nextStoryID
