@@ -38,13 +38,12 @@ let r4c2 = 110
 let r4c3 = 111
 
 
-// TODO: add intra-storybook jumping
 // TODO: create the ability to lock and unlock storybooks
 // TODO: reasonable defaults so not all fields need initialization
 
 
 enum StoryAction {
-    case jump   // jump from current storybook page to a different page in the same storybook
+    case jump   // jump from current storybook page to a different page in the same or another storybook
     case clear  // restart the current game and storybooks
     case swap   // jump from the current storybook to the current page in a different storybook
 }
@@ -55,6 +54,7 @@ enum CommandAvailability {
     case gameOn   // only show the command when the game is in progress
     case win      // only show the command if the game is over and the player wins
     case lose     // onlu show the command if the game is over and the player loses
+    case storybookComplete
 }
 
 struct GrogEndGame {

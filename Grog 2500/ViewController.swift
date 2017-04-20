@@ -179,6 +179,8 @@ class ViewController: UIViewController {
             return state.score <= storybook.goals.scoreFloor
         case .win:
             return state.score >= storybook.goals.scoreCeiling
+        case .storybookComplete:
+            return state.storybookComplete
         }
     }
         
