@@ -95,6 +95,7 @@ class GrogGameEngine {
             if player.health <= goals.healthFloor {
                 player.health = goals.healthFloor
                 gameOver = true
+                state.storybookComplete = true
                 state.status = "Fail"
                 state.currentPageID = storybook.endGame.failNoHealthPage
             } else if player.health >= goals.healthCeiling {
@@ -105,15 +106,18 @@ class GrogGameEngine {
             if state.score <= goals.scoreFloor {
                 state.score = goals.scoreFloor
                 gameOver = true
+                state.storybookComplete = true
                 state.status = "Fail"
                 state.currentPageID = storybook.endGame.failNoPointsPage
             } else if state.score >= goals.scoreCeiling {
                 if state.moves <= state.movesGoal {
                     state.currentPageID = storybook.endGame.successExtraPointsPage
                     gameOver = true
+                    state.storybookComplete = true
                     state.status = "Winning"
                 } else {
                     gameOver = true
+                    state.storybookComplete = true
                     state.status = "Winning"
                     state.currentPageID = storybook.endGame.successPage
                 }
