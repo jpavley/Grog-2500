@@ -48,17 +48,12 @@ class ViewController: UIViewController {
         }
         
         // get all the things!
-        var player = game!.players[game!.currentStorybookID]!
         let storybook = game!.storybooks[game!.currentStorybookID]!
         let state = game!.gameStates[game!.currentStorybookID]!
         let page = storybook.pages[state.currentPageID]!
         
-        // FIXME: Game Logic!
-        // update the game from storybook data
-        player.location = page.name
-        game!.players.updateValue(player, forKey: game!.currentStorybookID)
-        
         // update the user interface from game and storybook data
+        game!.movePlayer()
         updateUIStatus()
         
         updateCommandButtons(with: page.commands)
@@ -105,15 +100,17 @@ class ViewController: UIViewController {
         let storybook = game!.storybooks[game!.currentStorybookID]!
         
         if storybook.tracking {
-            let player = game!.players[game!.currentStorybookID]!
             let state = game!.gameStates[game!.currentStorybookID]!
 
             score.text = "🎼 \(state.score)"
             updateHealthUI()
             time.text = "🚶‍♀️\(state.moves)/\(state.movesGoal)"
             status.text = "🎮 \(state.status)"
-            location.text = "🗺 \(player.location)"
         }
+        
+        let player = game!.players[game!.currentStorybookID]!
+        location.text = "🗺 \(player.location)"
+
     }
     
     func updateHealthUI() {
@@ -235,6 +232,7 @@ class ViewController: UIViewController {
         let cmd = commandList.filter { $0.commandID == buttonID }.first
         
         // FIXME: Game Logic!
+        
         if cmd != nil {
             let cmdAction = cmd!.action.action
             switch cmdAction {
@@ -308,7 +306,7 @@ class ViewController: UIViewController {
         
         // after an update the story might have changed!
         var updatedStoryText = game!.storyTexts[game!.currentStorybookID]!
-        
+                
         if storybook.tracking && game!.gameOver {
             
             // local update if needed to display that the game is over
@@ -341,7 +339,10 @@ class ViewController: UIViewController {
             storyText += page.storyText + game!.prompt
             game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
         }
-                
+        
+        let player = game!.players[game!.currentStorybookID]!
+        location.text = "🗺 \(player.location)"
+        
         // load the UI and output the story
         if storybook.tracking {
             loadUI()

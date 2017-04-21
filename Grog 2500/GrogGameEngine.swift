@@ -80,6 +80,17 @@ class GrogGameEngine {
         }
     }
     
+    func movePlayer() {
+        // get all the things!
+        var player = players[currentStorybookID]!
+        let storybook = storybooks[currentStorybookID]!
+        let state = gameStates[currentStorybookID]!
+        let page = storybook.pages[state.currentPageID]!
+        
+        player.location = page.name
+        players.updateValue(player, forKey:currentStorybookID)
+    }
+    
     func update() {
         // get all the things!
         var state = gameStates[currentStorybookID]!
