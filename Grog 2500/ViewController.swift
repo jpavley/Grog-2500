@@ -82,19 +82,6 @@ class ViewController: UIViewController {
         
     }
     
-    func calcStoryText() {
-        // get all the things!
-        var storyText = game!.storyTexts[game!.currentStorybookID]!
-        let storybook = game!.storybooks[game!.currentStorybookID]!
-        let state = game!.gameStates[game!.currentStorybookID]!
-        let page = storybook.pages[state.currentPageID]!
-
-        // FIXME: Game Logic!
-        // Add the ouput to the storyText associated with this story and update
-        storyText += page.storyText + game!.prompt
-        game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
-    }
-    
     func updateUIStatus() {
         // get all the things!
         let storybook = game!.storybooks[game!.currentStorybookID]!
@@ -190,7 +177,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         loadUI()
         updateTheme()
-        calcStoryText()
+        game!.calcStoryText()
         outputToScreen()
     }
     
@@ -263,7 +250,7 @@ class ViewController: UIViewController {
         
         loadUI()
         updateTheme()
-        calcStoryText()
+        game!.calcStoryText()
         outputToScreen()
     }
     
@@ -298,7 +285,7 @@ class ViewController: UIViewController {
         // load the UI and output the story for the next page
         loadUI()
         updateTheme()
-        calcStoryText()
+        game!.calcStoryText()
         outputToScreen()
         
         // update the game and check for game over
@@ -306,7 +293,7 @@ class ViewController: UIViewController {
         
         // after an update the story might have changed!
         var updatedStoryText = game!.storyTexts[game!.currentStorybookID]!
-                
+        
         if storybook.tracking && game!.gameOver {
             
             // local update if needed to display that the game is over
@@ -316,7 +303,7 @@ class ViewController: UIViewController {
             
             loadUI()
             updateTheme()
-            calcStoryText()
+            game!.calcStoryText()
             outputToScreen()
         }
     }
@@ -329,15 +316,14 @@ class ViewController: UIViewController {
         game!.currentStorybookID = cmd.action.nextStoryID
         
         // get all the things!
-        var storyText = game!.storyTexts[game!.currentStorybookID]!
+        let storyText = game!.storyTexts[game!.currentStorybookID]!
         let storybook = game!.storybooks[game!.currentStorybookID]!
         let state = game!.gameStates[game!.currentStorybookID]!
         let page = storybook.pages[state.currentPageID]!
         
         // local update if the story has not started
         if storyText == "" {
-            storyText += page.storyText + game!.prompt
-            game!.storyTexts.updateValue(storyText, forKey: game!.currentStorybookID)
+            game!.calcStoryText()
         }
         
         let player = game!.players[game!.currentStorybookID]!
