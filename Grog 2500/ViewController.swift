@@ -169,16 +169,21 @@ class ViewController: UIViewController {
             return state.storybookComplete
         }
     }
-        
+    
+    func renderView() {
+        loadUI()
+        updateTheme()
+        game!.calcStoryText()
+        outputToScreen()
+
+    }
+    
     // system functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        loadUI()
-        updateTheme()
-        game!.calcStoryText()
-        outputToScreen()
+        renderView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -223,16 +228,9 @@ class ViewController: UIViewController {
         // FIXME: Game Logic!
         game!.updateGameState(cmd: cmd)
         
-        // clear the output
-        story.text = ""
-        
         // restart the game
         game = nil
-        
-        loadUI()
-        updateTheme()
-        game!.calcStoryText()
-        outputToScreen()
+        renderView()
     }
     
     func jumpPage(sender: Any, cmd: GrogCommand) {
@@ -264,10 +262,7 @@ class ViewController: UIViewController {
 
         
         // load the UI and output the story for the next page
-        loadUI()
-        updateTheme()
-        game!.calcStoryText()
-        outputToScreen()
+        renderView()
         
         // update the game and check for game over
         game!.update()
@@ -281,11 +276,7 @@ class ViewController: UIViewController {
             updatedStoryText += " 🎲 \n"
             game!.storyTexts.updateValue(updatedStoryText, forKey: game!.currentStorybookID)
             story.text = storyText
-            
-            loadUI()
-            updateTheme()
-            game!.calcStoryText()
-            outputToScreen()
+            renderView()
         }
     }
         
