@@ -232,30 +232,27 @@ class ViewController: UIViewController {
     
     func jumpPage(sender: Any, cmd: GrogCommand) {
         
-        // FIXME: this is a bit of game logic
-        game!.currentStorybookID = cmd.action.nextStoryID != noStory ? cmd.action.nextStoryID : game!.currentStorybookID
+        // what page are we on based on cmd?
+        game!.calcCurrentPage(cmd: cmd)
         
-        // Get all the things!
+        // Get all the things! (now that we know the current page)
         let storybook = game!.storybooks[game!.currentStorybookID]!
-        let storyText = game!.storyTexts[game!.currentStorybookID]!
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
         
         // do the jump!
         game!.jumpPage(buttonLabel: buttonLabel, cmd: cmd)
         
-        // load the UI and output the story for the next page
+        // load the UI and output the story text
         renderView()
         
         // after an update the story might have changed!
-        var updatedStoryText = game!.storyTexts[game!.currentStorybookID]!
-        
+        // FIXME: this is a bit of game logic
         if storybook.tracking && game!.gameOver {
             
             // local update if needed to display that the game is over
-            
-            // FIXME: this is a bit of game logic
-            updatedStoryText += " 🎲 \n"
-            game!.storyTexts.updateValue(updatedStoryText, forKey: game!.currentStorybookID)
+            let newText = " 🎲 \n"
+            game!.updateStoryText(newText: newText)
+            let storyText = game!.storyTexts[game!.currentStorybookID]!
             story.text = storyText
             renderView()
         }

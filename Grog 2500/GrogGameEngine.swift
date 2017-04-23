@@ -80,16 +80,7 @@ class GrogGameEngine {
         }
     }
     
-    func movePlayer() {
-        // get all the things!
-        var player = players[currentStorybookID]!
-        let storybook = storybooks[currentStorybookID]!
-        let state = gameStates[currentStorybookID]!
-        let page = storybook.pages[state.currentPageID]!
-        
-        player.location = page.name
-        players.updateValue(player, forKey:currentStorybookID)
-    }
+    // calculating game objects
     
     func calcStoryText() {
         // get all the things!
@@ -103,23 +94,11 @@ class GrogGameEngine {
         storyTexts.updateValue(storyText, forKey:currentStorybookID)
     }
     
-    func updateGameState(cmd: GrogCommand) {
-        // get all the things!
-        let storybook = storybooks[currentStorybookID]!
-        var state = gameStates[currentStorybookID]!
-        var player = players[currentStorybookID]!
-        
-        // update game and player data
-        if storybook.tracking {
-            player.health += cmd.healthCost
-            state.score += cmd.pointsAward
-            state.moves += cmd.movesCost
-        }
-        
-        // keep the game engine updated!
-        players.updateValue(player, forKey: currentStorybookID)
-        gameStates.updateValue(state, forKey: currentStorybookID)
+    func calcCurrentPage(cmd: GrogCommand) {
+        currentStorybookID = cmd.action.nextStoryID != noStory ? cmd.action.nextStoryID : currentStorybookID
     }
+    
+    // game actions: swapping, clearing, and jumping
     
     func swapStory(cmd: GrogCommand) {
         updateGameState(cmd: cmd)
@@ -151,7 +130,42 @@ class GrogGameEngine {
         
         // update the game and check for game over
         update()
-
+    }
+    
+    // updating state and game based on state
+    func movePlayer() {
+        // get all the things!
+        var player = players[currentStorybookID]!
+        let storybook = storybooks[currentStorybookID]!
+        let state = gameStates[currentStorybookID]!
+        let page = storybook.pages[state.currentPageID]!
+        
+        player.location = page.name
+        players.updateValue(player, forKey:currentStorybookID)
+    }
+    
+    func updateStoryText(newText: String)  {
+        var storyText = storyTexts[currentStorybookID]!
+        storyText += newText
+        storyTexts.updateValue(storyText, forKey:currentStorybookID)
+    }
+    
+    func updateGameState(cmd: GrogCommand) {
+        // get all the things!
+        let storybook = storybooks[currentStorybookID]!
+        var state = gameStates[currentStorybookID]!
+        var player = players[currentStorybookID]!
+        
+        // update game and player data
+        if storybook.tracking {
+            player.health += cmd.healthCost
+            state.score += cmd.pointsAward
+            state.moves += cmd.movesCost
+        }
+        
+        // keep the game engine updated!
+        players.updateValue(player, forKey: currentStorybookID)
+        gameStates.updateValue(state, forKey: currentStorybookID)
     }
     
     func update() {
