@@ -98,10 +98,27 @@ class GrogGameEngine {
         let state = gameStates[currentStorybookID]!
         let page = storybook.pages[state.currentPageID]!
         
-        // FIXME: Game Logic!
         // Add the ouput to the storyText associated with this story and update
         storyText += page.storyText + prompt
         storyTexts.updateValue(storyText, forKey:currentStorybookID)
+    }
+    
+    func updateGameState(cmd: GrogCommand) {
+        // get all the things!
+        let storybook = storybooks[currentStorybookID]!
+        var state = gameStates[currentStorybookID]!
+        var player = players[currentStorybookID]!
+        
+        // update game and player data
+        if storybook.tracking {
+            player.health += cmd.healthCost
+            state.score += cmd.pointsAward
+            state.moves += cmd.movesCost
+        }
+        
+        // keep the game engine updated!
+        players.updateValue(player, forKey: currentStorybookID)
+        gameStates.updateValue(state, forKey: currentStorybookID)
     }
     
     func update() {

@@ -186,25 +186,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func updateGameState(cmd: GrogCommand) {
-        // get all the things!
-        let storybook = game!.storybooks[game!.currentStorybookID]!
-        var state = game!.gameStates[game!.currentStorybookID]!
-        var player = game!.players[game!.currentStorybookID]!
-        
-        // FIXME: Game Logic!
-        // update game and player data
-        if storybook.tracking {
-            player.health += cmd.healthCost
-            state.score += cmd.pointsAward
-            state.moves += cmd.movesCost
-        }
-        
-        // keep the game engine updated!
-        game!.players.updateValue(player, forKey: game!.currentStorybookID)
-        game!.gameStates.updateValue(state, forKey: game!.currentStorybookID)
-    }
-    
     // button functions
     
     @IBAction func commandButton(_ sender: Any) {
@@ -240,7 +221,7 @@ class ViewController: UIViewController {
     
     func clearGame(cmd: GrogCommand) {
         // FIXME: Game Logic!
-        updateGameState(cmd: cmd)
+        game!.updateGameState(cmd: cmd)
         
         // clear the output
         story.text = ""
@@ -279,7 +260,7 @@ class ViewController: UIViewController {
         state.status = cmd.action.nextStatus
         game!.gameStates.updateValue(state, forKey: game!.currentStorybookID)
         
-        updateGameState(cmd: cmd)
+        game!.updateGameState(cmd: cmd)
 
         
         // load the UI and output the story for the next page
@@ -309,9 +290,8 @@ class ViewController: UIViewController {
     }
         
     func swapStory(cmd: GrogCommand) {
-        // FIXME: Game Logic!
 
-        updateGameState(cmd: cmd)
+        game!.updateGameState(cmd: cmd)
         
         game!.currentStorybookID = cmd.action.nextStoryID
         
