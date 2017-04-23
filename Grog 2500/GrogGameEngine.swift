@@ -121,6 +121,39 @@ class GrogGameEngine {
         gameStates.updateValue(state, forKey: currentStorybookID)
     }
     
+    func swapStory(cmd: GrogCommand) {
+        updateGameState(cmd: cmd)
+        currentStorybookID = cmd.action.nextStoryID
+        
+        // update() -- no update on swap
+    }
+    
+    func clearGame(cmd: GrogCommand) {
+        updateGameState(cmd: cmd)
+        // update() -- no update on clear
+    }
+    
+    func jumpPage(buttonLabel: String, cmd: GrogCommand) {
+        var storyText = storyTexts[currentStorybookID]!
+        var state = gameStates[currentStorybookID]!
+        let storybook = storybooks[currentStorybookID]!
+        let nextPage = storybook.pages[cmd.action.nextPageID]!
+        
+        storyText += " \(buttonLabel) \n"
+        storyTexts.updateValue(storyText, forKey:currentStorybookID)
+        
+        // update to the next page and status
+        state.currentPageID = nextPage.pageID
+        state.status = cmd.action.nextStatus
+        gameStates.updateValue(state, forKey: currentStorybookID)
+        
+        updateGameState(cmd: cmd)
+        
+        // update the game and check for game over
+        update()
+
+    }
+    
     func update() {
         // get all the things!
         var state = gameStates[currentStorybookID]!
