@@ -76,7 +76,7 @@ class GrogGameEngine {
             players.updateValue(player, forKey: storybook.storyID)
             
             // create and add a story text for each storybook
-            storyTexts.updateValue("", forKey: storybook.storyID)
+            storyTexts.updateValue("", forKey:storybook.storyID)
         }
     }
     
@@ -84,14 +84,12 @@ class GrogGameEngine {
     
     func calcStoryText() {
         // get all the things!
-        var storyText = storyTexts[currentStorybookID]!
         let storybook = storybooks[currentStorybookID]!
         let state = gameStates[currentStorybookID]!
         let page = storybook.pages[state.currentPageID]!
         
         // Add the ouput to the storyText associated with this story and update
-        storyText += page.storyText + prompt
-        storyTexts.updateValue(storyText, forKey:currentStorybookID)
+        updateStoryText(newText: page.storyText + prompt)
     }
     
     func calcCurrentPage(cmd: GrogCommand) {
@@ -109,22 +107,22 @@ class GrogGameEngine {
     
     func clearGame(cmd: GrogCommand) {
         updateGameState(cmd: cmd)
+        
         // update() -- no update on clear
     }
     
     func jumpPage(buttonLabel: String, cmd: GrogCommand) {
-        var storyText = storyTexts[currentStorybookID]!
         var state = gameStates[currentStorybookID]!
         let storybook = storybooks[currentStorybookID]!
         let nextPage = storybook.pages[cmd.action.nextPageID]!
         
-        storyText += " \(buttonLabel) \n"
-        storyTexts.updateValue(storyText, forKey:currentStorybookID)
+        updateStoryText(newText: "\(buttonLabel)\n")
         
         // update to the next page and status
         state.currentPageID = nextPage.pageID
         state.status = cmd.action.nextStatus
         gameStates.updateValue(state, forKey: currentStorybookID)
+        calcStoryText()
         
         updateGameState(cmd: cmd)
         
@@ -133,6 +131,7 @@ class GrogGameEngine {
     }
     
     // updating state and game based on state
+    
     func movePlayer() {
         // get all the things!
         var player = players[currentStorybookID]!
@@ -145,9 +144,21 @@ class GrogGameEngine {
     }
     
     func updateStoryText(newText: String)  {
-        var storyText = storyTexts[currentStorybookID]!
-        storyText += newText
+        
+        var storyText = ""
+        
+        if storyTexts.count > 0 {
+            storyText = storyTexts[currentStorybookID]!
+            
+            if storyText != "" {
+                storyText += newText
+            } else {
+                storyText = newText
+            }
+        }
+                
         storyTexts.updateValue(storyText, forKey:currentStorybookID)
+        
     }
     
     func updateGameState(cmd: GrogCommand) {

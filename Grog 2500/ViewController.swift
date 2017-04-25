@@ -239,11 +239,8 @@ class ViewController: UIViewController {
         let storybook = game!.storybooks[game!.currentStorybookID]!
         let buttonLabel = (sender as! UIButton).titleLabel!.text!
         
-        // do the jump!
+        // do the jump! (game could be over based on jump)
         game!.jumpPage(buttonLabel: buttonLabel, cmd: cmd)
-        
-        // load the UI and output the story text
-        renderView()
         
         // after an update the story might have changed!
         // FIXME: this is a bit of game logic
@@ -255,6 +252,11 @@ class ViewController: UIViewController {
             let storyText = game!.storyTexts[game!.currentStorybookID]!
             story.text = storyText
             renderView()
+        } else {
+            // load the UI and out the text
+            loadUI()
+            updateTheme()
+            outputToScreen()
         }
     }
         
