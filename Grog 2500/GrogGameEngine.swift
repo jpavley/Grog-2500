@@ -84,12 +84,13 @@ class GrogGameEngine {
     
     func calcStoryText() {
         // get all the things!
-        let storybook = storybooks[currentStorybookID]!
-        let state = gameStates[currentStorybookID]!
-        let page = storybook.pages[state.currentPageID]!
+        if let storybook = storybooks[currentStorybookID],
+            let state = gameStates[currentStorybookID],
+            let page = storybook.pages[state.currentPageID] {
         
         // Add the ouput to the storyText associated with this story and update
         updateStoryText(newText: page.storyText + prompt)
+        }
     }
     
     func calcCurrentPage(cmd: GrogCommand) {
@@ -112,6 +113,7 @@ class GrogGameEngine {
     }
     
     func jumpPage(buttonLabel: String, cmd: GrogCommand) {
+        // get all the things!
         var state = gameStates[currentStorybookID]!
         let storybook = storybooks[currentStorybookID]!
         let nextPage = storybook.pages[cmd.action.nextPageID]!
