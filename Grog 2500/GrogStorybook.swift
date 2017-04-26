@@ -53,7 +53,7 @@ enum CommandAvailability {
     case gameOver // only show the commend when the game is over
     case gameOn   // only show the command when the game is in progress
     case win      // only show the command if the game is over and the player wins
-    case lose     // onlu show the command if the game is over and the player loses
+    case lose     // only show the command if the game is over and the player loses
     case storybookComplete
 }
 
