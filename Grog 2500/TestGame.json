@@ -1,0 +1,19 @@
+{
+    "name": "Test Game",
+    "firstStorybook": 10,
+    "storybooks":
+    [
+        {
+            "name": "Main Story",
+            "storyID": 10,
+            "firstPage": 1000,
+            "tracking": true
+        },
+        {
+            "name": "Help Story",
+            "storyID": 20,
+            "firstPage": 2000,
+            "tracking": false
+        }
+    ]
+}

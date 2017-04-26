@@ -16,6 +16,7 @@
 		B8577D6F1E9529F000597C31 /* GrogGameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */; };
 		B8577D711E952AEE00597C31 /* GrogGamePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */; };
 		B8577D731E9670C300597C31 /* GrogStorybook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8577D721E9670C300597C31 /* GrogStorybook.swift */; };
+		B883F63F1EAEE8CC0032072F /* TestGame.json in Resources */ = {isa = PBXBuildFile; fileRef = B883F63E1EAEE8CC0032072F /* TestGame.json */; };
 		B8B7F91F1EA995C900B44B56 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B8B7F91E1EA995C900B44B56 /* .gitignore */; };
 		B8B7F9211EA996C500B44B56 /* License in Resources */ = {isa = PBXBuildFile; fileRef = B8B7F9201EA996C500B44B56 /* License */; };
 		B8DC972F1EA57FB400B8DB63 /* TestGameOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DC972E1EA57FB400B8DB63 /* TestGameOne.swift */; };
@@ -34,6 +35,7 @@
 		B8577D6E1E9529F000597C31 /* GrogGameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogGameEngine.swift; sourceTree = "<group>"; };
 		B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogGamePlayer.swift; sourceTree = "<group>"; };
 		B8577D721E9670C300597C31 /* GrogStorybook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrogStorybook.swift; sourceTree = "<group>"; };
+		B883F63E1EAEE8CC0032072F /* TestGame.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestGame.json; sourceTree = "<group>"; };
 		B8B7F91E1EA995C900B44B56 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B8B7F9201EA996C500B44B56 /* License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License; sourceTree = "<group>"; };
 		B8DC972E1EA57FB400B8DB63 /* TestGameOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestGameOne.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				B8577D701E952AEE00597C31 /* GrogGamePlayer.swift */,
 				B8577D721E9670C300597C31 /* GrogStorybook.swift */,
 				B8DC972E1EA57FB400B8DB63 /* TestGameOne.swift */,
+				B883F63E1EAEE8CC0032072F /* TestGame.json */,
 			);
 			path = "Grog 2500";
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				5AD1DB931E93F92D00A3187E /* Assets.xcassets in Resources */,
 				B8B7F9211EA996C500B44B56 /* License in Resources */,
 				5AD1DB8E1E93F92D00A3187E /* Main.storyboard in Resources */,
+				B883F63F1EAEE8CC0032072F /* TestGame.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
