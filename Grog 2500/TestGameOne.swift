@@ -39,7 +39,7 @@ func initTestStoryOne() -> [GrogStorybook]? {
     let page9 = GrogPage(name: "You're a Winner", pageID: 1004, storyText: "You've won the game by going back to bed. Nice work!", commands: [cmd4, cmd5])
     let page10 = GrogPage(name: "You're a Winner", pageID: 1005, storyText: "You've won the game by going back to bed. And you made the decision quickly so you get extra points! Good Job!", commands: [cmd4, cmd5])
     let page11 = GrogPage(name: "You're a Loser", pageID: 1006, storyText: "You've lost the game because you have died. You're health is 0%. Better luck next time.", commands: [cmd4, cmd5])
-    let page12 = GrogPage(name: "You're a Loser", pageID: 1007, storyText: "You've lost the game because you ran out of points. You're health is 0%. Maybe you should make better choices", commands: [cmd4, cmd5])
+    let page12 = GrogPage(name: "You're a Loser", pageID: 1007, storyText: "You've lost the game because you ran out of points. You're health is 0%. Maybe you should make better choices.", commands: [cmd4, cmd5])
     
     let budget1 = GrogBudget(score: 50, health: 50, moves: 1)
     let endgame1 = GrogEndGame(successPage: 1004, successExtraPointsPage: 1005, failNoHealthPage: 1006, failNoPointsPage: 1007)
