@@ -1,0 +1,148 @@
+{
+    "name": "Test Game One",
+    "firstStorybook": 10,
+    "storybooks": [
+        {
+            "name": "Main Story",
+            "storyID": 10,
+            "firstPage": 1000,
+            "tracking": true,
+            "theme": {
+                "screenColor": [
+                    0.333,
+                    0.333,
+                    0.333
+                ], // RGB
+                "textColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ] // RGB
+            },
+            "budget": {
+                "score": 50,
+                "health": 50,
+                "moves": 1,
+                "extraPoints": 500
+            },
+            "goals": {
+                "healthFloor": 0,
+                "healthCeiling": 100,
+                "scoreFloor": 0,
+                "scoreCeiling": 100
+            },
+            "endGame": {
+                "successPage": 1004,
+                "successExtraPointsPage": 1005,
+                "failNoHealthPage": 1006,
+                "failNoPointsPage": 1007
+            },
+            "pages": [
+                {
+                    "name": "The Bedroom",
+                    "pageID": 1000,
+                    "storyText": "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall. Maybe touching one of these things will do something interesting?",
+                    "commands": [
+                        101,
+                        102,
+                        103,
+                        105,
+                        111
+                    ]
+                },
+                {
+                    "name": "Cat Scratch",
+                    "pageID": 1001,
+                    "storyText": "You reach out to pet the cat but it scraches your hand with its wicked sharp claws and runs out of the room. You might want to clean that wound when you get a chance.",
+                    "commands": [
+                        102,
+                        103,
+                        105
+                    ]
+                },
+                {
+                    "name": "Pop Bang",
+                    "pageID": 1002,
+                    "storyText": "The lamp on the nightstand glows bightly, so brightly that it expodes in a shower of sparks and the room is plunged into total darkness.",
+                    "commands": [
+                        101,
+                        103,
+                        105
+                    ]
+                },
+                {
+                    "name": "Back to Bed",
+                    "pageID": 1003,
+                    "storyText": "You crawl into bed and pull the covers over your head. It's warm and comfy. So comfy that the cat curls up to sleep on your stomach.",
+                    "commands": [
+                        101,
+                        102,
+                        105
+                    ]
+                },
+                {
+                    "name": "Thinking Thoughtfully",
+                    "pageID": 1008,
+                    "storyText": "Hmmm... The cat looks cute but dangerious. The light switch looks a little dodgy. The bed looks comfy.",
+                    "commands": [
+                        101,
+                        102,
+                        103,
+                        105
+                    ]
+                },
+                {
+                    "name": "You're a Winner",
+                    "pageID": 1004,
+                    "storyText": "You've won the game by going back to bed. Nice work!",
+                    "commands": [
+                        104,
+                        105
+                    ]
+                },
+                {
+                    "name": "You're so Extra",
+                    "pageID": 1005,
+                    "storyText": "You've won the game by going back to bed. And you made the decision quickly so you get extra points! Good Job!",
+                    "commands": [
+                        104,
+                        105
+                    ]
+                },
+                {
+                    "name": "You're a Loser",
+                    "pageID": 1006,
+                    "storyText": "You've lost the game because you have died. You're health is 0%. Better luck next time.",
+                    "commands": [
+                        104,
+                        105
+                    ]
+                },
+                {
+                    "name": "You're so Basic",
+                    "pageID": 1007,
+                    "storyText": "You've lost the game because you ran out of points. You're health is 0%. Maybe you should make better choices.",
+                    "commands": [
+                        104,
+                        105
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "Cat 😺",
+                    "commandID": 101,
+                    "buttonID": "r1c1",
+                    "healthCost": -50,
+                    "movesCost": 1,
+                    "pointsAward": -10,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1001,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                }
+            ]
+        }
+    ]
+}
