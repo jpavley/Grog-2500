@@ -141,6 +141,32 @@
                     "nextPageID": 1001,
                     "action": "jump",
                     "nextStatus": "playing"
+                },
+                {
+                    "name": "Switch 💡",
+                    "commandID": 102,
+                    "buttonID": "r1c2",
+                    "healthCost": -50,
+                    "movesCost": 1,
+                    "pointsAward": -20,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1002,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "Bed 🛏",
+                    "commandID": 103,
+                    "buttonID": "r1c3",
+                    "healthCost": 10,
+                    "movesCost": 1,
+                    "pointsAward": 110,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1003,
+                    "action": "jump",
+                    "nextStatus": "playing"
                 }
             ]
         }
