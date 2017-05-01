@@ -9,12 +9,12 @@
             "tracking": true,
             "theme": {
                 "screenColor": [
-                    0.333,
-                    0.333,
-                    0.333
+                    0.0,
+                    0.0,
+                    1.0
                 ],
                 "textColor": [
-                    1.0,
+                    0.0,
                     1.0,
                     1.0
                 ]
@@ -167,6 +167,205 @@
                     "nextPageID": 1003,
                     "action": "jump",
                     "nextStatus": "playing"
+                },
+                {
+                    "name": "Think 🤔",
+                    "commandID": 111,
+                    "buttonID": "r2c2",
+                    "healthCost": 20,
+                    "movesCost": 1,
+                    "pointsAward": 40,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1008,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "Restart 🎬",
+                    "commandID": 104,
+                    "buttonID": "r4c1",
+                    "healthCost": 0,
+                    "movesCost": 1,
+                    "pointsAward": 0,
+                    "availability": "gameOver",
+                    "nextStoryID": -1,
+                    "nextPageID": 1000,
+                    "action": "clear",
+                    "nextStatus": "ready"
+                },
+                {
+                    "name": "Help ❓",
+                    "commandID": 105,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": 20,
+                    "nextPageID": -1,
+                    "action": "swap",
+                    "nextStatus": "paused"
+                }
+            ]
+        },
+        {
+            "name": "Help Story",
+            "storyID": 20,
+            "firstPage": 2000,
+            "tracking": false,
+            "theme": {
+                "screenColor": [
+                    0.333,
+                    0.333,
+                    0.333
+                ],
+                "textColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "budget": {
+                "score": 0,
+                "health": 0,
+                "moves": 1,
+                "extraPoints": 0
+            },
+            "goals": {
+                "healthFloor": 0,
+                "healthCeiling": 0,
+                "scoreFloor": 0,
+                "scoreCeiling": 0
+            },
+            "endGame": {
+                "successPage": -1,
+                "successExtraPointsPage": -1,
+                "failNoHealthPage": -1,
+                "failNoPointsPage": -1
+            },
+            "pages": [
+                {
+                    "name": "Help",
+                    "pageID": 2000,
+                    "storyText": "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?",
+                    "commands": [
+                        106,
+                        107
+                    ]
+                },
+                {
+                    "name": "About Grog 2500",
+                    "pageID": 2001,
+                    "storyText": "Ah, you need a little convincing? Good! I like skeptical people! This is the story of Grog 2500, the app that's running on your phone. Back in the day, before GPUs and 4K screens, kids of all ages enjoyed playing text  games. Classic games like Adventure and Zork. You can still play these games, with emulation.",
+                    "commands": [
+                        108
+                    ]
+                },
+                {
+                    "name": "About Grog 2500",
+                    "pageID": 2002,
+                    "storyText": "But truly new 21st centry text games have not come into being, even though people are reading and typing more than ever before. Social media and messaging apps have become so ubuquious that life itself has become one big text game.",
+                    "commands": [
+                        109
+                    ]
+                },
+                {
+                    "name": "About Grog 2500",
+                    "pageID": 2003,
+                    "storyText": "So we, the author behind Grog 2500, decided it was time to update the old text adventure game paradigm for the modern age, with emojis, verticality, and an interaction style designed for the phone. That's about it. Go run along and play nice now.",
+                    "commands": [
+                        112,
+                        110
+                    ]
+                },
+                {
+                    "name": "Hacker Rank 0",
+                    "pageID": 2003,
+                    "storyText": "You hack the game and find a way to win without effort. At a great cost of personal integrity.",
+                    "commands": [
+                        110
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "Yes 👍",
+                    "commandID": 106,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": 10,
+                    "nextPageID": -1,
+                    "action": "swap",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "No 👎",
+                    "commandID": 107,
+                    "buttonID": "r4c2",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": -1,
+                    "nextPageID": 2001,
+                    "action": "jump",
+                    "nextStatus": "paused"
+                },
+                {
+                    "name": "Go On 👂",
+                    "commandID": 108,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": -1,
+                    "nextPageID": 2002,
+                    "action": "jump",
+                    "nextStatus": "paused"
+                },
+                {
+                    "name": "Go On 👂",
+                    "commandID": 109,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": -1,
+                    "nextPageID": 2003,
+                    "action": "jump",
+                    "nextStatus": "paused"
+                },
+                {
+                    "name": "Done ✅",
+                    "commandID": 110,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": 10,
+                    "nextPageID": -1,
+                    "action": "swap",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "Cheat 🕵️‍",
+                    "commandID": 112,
+                    "buttonID": "r4c2",
+                    "healthCost": 0,
+                    "movesCost": 10,
+                    "pointsAward": 100,
+                    "availability": "gameOn",
+                    "nextStoryID": 10,
+                    "nextPageID": 1003,
+                    "action": "jump",
+                    "nextStatus": "cheating"
                 }
             ]
         }
