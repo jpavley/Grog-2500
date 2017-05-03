@@ -40,7 +40,6 @@ let r4c3 = 111
 
 // TODO: create the ability to lock and unlock storybooks
 // TODO: reasonable defaults so not all fields need initialization
-// TODO: parse colors from RGB values (array of floats)
 // TODO: add extra points to budget and game
 
 

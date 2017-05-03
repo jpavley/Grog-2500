@@ -15,7 +15,21 @@ import UIKit
 func initTestStoryOne() -> [GrogStorybook]? {
     
     // Main storybook
-    let theme1 = GrogTheme(screenColor: UIColor.blue, textColor: UIColor.cyan)
+    
+//    "theme": {
+//        "screenColor": [
+//        0.0,
+//        0.0,
+//        1.0
+//        ],
+//        "textColor": [
+//        0.0,
+//        1.0,
+//        1.0
+//        ]
+//    },
+    
+    let theme1 = GrogTheme(screenColor: UIColor.init(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0), textColor: UIColor.init(red: 0.0, green: 1.0, blue: 1.0, alpha: 1.0))
     
     let cmd1 = GrogCommand(name: "Cat 😺", commandID: 101, buttonID: r1c1, healthCost: -50, movesCost: 1, pointsAward: -10, availability: .gameOn, nextStoryID: noStory, nextPageID: 1001, action: .jump, nextStatus: "playing")
     let cmd2 = GrogCommand(name: "Switch 💡", commandID: 102, buttonID: r1c2, healthCost: -50, movesCost: 1, pointsAward: -20, availability: .gameOn, nextStoryID: noStory, nextPageID: 1002, action: .jump, nextStatus: "playing")
@@ -54,7 +68,21 @@ func initTestStoryOne() -> [GrogStorybook]? {
     let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: mainPages, firstPage: 1000, theme: theme1, budget: budget1, goals: goals1, endGame: endgame1, tracking: true)
     
     // Help storybook
-    let theme2 = GrogTheme(screenColor: UIColor.darkGray, textColor: UIColor.white)
+    
+//    "theme": {
+//        "screenColor": [
+//        0.333,
+//        0.333,
+//        0.333
+//        ],
+//        "textColor": [
+//        1.0,
+//        1.0,
+//        1.0
+//        ]
+//    },
+
+    let theme2 = GrogTheme(screenColor: UIColor.init(red: 0.333, green: 0.333, blue: 0.333, alpha: 1.0), textColor: UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
     
     let cmd6 = GrogCommand(name: "Yes 👍", commandID: 106, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: 10, nextPageID: noPage, action: .swap, nextStatus: "paused")
     let cmd7 = GrogCommand(name: "No 👎", commandID: 107, buttonID: r4c2, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: noStory, nextPageID: 2001, action: .jump, nextStatus: "paused")
