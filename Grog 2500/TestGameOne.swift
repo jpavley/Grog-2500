@@ -48,7 +48,7 @@ func initTestStoryOne() -> [GrogStorybook]? {
     let page11 = GrogPage(name: "You're a Loser", pageID: 1006, storyText: "You've lost the game because you have died. You're health is 0%. Better luck next time.", commands: [cmd4, cmd5])
     let page12 = GrogPage(name: "You're a Loser", pageID: 1007, storyText: "You've lost the game because you ran out of points. You're health is 0%. Maybe you should make better choices.", commands: [cmd4, cmd5])
     
-    let budget1 = GrogBudget(score: 50, health: 50, moves: 1)
+    let budget1 = GrogBudget(score: 50, health: 50, moves: 1, extraPoints: 500)
     let endgame1 = GrogEndGame(successPage: 1004, successExtraPointsPage: 1005, failNoHealthPage: 1006, failNoPointsPage: 1007)
     
     let mainPages = [
@@ -97,7 +97,7 @@ func initTestStoryOne() -> [GrogStorybook]? {
     let page8 = GrogPage(name: "About Grog 2500", pageID: 2003, storyText: "So we, the author behind Grog 2500, decided it was time to update the old text adventure game paradigm for the modern age, with emojis, verticality, and an interaction style designed for the phone. That's about it. Go run along and play nice now.", commands: [cmd12, cmd10])
     let page14 = GrogPage(name: "Hacker Rank 0", pageID: 2004, storyText: "You hack the game and find a way to win without effort. At a great cost of personal integrity.", commands: [cmd10])
     
-    let budget2 = GrogBudget(score: noBudget, health: noBudget, moves: noBudget)
+    let budget2 = GrogBudget(score: noBudget, health: noBudget, moves: noBudget, extraPoints: 0)
     let endgame2 = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
     
     let helpPages = [

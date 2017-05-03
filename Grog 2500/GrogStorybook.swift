@@ -40,7 +40,6 @@ let r4c3 = 111
 
 // TODO: create the ability to lock and unlock storybooks
 // TODO: reasonable defaults so not all fields need initialization
-// TODO: add extra points to budget and game
 
 
 enum StoryAction {
@@ -69,6 +68,7 @@ struct GrogBudget {
     let score: Int
     let health: Int
     let moves: Int
+    let extraPoints: Int
 }
 
 struct GrogGoals {

@@ -187,6 +187,7 @@ class GrogGameEngine {
         var player = players[currentStorybookID]!
         let storybook = storybooks[currentStorybookID]!
         let goals = storybook.goals
+        let budget = storybook.budget
         
         player.update()
         
@@ -216,6 +217,7 @@ class GrogGameEngine {
                     gameOver = true
                     state.storybookComplete = true
                     state.status = "Winning"
+                    state.score += budget.extraPoints
                 } else {
                     gameOver = true
                     state.storybookComplete = true
