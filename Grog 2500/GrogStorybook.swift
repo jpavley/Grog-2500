@@ -40,7 +40,6 @@ let r4c3 = 111
 
 // TODO: create the ability to lock and unlock storybooks
 // TODO: reasonable defaults so not all fields need initialization
-// TODO: change commandID to buttonID and add back in commandID for as a unique ID
 // TODO: parse colors from RGB values (array of floats)
 // TODO: add extra points to budget and game
 
@@ -88,6 +87,7 @@ struct GrogTheme {
 struct GrogCommand {
     let name: String
     let commandID: Int
+    let buttonID: Int
     let healthCost: Int
     let movesCost: Int
     let pointsAward: Int

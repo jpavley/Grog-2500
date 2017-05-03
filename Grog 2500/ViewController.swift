@@ -140,7 +140,7 @@ class ViewController: UIViewController {
         // map
         for cmd in commandList {
             if showCommand(availability: cmd.availability) {
-                let btn = view.viewWithTag(cmd.commandID) as! UIButton
+                let btn = view.viewWithTag(cmd.buttonID) as! UIButton
                 btn.setTitle(cmd.name, for: .normal)
                 btn.isEnabled = true
                 btn.backgroundColor = UIColor.clear
@@ -202,7 +202,7 @@ class ViewController: UIViewController {
         
         // get the commend based on button press
         let commandList = page.commands
-        let cmd = commandList.filter { $0.commandID == buttonID }.first
+        let cmd = commandList.filter { $0.buttonID == buttonID }.first
         
         if cmd != nil {
             let cmdAction = cmd!.action
