@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,14 +19,96 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vQW-Z5-oLg">
+                                <rect key="frame" x="16" y="28" width="288" height="16"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎼 0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="610-XR-pEJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="❤️ 0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmB-Ju-Ofv">
+                                        <rect key="frame" x="72" y="0.0" width="72" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="⌛️ 0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmF-sg-OO2">
+                                        <rect key="frame" x="144" y="0.0" width="72" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🎮 Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDe-U9-igs">
+                                        <rect key="frame" x="216" y="0.0" width="72" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="R6f-MW-s3n"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🗺Grog 2500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubm-2a-EFf">
+                                <rect key="frame" x="16" y="52" width="268" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5si-7g-ro7">
+                                <rect key="frame" x="0.0" y="77" width="320" height="310"/>
+                                <color key="backgroundColor" red="0.1883389345" green="0.17630884429999999" blue="0.4918305838" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <mutableString key="text">AppDelegate
+loading.................. ✅
+ViewController loading.................. ✅
+Main Storyboard loading.................. ✅
+Grog Game Engine Loading.................. ✅
+Grog Game Player Loading.................. ✅
+Grog Storybook 
+Loading.................. ✅
+Initial Game JSON 
+loading.................. ⌛️</mutableString>
+                                <color key="textColor" red="0.40000000600000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wc8-Xt-IS8">
+                                <rect key="frame" x="116" y="516" width="89.5" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="bwH-BR-Qwu"/>
+                                    <constraint firstAttribute="width" constant="89.5" id="jcZ-ZH-aFH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Play 🤽‍♂️">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5si-7g-ro7" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="1Ai-Fn-W1J"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Wc8-Xt-IS8" secondAttribute="bottom" constant="20" id="7KX-HQ-uBc"/>
+                            <constraint firstItem="5si-7g-ro7" firstAttribute="top" secondItem="ubm-2a-EFf" secondAttribute="bottom" constant="8" id="Aki-AQ-qK7"/>
+                            <constraint firstItem="Wc8-Xt-IS8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="O7B-dy-eh3"/>
+                            <constraint firstAttribute="trailing" secondItem="5si-7g-ro7" secondAttribute="trailing" id="Um7-PQ-HKF"/>
+                            <constraint firstItem="vQW-Z5-oLg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="16" id="W8O-q9-RyF"/>
+                            <constraint firstItem="ubm-2a-EFf" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="32" id="WtA-PU-7uK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ubm-2a-EFf" secondAttribute="trailing" constant="20" id="eAO-SF-4NQ"/>
+                            <constraint firstItem="Wc8-Xt-IS8" firstAttribute="top" secondItem="5si-7g-ro7" secondAttribute="bottom" constant="129" id="fsK-uU-zf5"/>
+                            <constraint firstAttribute="trailing" secondItem="vQW-Z5-oLg" secondAttribute="trailing" constant="16" id="fuQ-Pd-9Sh"/>
+                            <constraint firstItem="vQW-Z5-oLg" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="qf7-O5-HCb"/>
+                            <constraint firstItem="ubm-2a-EFf" firstAttribute="leading" secondItem="610-XR-pEJ" secondAttribute="leading" id="wOZ-XY-P70"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="375"/>
         </scene>
     </scenes>
 </document>
