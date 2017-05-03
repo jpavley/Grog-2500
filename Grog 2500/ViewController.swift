@@ -205,7 +205,7 @@ class ViewController: UIViewController {
         let cmd = commandList.filter { $0.commandID == buttonID }.first
         
         if cmd != nil {
-            let cmdAction = cmd!.action.action
+            let cmdAction = cmd!.action
             switch cmdAction {
                 
             case .clear:

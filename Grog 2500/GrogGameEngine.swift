@@ -94,14 +94,14 @@ class GrogGameEngine {
     }
     
     func calcCurrentPage(cmd: GrogCommand) {
-        currentStorybookID = cmd.action.nextStoryID != noStory ? cmd.action.nextStoryID : currentStorybookID
+        currentStorybookID = cmd.nextStoryID != noStory ? cmd.nextStoryID : currentStorybookID
     }
     
     // game actions: swapping, clearing, and jumping
     
     func swapStory(cmd: GrogCommand) {
         updateGameState(cmd: cmd)
-        currentStorybookID = cmd.action.nextStoryID
+        currentStorybookID = cmd.nextStoryID
         
         // update() -- no update on swap
     }
@@ -116,13 +116,13 @@ class GrogGameEngine {
         // get all the things!
         var state = gameStates[currentStorybookID]!
         let storybook = storybooks[currentStorybookID]!
-        let nextPage = storybook.pages[cmd.action.nextPageID]!
+        let nextPage = storybook.pages[cmd.nextPageID]!
         
         updateStoryText(newText: "\(buttonLabel)\n")
         
         // update to the next page and status
         state.currentPageID = nextPage.pageID
-        state.status = cmd.action.nextStatus
+        state.status = cmd.nextStatus
         gameStates.updateValue(state, forKey: currentStorybookID)
         calcStoryText()
         
