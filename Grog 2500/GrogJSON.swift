@@ -15,12 +15,24 @@ func initLocalStory(fileName: String) -> [GrogStorybook]? {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
             if let object = json as? [String: Any] {
                 // json is a dictionary
-                print(object)
-                return [GrogStorybook]()
+                print("dictionary")
+                let gameName = object["name"]!
+                let firstStorybookID = object["firstStorybook"]!
+                print("game \(gameName), first storybook ID \(firstStorybookID)")
+                
+                var sbs = [GrogStorybook]()
+                var sb:GrogStorybook
+                if let storybooksObjects = object["storybooks"] as? [Any] {
+                    for storybooksObject in storybooksObjects {
+                        sb = GrogStorybook(json: storybooksObject as! [String : Any])!
+                        sbs.append(sb)
+                    }
+                }
+                return sbs
             } else if let object = json as? [Any] {
                 // json is an array
+                print("JSON is array")
                 print(object)
-                return [GrogStorybook]()
             } else {
                 print("JSON is invalid")
             }

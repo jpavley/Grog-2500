@@ -116,3 +116,51 @@ struct GrogStorybook {
     let endGame: GrogEndGame
     let tracking: Bool         // Don't update stats if false
 }
+
+extension GrogStorybook {
+    
+    init?(json: [String: Any]) {
+        
+        guard let name = json["name"] as? String,
+            let storyID = json["storyID"] as? Int,
+            let firstPage = json["firstPage"] as? Int,
+            let tracking = json["tracking"] as? Bool,
+            let pagesJSON = json["pages"] as? [Any],
+            let _ = json["theme"] as? [String: Any],
+            let _ = json["budget"] as? [String: Int],
+            let _ = json["goals"] as? [String: Int],
+            let _ = json["endGame"] as? [String: Int]
+            else {
+                return nil
+        }
+        
+        var pages = [Int: GrogPage]()
+        var page:GrogPage
+        
+        for pageJSON in pagesJSON {
+            if let p = pageJSON as? [String:Any] {
+                
+                let temporaryCommands = [GrogCommand]()
+                
+                page = GrogPage(name: p["name"] as! String,
+                                pageID: p["pageID"] as! Int,
+                                storyText: p["storyText"] as! String,
+                                commands: temporaryCommands)
+                pages.updateValue(page, forKey: page.pageID)
+                
+            }
+        }
+        
+        self.name = name
+        self.storyID = storyID
+        self.firstPage = firstPage
+        self.tracking = tracking
+        self.pages = pages
+        
+        // temp values below
+        self.theme = GrogTheme(screenColor: UIColor.black, textColor: UIColor.black)
+        self.budget = GrogBudget(score: 0, health: 0, moves: 0, extraPoints: 0)
+        self.goals = GrogGoals()
+        self.endGame = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
+    }
+}

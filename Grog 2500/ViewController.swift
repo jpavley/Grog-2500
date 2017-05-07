@@ -183,7 +183,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let _ = initLocalStory(fileName: "TestGameOne")
+        let testStorybooks = initLocalStory(fileName: "TestGameOne")
+        print(testStorybooks!)
         renderView()
     }
     
