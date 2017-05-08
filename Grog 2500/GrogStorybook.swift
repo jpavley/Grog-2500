@@ -83,6 +83,30 @@ struct GrogTheme {
     let textColor: UIColor
 }
 
+extension GrogTheme {
+    
+    init?(json: [String: [Any]]) {
+        guard let screenColorRGB = json["screenColor"] as? [CGFloat],
+            let textColorRGB = json["textColor"] as? [CGFloat]
+            else {
+                return nil
+        }
+        
+        let screenColor = UIColor.init(red: screenColorRGB[0],
+                                       green: screenColorRGB[1],
+                                       blue: screenColorRGB[2],
+                                       alpha: 1.0)
+        
+        let textColor = UIColor.init(red: textColorRGB[0],
+                                     green: textColorRGB[1],
+                                     blue: textColorRGB[2],
+                                     alpha: 1.0)
+        
+        self.screenColor = screenColor
+        self.textColor = textColor
+    }
+}
+
 struct GrogCommand {
     let name: String
     let commandID: Int
@@ -149,7 +173,7 @@ extension GrogStorybook {
             let firstPage = json["firstPage"] as? Int,
             let tracking = json["tracking"] as? Bool,
             let pagesJSON = json["pages"] as? [Any],
-            let _ = json["theme"] as? [String: Any],
+            let themeJSON = json["theme"] as? [String: Any],
             let _ = json["budget"] as? [String: Int],
             let _ = json["goals"] as? [String: Int],
             let _ = json["endGame"] as? [String: Int]
@@ -175,8 +199,10 @@ extension GrogStorybook {
         
         self.pages = pages
         
+        let theme = GrogTheme(json: themeJSON as! [String : [Any]])!
+        
         // temp values below
-        self.theme = GrogTheme(screenColor: UIColor.black, textColor: UIColor.black)
+        self.theme = theme
         self.budget = GrogBudget(score: 0, health: 0, moves: 0, extraPoints: 0)
         self.goals = GrogGoals()
         self.endGame = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
