@@ -105,6 +105,29 @@ struct GrogPage {
     
 }
 
+extension GrogPage {
+    
+    init?(json: [String: Any]) {
+        
+        guard let name = json["name"] as? String,
+            let pageID = json["pageID"] as? Int,
+            let storyText = json["storyText"] as? String,
+            let _ = json["commands"] as? [Int]
+            
+            else {
+                return nil
+        }
+        
+        self.name = name
+        self.pageID = pageID
+        self.storyText = storyText
+        self.commands = [GrogCommand]() // temporary empty command
+        
+        // TODO: Change how commands are handled: Pages store command IDs not command objects
+        // TODO: Change how commands are handled: Keep a seperate list of commands
+    }
+}
+
 struct GrogStorybook {
     let name: String
     let storyID: Int
@@ -134,27 +157,22 @@ extension GrogStorybook {
                 return nil
         }
         
-        var pages = [Int: GrogPage]()
-        var page:GrogPage
-        
-        for pageJSON in pagesJSON {
-            if let p = pageJSON as? [String:Any] {
-                
-                let temporaryCommands = [GrogCommand]()
-                
-                page = GrogPage(name: p["name"] as! String,
-                                pageID: p["pageID"] as! Int,
-                                storyText: p["storyText"] as! String,
-                                commands: temporaryCommands)
-                pages.updateValue(page, forKey: page.pageID)
-                
-            }
-        }
+        // simple properties
         
         self.name = name
         self.storyID = storyID
         self.firstPage = firstPage
         self.tracking = tracking
+        
+        // complex properties
+        
+        var pages = [Int: GrogPage]()
+        for pageJSON in pagesJSON {
+            if let page = GrogPage.init(json:pageJSON as! [String : Any]) {
+                pages.updateValue(page, forKey: page.pageID)
+            }
+        }
+        
         self.pages = pages
         
         // temp values below
