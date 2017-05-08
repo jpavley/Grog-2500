@@ -8,6 +8,8 @@
 
 import Foundation
 
+// TODO: Load storybooks from a web server and cache them to local storage
+
 func initLocalStory(fileName: String) -> [GrogStorybook]? {
     do {
         if let file = Bundle.main.url(forResource: fileName, withExtension: "json") {
@@ -20,15 +22,15 @@ func initLocalStory(fileName: String) -> [GrogStorybook]? {
                 let firstStorybookID = object["firstStorybook"]!
                 print("game \(gameName), first storybook ID \(firstStorybookID)")
                 
-                var sbs = [GrogStorybook]()
-                var sb:GrogStorybook
+                var resultStorybooks = [GrogStorybook]()
+                var resultStorybook: GrogStorybook
                 if let storybooksObjects = object["storybooks"] as? [Any] {
                     for storybooksObject in storybooksObjects {
-                        sb = GrogStorybook(json: storybooksObject as! [String : Any])!
-                        sbs.append(sb)
+                        resultStorybook = GrogStorybook(json: storybooksObject as! [String : Any])!
+                        resultStorybooks.append(resultStorybook)
                     }
                 }
-                return sbs
+                return resultStorybooks
             } else if let object = json as? [Any] {
                 // json is an array
                 print("JSON is array")
@@ -42,6 +44,7 @@ func initLocalStory(fileName: String) -> [GrogStorybook]? {
     } catch {
         print(error.localizedDescription)
     }
+    // if we get here we failed!
     return nil
 }
 
