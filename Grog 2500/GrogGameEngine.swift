@@ -42,12 +42,14 @@ class GrogGameEngine {
     
     // associated storybook, game state, and player all have the same ID
     var currentStorybookID: GrogStoryID
+    var currentGameName: String
     var gameOver: Bool
     let prompt = "\n>"
     
     init(storybooks: [GrogStorybook], startStoryID: GrogStoryID) {
         
         currentStorybookID = startStoryID
+        currentGameName = "Untitled"
         gameOver = false
         
         for storybook in storybooks {

@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         }
         
         let player = game!.players[game!.currentStorybookID]!
-        location.text = "🗺 \(player.location)"
+        location.text = "\(game!.currentGameName):\(player.location)"
 
     }
     
