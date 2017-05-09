@@ -46,10 +46,10 @@ class GrogGameEngine {
     var gameOver: Bool
     let prompt = "\n>"
     
-    init(storybooks: [GrogStorybook], startStoryID: GrogStoryID) {
+    init(storybooks: [GrogStorybook], gameName: String, startStoryID: GrogStoryID) {
         
         currentStorybookID = startStoryID
-        currentGameName = "Untitled"
+        currentGameName = gameName
         gameOver = false
         
         for storybook in storybooks {

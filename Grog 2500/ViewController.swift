@@ -42,11 +42,9 @@ class ViewController: UIViewController {
     func loadUI() {
         
         if game == nil {
-            if let storybooks = initLocalStory(fileName: "TestGameOne") {
-                
-                // TODO: Get startStoryID from the JSON file
-                
-                game = GrogGameEngine(storybooks: storybooks, startStoryID: startStoryID)
+            if let (storybooks, gameName, firstStorybookID) = initLocalStory(fileName: "TestGameOne") {
+
+                game = GrogGameEngine(storybooks: storybooks!, gameName: gameName, startStoryID: firstStorybookID)
             }
 
         }
@@ -104,7 +102,7 @@ class ViewController: UIViewController {
     
     func updateLocationUI() {
         let player = game!.players[game!.currentStorybookID]!
-        location.text = "\(game!.currentGameName):\(player.location)"
+        location.text = "\(game!.currentGameName): \(player.location)"
     }
     
     func updateHealthUI() {
