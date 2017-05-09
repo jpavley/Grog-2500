@@ -63,7 +63,7 @@ func initTestStoryOne() -> [GrogStorybook]? {
         page12.pageID : page12,
         ]
     
-    let goals1 = GrogGoals()
+    let goals1 = GrogGoals(healthFloor: 0, healthCeiling: 100, scoreFloor: 0, scoreCeiling: 100)
     
     let mainStorybook = GrogStorybook(name: "Main Story", storyID: 10, pages: mainPages, firstPage: 1000, theme: theme1, budget: budget1, goals: goals1, endGame: endgame1, tracking: true)
     
@@ -108,7 +108,7 @@ func initTestStoryOne() -> [GrogStorybook]? {
         page14.pageID : page14
         ]
     
-    let goals2 = GrogGoals()
+    let goals2 = GrogGoals(healthFloor: 0, healthCeiling: 100, scoreFloor: 0, scoreCeiling: 100)
     
     let helpStorybook = GrogStorybook(name: "Help Story", storyID: 20, pages: helpPages, firstPage: 2000, theme: theme2, budget: budget2, goals: goals2, endGame: endgame2, tracking: false)
     

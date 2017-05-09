@@ -72,10 +72,30 @@ struct GrogBudget {
 }
 
 struct GrogGoals {
-    let healthFloor = 0
-    let healthCeiling = 100
-    let scoreFloor = 0
-    let scoreCeiling = 100
+    let healthFloor: Int
+    let healthCeiling: Int
+    let scoreFloor: Int
+    let scoreCeiling: Int
+}
+
+extension GrogGoals {
+    
+    init?(json: [String: Any]) {
+        
+        guard let healthFloor = json["healthFloor"] as? Int,
+            let healthCeiling = json["healthCeiling"] as? Int,
+            let scoreFloor = json["scoreFloor"] as? Int,
+            let scoreCeiling = json["scoreCeiling"] as? Int
+            
+            else {
+                return nil
+        }
+        
+        self.healthFloor = healthFloor
+        self.healthCeiling = healthCeiling
+        self.scoreFloor = scoreFloor
+        self.scoreCeiling = scoreCeiling
+    }
 }
 
 struct GrogTheme {
@@ -175,7 +195,7 @@ extension GrogStorybook {
             let pagesJSON = json["pages"] as? [Any],
             let themeJSON = json["theme"] as? [String: Any],
             let _ = json["budget"] as? [String: Int],
-            let _ = json["goals"] as? [String: Int],
+            let goalsJSON = json["goals"] as? [String: Int],
             let _ = json["endGame"] as? [String: Int]
             else {
                 return nil
@@ -201,10 +221,12 @@ extension GrogStorybook {
         
         let theme = GrogTheme(json: themeJSON as! [String : [Any]])!
         
+        let goals = GrogGoals(json: goalsJSON)!
+        
         // temp values below
         self.theme = theme
         self.budget = GrogBudget(score: 0, health: 0, moves: 0, extraPoints: 0)
-        self.goals = GrogGoals()
+        self.goals = goals
         self.endGame = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
     }
 }
