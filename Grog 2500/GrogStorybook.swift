@@ -37,9 +37,8 @@ let r4c1 = 109
 let r4c2 = 110
 let r4c3 = 111
 
-
 // TODO: create the ability to lock and unlock storybooks
-// TODO: reasonable defaults so not all fields need initialization
+// TODO: create a command line utility that verifies storybook data (example: each ID is unique)
 
 
 enum StoryAction {
@@ -54,6 +53,7 @@ enum CommandAvailability {
     case gameOn   // only show the command when the game is in progress
     case win      // only show the command if the game is over and the player wins
     case lose     // only show the command if the game is over and the player loses
+    // TODO: Impletement storybookComplete in GrogGameEngine
     case storybookComplete
 }
 
@@ -67,11 +67,11 @@ struct GrogEndGame {
 extension GrogEndGame {
     init?(json: [String: Int]) {
         guard let successPage = json["successPage"],
-        let successExtraPointsPage = json["successExtraPointsPage"],
-        let failNoHealthPage = json["failNoHealthPage"],
-        let failNoPointsPage = json["failNoPointsPage"]
+            let successExtraPointsPage = json["successExtraPointsPage"],
+            let failNoHealthPage = json["failNoHealthPage"],
+            let failNoPointsPage = json["failNoPointsPage"]
             else {
-            return nil
+                return nil
         }
         self.successPage = successPage
         self.successExtraPointsPage = successExtraPointsPage
@@ -90,11 +90,11 @@ struct GrogBudget {
 extension GrogBudget {
     init?(json: [String: Int]) {
         guard let score = json["score"],
-        let health = json["health"],
-        let moves = json["moves"],
-        let extraPoints = json["extraPoints"]
-        else {
-            return nil
+            let health = json["health"],
+            let moves = json["moves"],
+            let extraPoints = json["extraPoints"]
+            else {
+                return nil
         }
         self.score = score
         self.health = health
@@ -166,30 +166,112 @@ struct GrogCommand {
     let nextStatus: String
 }
 
+extension GrogCommand {
+    init?(json: [String: Any]) {
+        guard let name = json["name"] as? String,
+            let commandID = json["commandID"] as? Int,
+            let buttonIDStr = json["buttonID"] as? String,
+            let healthCost = json["healthCost"] as? Int,
+            let movesCost = json["movesCost"] as? Int,
+            let pointsAward = json["pointsAward"] as? Int,
+            let availabilityStr = json["availability"] as? String,
+            let nextStoryID = json["nextStoryID"] as? Int,
+            let nextPageID = json["nextPageID"] as? Int,
+            let actionStr = json["action"] as? String,
+            let nextStatus = json["nextStatus"] as? String
+            else {
+                return nil
+        }
+        self.name = name
+        self.commandID = commandID
+        
+        var buttonID = noID
+        switch buttonIDStr {
+            
+        case "r1c1": buttonID = r1c1
+        case "r1c2": buttonID = r1c2
+        case "r1c3": buttonID = r1c3
+            
+        case "r2c1": buttonID = r2c1
+        case "r2c2": buttonID = r2c2
+        case "r2c3": buttonID = r2c3
+            
+        case "r3c1": buttonID = r3c1
+        case "r3c2": buttonID = r3c2
+        case "r3c3": buttonID = r3c3
+            
+        case "r4c1": buttonID = r4c1
+        case "r4c2": buttonID = r4c2
+        case "r4c3": buttonID = r4c3
+            
+        default:
+            print("Error: found unknown buttonIDStr \(buttonIDStr)")
+            return nil
+        }
+        
+        self.buttonID = buttonID
+        self.healthCost = healthCost
+        self.movesCost = movesCost
+        self.pointsAward = pointsAward
+        
+        var availability:CommandAvailability = .always
+        switch availabilityStr {
+        case "always": availability = .always
+        case "gameOver": availability = .gameOver
+        case "gameOn": availability = .gameOn
+        case "win": availability = .win
+        case "lose": availability = .lose
+        case "storybookComplete": availability = .storybookComplete
+        default:
+            print("Error: found unknown availabilityStr \(availabilityStr)")
+            return nil
+        }
+        
+        self.availability = availability
+        self.nextStoryID = nextStoryID
+        self.nextPageID = nextPageID
+        
+        var action:StoryAction = .clear
+        switch actionStr {
+        case "clear": action = .clear
+        case "jump": action = .jump
+        case "swap": action = .swap
+        default:
+            print("Error: found unknown actionStr \(actionStr)")
+            return nil
+        }
+        
+        self.action = action
+        self.nextStatus = nextStatus
+    }
+}
+
 struct GrogPage {
     let name: String
     let pageID: Int
     let storyText: String
     let commands: [GrogCommand]
-    
 }
 
 extension GrogPage {
-    init?(json: [String: Any]) {
+    init?(json: [String: Any], cmdDict: [Int: GrogCommand]) {
         guard let name = json["name"] as? String,
             let pageID = json["pageID"] as? Int,
             let storyText = json["storyText"] as? String,
-            let _ = json["commands"] as? [Int]
+            let commandIDs = json["commands"] as? [Int]
             else {
                 return nil
         }
         self.name = name
         self.pageID = pageID
         self.storyText = storyText
-        self.commands = [GrogCommand]() // temporary empty command
         
-        // TODO: Change how commands are handled: Pages store command IDs not command objects
-        // TODO: Change how commands are handled: Keep a seperate list of commands
+        var commands = [GrogCommand]()
+        for id in commandIDs {
+            commands.append(cmdDict[id]!)
+        }
+        
+        self.commands = commands
     }
 }
 
@@ -217,7 +299,8 @@ extension GrogStorybook {
             let themeJSON = json["theme"] as? [String: Any],
             let budgetJSON = json["budget"] as? [String: Int],
             let goalsJSON = json["goals"] as? [String: Int],
-            let endGameJSON = json["endGame"] as? [String: Int]
+            let endGameJSON = json["endGame"] as? [String: Int],
+            let commandsJSON = json["commands"] as? [Any]
             else {
                 return nil
         }
@@ -231,9 +314,17 @@ extension GrogStorybook {
         
         // complex properties
         
+        var commands = [Int: GrogCommand]()
+        for cmdJSON in commandsJSON {
+            guard let command = GrogCommand.init(json: cmdJSON as! [String : Any]) else {
+                return nil
+            }
+            commands.updateValue(command, forKey: command.commandID)
+        }
+        
         var pages = [Int: GrogPage]()
         for pageJSON in pagesJSON {
-            if let page = GrogPage.init(json:pageJSON as! [String : Any]) {
+            if let page = GrogPage.init(json:pageJSON as! [String : Any], cmdDict: commands) {
                 pages.updateValue(page, forKey: page.pageID)
             }
         }

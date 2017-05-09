@@ -42,9 +42,13 @@ class ViewController: UIViewController {
     func loadUI() {
         
         if game == nil {
-            if let storybooks = initTestStoryOne() {
+            if let storybooks = initLocalStory(fileName: "TestGameOne") {
+                
+                // TODO: Get startStoryID from the JSON file
+                
                 game = GrogGameEngine(storybooks: storybooks, startStoryID: startStoryID)
             }
+
         }
         
         // get all the things!
@@ -153,7 +157,7 @@ class ViewController: UIViewController {
         // get all the things
         let state = game!.gameStates[game!.currentStorybookID]!
         let storybook = game!.storybooks[game!.currentStorybookID]!
-
+                
         switch availability {
         case .always:
             return true
@@ -183,8 +187,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let testStorybooks = initLocalStory(fileName: "TestGameOne")
-        print(testStorybooks!)
+        
         renderView()
     }
     

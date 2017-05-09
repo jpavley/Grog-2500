@@ -20,6 +20,6 @@ struct GrogGamePlayer {
     }
     
     func update() {
-        // update player properties
+        // TODO: update player properties
     }
 }
