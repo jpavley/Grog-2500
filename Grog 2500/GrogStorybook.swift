@@ -71,6 +71,22 @@ struct GrogBudget {
     let extraPoints: Int
 }
 
+extension GrogBudget {
+    init?(json: [String: Int]) {
+        guard let score = json["score"],
+        let health = json["health"],
+        let moves = json["moves"],
+        let extraPoints = json["extraPoints"]
+        else {
+            return nil
+        }
+        self.score = score
+        self.health = health
+        self.moves = moves
+        self.extraPoints = extraPoints
+    }
+}
+
 struct GrogGoals {
     let healthFloor: Int
     let healthCeiling: Int
@@ -80,12 +96,12 @@ struct GrogGoals {
 
 extension GrogGoals {
     
-    init?(json: [String: Any]) {
+    init?(json: [String: Int]) {
         
-        guard let healthFloor = json["healthFloor"] as? Int,
-            let healthCeiling = json["healthCeiling"] as? Int,
-            let scoreFloor = json["scoreFloor"] as? Int,
-            let scoreCeiling = json["scoreCeiling"] as? Int
+        guard let healthFloor = json["healthFloor"],
+            let healthCeiling = json["healthCeiling"],
+            let scoreFloor = json["scoreFloor"],
+            let scoreCeiling = json["scoreCeiling"]
             
             else {
                 return nil
@@ -194,7 +210,7 @@ extension GrogStorybook {
             let tracking = json["tracking"] as? Bool,
             let pagesJSON = json["pages"] as? [Any],
             let themeJSON = json["theme"] as? [String: Any],
-            let _ = json["budget"] as? [String: Int],
+            let budgetJSON = json["budget"] as? [String: Int],
             let goalsJSON = json["goals"] as? [String: Int],
             let _ = json["endGame"] as? [String: Int]
             else {
@@ -220,12 +236,12 @@ extension GrogStorybook {
         self.pages = pages
         
         let theme = GrogTheme(json: themeJSON as! [String : [Any]])!
-        
         let goals = GrogGoals(json: goalsJSON)!
+        let budget = GrogBudget(json: budgetJSON)!
         
         // temp values below
         self.theme = theme
-        self.budget = GrogBudget(score: 0, health: 0, moves: 0, extraPoints: 0)
+        self.budget = budget
         self.goals = goals
         self.endGame = GrogEndGame(successPage: noPage, successExtraPointsPage: noPage, failNoHealthPage: noPage, failNoPointsPage: noPage)
     }
