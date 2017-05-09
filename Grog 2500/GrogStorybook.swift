@@ -111,9 +111,7 @@ struct GrogGoals {
 }
 
 extension GrogGoals {
-    
     init?(json: [String: Int]) {
-        
         guard let healthFloor = json["healthFloor"],
             let healthCeiling = json["healthCeiling"],
             let scoreFloor = json["scoreFloor"],
@@ -122,7 +120,6 @@ extension GrogGoals {
             else {
                 return nil
         }
-        
         self.healthFloor = healthFloor
         self.healthCeiling = healthCeiling
         self.scoreFloor = scoreFloor
@@ -136,24 +133,20 @@ struct GrogTheme {
 }
 
 extension GrogTheme {
-    
     init?(json: [String: [Any]]) {
         guard let screenColorRGB = json["screenColor"] as? [CGFloat],
             let textColorRGB = json["textColor"] as? [CGFloat]
             else {
                 return nil
         }
-        
         let screenColor = UIColor.init(red: screenColorRGB[0],
                                        green: screenColorRGB[1],
                                        blue: screenColorRGB[2],
                                        alpha: 1.0)
-        
         let textColor = UIColor.init(red: textColorRGB[0],
                                      green: textColorRGB[1],
                                      blue: textColorRGB[2],
                                      alpha: 1.0)
-        
         self.screenColor = screenColor
         self.textColor = textColor
     }
@@ -182,18 +175,14 @@ struct GrogPage {
 }
 
 extension GrogPage {
-    
     init?(json: [String: Any]) {
-        
         guard let name = json["name"] as? String,
             let pageID = json["pageID"] as? Int,
             let storyText = json["storyText"] as? String,
             let _ = json["commands"] as? [Int]
-            
             else {
                 return nil
         }
-        
         self.name = name
         self.pageID = pageID
         self.storyText = storyText
