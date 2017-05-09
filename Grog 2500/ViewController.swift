@@ -99,9 +99,12 @@ class ViewController: UIViewController {
             status.text = "🎮 \(state.status)"
         }
         
+        updateLocationUI()
+    }
+    
+    func updateLocationUI() {
         let player = game!.players[game!.currentStorybookID]!
         location.text = "\(game!.currentGameName):\(player.location)"
-
     }
     
     func updateHealthUI() {
@@ -280,8 +283,7 @@ class ViewController: UIViewController {
             game!.calcStoryText()
         }
         
-        let player = game!.players[game!.currentStorybookID]!
-        location.text = "🗺 \(player.location)"
+        updateLocationUI()
         
         // load the UI and output the story
         if storybook.tracking {
