@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     
     func updateLocationUI() {
         let player = game!.players[game!.currentStorybookID]!
-        location.text = "\(game!.currentGameName): \(player.location)"
+        location.text = "🗺 \(game!.currentGameName): \(player.location)"
     }
     
     func updateHealthUI() {
