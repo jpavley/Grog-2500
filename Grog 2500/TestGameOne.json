@@ -130,7 +130,7 @@
             ],
             "commands": [
                 {
-                    "name": "Cat 😺",
+                    "name": "😺",
                     "commandID": 101,
                     "buttonID": "r1c1",
                     "healthCost": -50,
@@ -143,7 +143,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Switch 💡",
+                    "name": "💡",
                     "commandID": 102,
                     "buttonID": "r1c2",
                     "healthCost": -50,
@@ -156,7 +156,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Bed 🛏",
+                    "name": "🛏",
                     "commandID": 103,
                     "buttonID": "r1c3",
                     "healthCost": 10,
@@ -169,7 +169,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Think 🤔",
+                    "name": "🤔",
                     "commandID": 111,
                     "buttonID": "r2c2",
                     "healthCost": 20,
@@ -182,7 +182,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Restart 🎬",
+                    "name": "🎬",
                     "commandID": 104,
                     "buttonID": "r4c1",
                     "healthCost": 0,
@@ -195,7 +195,7 @@
                     "nextStatus": "ready"
                 },
                 {
-                    "name": "Help ❓",
+                    "name": "❓",
                     "commandID": 105,
                     "buttonID": "r4c3",
                     "healthCost": 0,
@@ -290,7 +290,7 @@
             ],
             "commands": [
                 {
-                    "name": "Yes 👍",
+                    "name": "👍",
                     "commandID": 106,
                     "buttonID": "r4c3",
                     "healthCost": 0,
@@ -303,7 +303,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "No 👎",
+                    "name": "👎",
                     "commandID": 107,
                     "buttonID": "r4c2",
                     "healthCost": 0,
@@ -316,7 +316,7 @@
                     "nextStatus": "paused"
                 },
                 {
-                    "name": "Go On 👂",
+                    "name": "👂",
                     "commandID": 108,
                     "buttonID": "r4c3",
                     "healthCost": 0,
@@ -329,7 +329,7 @@
                     "nextStatus": "paused"
                 },
                 {
-                    "name": "Go On 👂",
+                    "name": "👂",
                     "commandID": 109,
                     "buttonID": "r4c3",
                     "healthCost": 0,
@@ -342,7 +342,7 @@
                     "nextStatus": "paused"
                 },
                 {
-                    "name": "Done ✅",
+                    "name": "✅",
                     "commandID": 110,
                     "buttonID": "r4c3",
                     "healthCost": 0,
@@ -355,7 +355,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Cheat 🕵️‍",
+                    "name": "🕵️‍",
                     "commandID": 112,
                     "buttonID": "r4c2",
                     "healthCost": 0,
