@@ -1,0 +1,187 @@
+{
+    "name": "Flags Game",
+    "firstStorybook": 10,
+    "storybooks": [
+        {
+            "name": "Flags Quiz",
+            "storyID": 10,
+            "firstPage": 1000,
+            "tracking": true,
+            "theme": {
+                "screenColor": [
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "textColor": [
+                    0.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "budget": {
+                "score": 50,
+                "health": 50,
+                "moves": 1,
+                "extraPoints": 500
+            },
+            "goals": {
+                "healthFloor": 0,
+                "healthCeiling": 100,
+                "scoreFloor": 0,
+                "scoreCeiling": 100
+            },
+            "endGame": {
+                "successPage": 1004,
+                "successExtraPointsPage": 1005,
+                "failNoHealthPage": 1006,
+                "failNoPointsPage": 1007
+            },
+            "pages": [
+                {
+                    "name": "Starting with the letter A {{$0}} of {{$1}}",
+                    "pageID": 1000,
+                    "storyText": "Choose the flag of {{$2}}",
+                    "commands": [
+                        101,
+                        102,
+                        103,
+                        104,
+                        105,
+                        106
+                    ]
+                },
+                {
+                    "name": "You're a Wizard",
+                    "pageID": 1002,
+                    "storyText": "You know most of your letter a flags!",
+                    "commands": [
+                        107
+                    ]
+                },
+                {
+                    "name": "You're a Lumpkin",
+                    "pageID": 1003,
+                    "storyText": "You know hardly any letter a flags... spend more time with Wikipedia.",
+                    "commands": [
+                        107
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "{{$0}}",
+                    "commandID": 101,
+                    "buttonID": "r1c1",
+                    "healthCost": 0,
+                    "movesCost": 1,
+                    "pointsAward": 10,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": -1,
+                    "action": "quiz",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "{{$1}}",
+                    "commandID": 102,
+                    "buttonID": "r1c2",
+                    "healthCost": 0,
+                    "movesCost": 1,
+                    "pointsAward": 10,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": -1,
+                    "action": "quiz",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "{{$2}}",
+                    "commandID": 103,
+                    "buttonID": "r1c3",
+                    "healthCost": 0,
+                    "movesCost": 1,
+                    "pointsAward": 10,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": -1,
+                    "action": "quiz",
+                    "nextStatus": "playing"
+                },
+                 {
+                    "name": "{{$3}}",
+                    "commandID": 104,
+                    "buttonID": "r2c1",
+                    "healthCost": 0,
+                    "movesCost": 1,
+                    "pointsAward": 10,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": -1,
+                    "action": "quiz",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "{{$4}}",
+                    "commandID": 105,
+                    "buttonID": "r2c2",
+                    "healthCost": 0,
+                    "movesCost": 1,
+                    "pointsAward": 10,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": -1,
+                    "action": "quiz",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "{{$5}}",
+                    "commandID": 106,
+                    "buttonID": "r2c3",
+                    "healthCost": 0,
+                    "movesCost": 1,
+                    "pointsAward": 10,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": -1,
+                    "action": "quiz",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "🎬",
+                    "commandID": 107,
+                    "buttonID": "r4c1",
+                    "healthCost": 0,
+                    "movesCost": 1,
+                    "pointsAward": 0,
+                    "availability": "gameOver",
+                    "nextStoryID": -1,
+                    "nextPageID": 1000,
+                    "action": "clear",
+                    "nextStatus": "ready"
+                }
+            ],
+            "pageData": {
+                "pageID": 1000,
+                "{{$0}}": "currentPageNumber",
+                "{{$1}}": "totalPages",
+                "{{$2}}": "currentAnswerText"
+            },
+            "commandData": {
+                "pageID": 1000,
+                "{{$0}}": "option1",
+                "{{$1}}": "option2",
+                "{{$2}}": "option3",
+                "{{$3}}": "option4",
+                "{{$4}}": "option5",
+                "{{$5}}": "option6"
+            },
+            "quizData": {
+                "pageID": 1000,
+                "options": 6,
+                "questions": "Afganistan,Åland Islands,Albania,Algeria,American Samoa,Andorra,Angola,Anguilla,Antarctica,Antigua & Barbuda,Argentina,Armenia,Aruba,Australia,Austria,Azerbaijan",
+                "answers": "🇦🇫,🇦🇽,🇦🇱,🇩🇿,🇦🇸,🇦🇩,🇦🇴,🇦🇮,🇦🇶,🇦🇬,🇦🇷,🇦🇲,🇦🇼,🇦🇺,🇦🇹,🇦🇿"
+            }
+        }
+    ]
+}
