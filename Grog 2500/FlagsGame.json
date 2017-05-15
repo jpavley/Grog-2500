@@ -32,14 +32,14 @@
                 "scoreCeiling": 100
             },
             "endGame": {
-                "successPage": 1004,
-                "successExtraPointsPage": 1005,
-                "failNoHealthPage": 1006,
-                "failNoPointsPage": 1007
+                "successPage": 1002,
+                "successExtraPointsPage": 1002,
+                "failNoHealthPage": 1003,
+                "failNoPointsPage": 1003
             },
             "pages": [
                 {
-                    "name": "Starting with the letter A {{$0}} of {{$1}}",
+                    "name": "Letter A {{$0}} of {{$1}}",
                     "pageID": 1000,
                     "storyText": "Choose the flag of {{$2}}",
                     "commands": [
