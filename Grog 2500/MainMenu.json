@@ -1,0 +1,233 @@
+{
+    "name": "Main Menu",
+    "firstStorybook": 10,
+    "storybooks": [
+        {
+            "name": "Main Menu",
+            "storyID": 10,
+            "firstPage": 1000,
+            "tracking": false,
+            "theme": {
+                "screenColor": [
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "textColor": [
+                    0.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "budget": {
+                "score": 0,
+                "health": 0,
+                "moves": 1,
+                "extraPoints": 0
+            },
+            "goals": {
+                "healthFloor": 0,
+                "healthCeiling": 0,
+                "scoreFloor": 0,
+                "scoreCeiling": 0
+            },
+            "endGame": {
+                "successPage": -1,
+                "successExtraPointsPage": -1,
+                "failNoHealthPage": -1,
+                "failNoPointsPage": -1
+            },
+            "pages": [
+                {
+                    "name": "Games",
+                    "pageID": 1000,
+                    "storyText": "Grog 2500 is full of games, puzzle, and quizes. Choose wisely... you never know how deep the rabbit hole goes!",
+                    "commands": [
+                        101,
+                        102,
+                        103
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "Test Game 🎮",
+                    "commandID": 101,
+                    "buttonID": "r1c1",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1001,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "Flag Quiz 🇺🇸",
+                    "commandID": 102,
+                    "buttonID": "r1c2",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1002,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "Help ❓",
+                    "commandID": 105,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": 20,
+                    "nextPageID": -1,
+                    "action": "swap",
+                    "nextStatus": "paused"
+                }
+            ]
+        },
+        {
+            "name": "Help Story",
+            "storyID": 20,
+            "firstPage": 2000,
+            "tracking": false,
+            "theme": {
+                "screenColor": [
+                    0.333,
+                    0.333,
+                    0.333
+                ],
+                "textColor": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "budget": {
+                "score": 0,
+                "health": 0,
+                "moves": 1,
+                "extraPoints": 0
+            },
+            "goals": {
+                "healthFloor": 0,
+                "healthCeiling": 0,
+                "scoreFloor": 0,
+                "scoreCeiling": 0
+            },
+            "endGame": {
+                "successPage": -1,
+                "successExtraPointsPage": -1,
+                "failNoHealthPage": -1,
+                "failNoPointsPage": -1
+            },
+            "pages": [
+                {
+                    "name": "Help",
+                    "pageID": 2000,
+                    "storyText": "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?",
+                    "commands": [
+                        106,
+                        107
+                    ]
+                },
+                {
+                    "name": "About Grog 2500",
+                    "pageID": 2001,
+                    "storyText": "Ah, you need a little convincing? Good! I like skeptical people! This is the story of Grog 2500, the app that's running on your phone. Back in the day, before GPUs and 4K screens, kids of all ages enjoyed playing text  games. Classic games like Adventure and Zork. You can still play these games, with emulation.",
+                    "commands": [
+                        108
+                    ]
+                },
+                {
+                    "name": "About Grog 2500",
+                    "pageID": 2002,
+                    "storyText": "But truly new 21st centry text games have not come into being, even though people are reading and typing more than ever before. Social media and messaging apps have become so ubuquious that life itself has become one big text game.",
+                    "commands": [
+                        109
+                    ]
+                },
+                {
+                    "name": "About Grog 2500",
+                    "pageID": 2003,
+                    "storyText": "So we, the author behind Grog 2500, decided it was time to update the old text adventure game paradigm for the modern age, with emojis, verticality, and an interaction style designed for the phone. That's about it. Go run along and play nice now.",
+                    "commands": [
+                        110
+                    ]
+                }
+            ],
+            "commands": [
+                {
+                    "name": "👍",
+                    "commandID": 106,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": 10,
+                    "nextPageID": -1,
+                    "action": "swap",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "👎",
+                    "commandID": 107,
+                    "buttonID": "r4c2",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": -1,
+                    "nextPageID": 2001,
+                    "action": "jump",
+                    "nextStatus": "paused"
+                },
+                {
+                    "name": "👂",
+                    "commandID": 108,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": -1,
+                    "nextPageID": 2002,
+                    "action": "jump",
+                    "nextStatus": "paused"
+                },
+                {
+                    "name": "👂",
+                    "commandID": 109,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": -1,
+                    "nextPageID": 2003,
+                    "action": "jump",
+                    "nextStatus": "paused"
+                },
+                {
+                    "name": "✅",
+                    "commandID": 110,
+                    "buttonID": "r4c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": 10,
+                    "nextPageID": -1,
+                    "action": "swap",
+                    "nextStatus": "playing"
+                }
+            ]
+        }
+    ]
+}
