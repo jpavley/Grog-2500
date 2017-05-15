@@ -45,10 +45,7 @@
                     "commands": [
                         101,
                         102,
-                        103,
-                        104,
-                        105,
-                        106
+                        103
                     ]
                 },
                 {
@@ -108,45 +105,6 @@
                     "action": "quiz",
                     "nextStatus": "playing"
                 },
-                 {
-                    "name": "{{$3}}",
-                    "commandID": 104,
-                    "buttonID": "r2c1",
-                    "healthCost": 0,
-                    "movesCost": 1,
-                    "pointsAward": 10,
-                    "availability": "gameOn",
-                    "nextStoryID": -1,
-                    "nextPageID": -1,
-                    "action": "quiz",
-                    "nextStatus": "playing"
-                },
-                {
-                    "name": "{{$4}}",
-                    "commandID": 105,
-                    "buttonID": "r2c2",
-                    "healthCost": 0,
-                    "movesCost": 1,
-                    "pointsAward": 10,
-                    "availability": "gameOn",
-                    "nextStoryID": -1,
-                    "nextPageID": -1,
-                    "action": "quiz",
-                    "nextStatus": "playing"
-                },
-                {
-                    "name": "{{$5}}",
-                    "commandID": 106,
-                    "buttonID": "r2c3",
-                    "healthCost": 0,
-                    "movesCost": 1,
-                    "pointsAward": 10,
-                    "availability": "gameOn",
-                    "nextStoryID": -1,
-                    "nextPageID": -1,
-                    "action": "quiz",
-                    "nextStatus": "playing"
-                },
                 {
                     "name": "🎬",
                     "commandID": 107,
@@ -172,13 +130,9 @@
                 "{{$0}}": "option1",
                 "{{$1}}": "option2",
                 "{{$2}}": "option3",
-                "{{$3}}": "option4",
-                "{{$4}}": "option5",
-                "{{$5}}": "option6"
             },
             "quizData": {
                 "pageID": 1000,
-                "options": 6,
                 "questions": "Afganistan,Åland Islands,Albania,Algeria,American Samoa,Andorra,Angola,Anguilla,Antarctica,Antigua & Barbuda,Argentina,Armenia,Aruba,Australia,Austria,Azerbaijan",
                 "answers": "🇦🇫,🇦🇽,🇦🇱,🇩🇿,🇦🇸,🇦🇩,🇦🇴,🇦🇮,🇦🇶,🇦🇬,🇦🇷,🇦🇲,🇦🇼,🇦🇺,🇦🇹,🇦🇿"
             }
