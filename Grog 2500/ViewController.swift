@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     func loadUI() {
         
         if game == nil {
-            if let (storybooks, gameName, firstStorybookID) = initLocalStory(fileName: "TestGameOne") {
+            if let (storybooks, gameName, firstStorybookID) = initLocalStory(fileName: "MainMenu") {
 
                 game = GrogGameEngine(storybooks: storybooks!, gameName: gameName, startStoryID: firstStorybookID)
             }

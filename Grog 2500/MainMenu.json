@@ -41,11 +41,11 @@
                 {
                     "name": "Games",
                     "pageID": 1000,
-                    "storyText": "Grog 2500 is full of games, puzzle, and quizes. Choose wisely... you never know how deep the rabbit hole goes!",
+                    "storyText": "Grog 2500 is full of games, puzzles, and quizes. Choose wisely... you never know how deep the rabbit hole goes!",
                     "commands": [
                         101,
                         102,
-                        103
+                        105
                     ]
                 }
             ],
