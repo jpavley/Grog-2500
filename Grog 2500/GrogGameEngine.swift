@@ -32,6 +32,9 @@ struct GrogGameState {
     }
 }
 
+// TODO: Add action that loads a new game and it's storybooks
+// TODO: On iPhone SE screens the button text is too big!
+
 class GrogGameEngine {
     
     // core dictionaries so that a story's overall state can be swapped in and out of the UI

@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     // game vars
     var game: GrogGameEngine?
     
+    // TODO: Implement an animated loading screen
     // TODO: Create a game store
     // TODO: Save and load game to and from local device storage
     // TODO: Synch local and remote games (in the case of updates)
