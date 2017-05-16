@@ -51,11 +51,71 @@
                         106,
                         107
                     ]
+                },
+                {
+                    "name": "Test Game",
+                    "pageID": 1001,
+                    "storyText": "The first game written specially for the Grog 2500 Emoji Adventure Platform. You can play it honest or hunt for easter egg.",
+                    "commands": [
+                        109,
+                        110,
+                        107
+                    ]
+                },
+                {
+                    "name": "Flag Quiz",
+                    "pageID": 1002,
+                    "storyText": "How well do you know your flag emoji? Well, we shall see",
+                    "commands": [
+                        109,
+                        110,
+                        107
+                    ]
+                },
+                {
+                    "name": "Ghost Chat",
+                    "pageID": 1003,
+                    "storyText": "You can speak wth the departed if only you are attuned to the spirits. Do you have the courage? Perhaps...",
+                    "commands": [
+                        109,
+                        110,
+                        107
+                    ]
+                },
+                {
+                    "name": "Code Learning",
+                    "pageID": 1004,
+                    "storyText": "A computer science degree in a box. Get that high-tech job you've dreamed of! Eazy peazy!",
+                    "commands": [
+                        109,
+                        110,
+                        107
+                    ]
+                },
+                {
+                    "name": "Hide & Seek",
+                    "pageID": 1005,
+                    "storyText": "I'm a cute, helpless, sad, tiny, black kitten lost in a dank, dark, deep dungeon. Please find me! Oh, by the way... MONSTERS!!",
+                    "commands": [
+                        109,
+                        110,
+                        107
+                    ]
+                },
+                {
+                    "name": "Angry Robot",
+                    "pageID": 1006,
+                    "storyText": "A really cross chatbot. So angry you'll have a hard time telling it anything!",
+                    "commands": [
+                        109,
+                        110,
+                        107
+                    ]
                 }
             ],
             "commands": [
                 {
-                    "name": "Test 🎮",
+                    "name": "🎲🎮",
                     "commandID": 101,
                     "buttonID": "r1c1",
                     "healthCost": 0,
@@ -68,7 +128,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Quiz 🇺🇸",
+                    "name": "🇺🇸📋",
                     "commandID": 102,
                     "buttonID": "r1c2",
                     "healthCost": 0,
@@ -81,7 +141,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Cave 💀",
+                    "name": "🗣👻",
                     "commandID": 103,
                     "buttonID": "r1c3",
                     "healthCost": 0,
@@ -94,7 +154,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Swift ⚙️",
+                    "name": "💻⚙️",
                     "commandID": 104,
                     "buttonID": "r2c1",
                     "healthCost": 0,
@@ -107,7 +167,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Who's 👀",
+                    "name": "🙀👀",
                     "commandID": 105,
                     "buttonID": "r2c2",
                     "healthCost": 0,
@@ -120,7 +180,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "I Am 🤖",
+                    "name": "😡🤖",
                     "commandID": 106,
                     "buttonID": "r2c3",
                     "healthCost": 0,
@@ -133,7 +193,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Help ❓",
+                    "name": "❓",
                     "commandID": 107,
                     "buttonID": "r4c3",
                     "healthCost": 0,
@@ -144,6 +204,32 @@
                     "nextPageID": -1,
                     "action": "swap",
                     "nextStatus": "paused"
+                },
+                {
+                    "name": "▶️",
+                    "commandID": 109,
+                    "buttonID": "r1c2",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": -1,
+                    "nextPageID": -1,
+                    "action": "swap",
+                    "nextStatus": "paused"
+                },
+                                {
+                    "name": "⮐",
+                    "commandID": 110,
+                    "buttonID": "r1c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "always",
+                    "nextStoryID": -1,
+                    "nextPageID": 1000,
+                    "action": "jump",
+                    "nextStatus": "ready"
                 }
             ]
         },
