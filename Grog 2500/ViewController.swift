@@ -38,6 +38,7 @@ class ViewController: UIViewController {
     // TODO: Add animation effects
     // TODO: Move all the game logic out of this here ViewController and into the Game Engine
     // TODO: Only game name and page name are used, storybook name is not used by UI. Is this good, bad, or not a big deal?
+    // TODO: Create a game registration table
     
     // UI functions
     
