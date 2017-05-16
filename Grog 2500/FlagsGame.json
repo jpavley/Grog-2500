@@ -78,7 +78,8 @@
                     "nextStoryID": -1,
                     "nextPageID": -1,
                     "action": "quiz",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": -1
                 },
                 {
                     "name": "{{$1}}",
@@ -91,7 +92,8 @@
                     "nextStoryID": -1,
                     "nextPageID": -1,
                     "action": "quiz",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": -1
                 },
                 {
                     "name": "{{$2}}",
@@ -104,7 +106,8 @@
                     "nextStoryID": -1,
                     "nextPageID": -1,
                     "action": "quiz",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": -1
                 },
                 {
                     "name": "🎬",
@@ -117,7 +120,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 1000,
                     "action": "clear",
-                    "nextStatus": "ready"
+                    "nextStatus": "ready",
+                    "nextGameID": -1
                 }
             ],
             "pageData": {

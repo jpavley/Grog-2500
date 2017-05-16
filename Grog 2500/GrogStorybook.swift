@@ -164,6 +164,7 @@ struct GrogCommand {
     let nextPageID: Int
     let action: StoryAction
     let nextStatus: String
+    let nextGameID: Int
 }
 
 extension GrogCommand {
@@ -178,7 +179,8 @@ extension GrogCommand {
             let nextStoryID = json["nextStoryID"] as? Int,
             let nextPageID = json["nextPageID"] as? Int,
             let actionStr = json["action"] as? String,
-            let nextStatus = json["nextStatus"] as? String
+            let nextStatus = json["nextStatus"] as? String,
+            let nextGameID = json["nextGameID"] as? Int
             else {
                 return nil
         }
@@ -243,6 +245,7 @@ extension GrogCommand {
         
         self.action = action
         self.nextStatus = nextStatus
+        self.nextGameID = nextGameID
     }
 }
 

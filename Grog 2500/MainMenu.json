@@ -126,7 +126,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 1001,
                     "action": "jump",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": 1
                 },
                 {
                     "name": "🇺🇸📋",
@@ -139,7 +140,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 1002,
                     "action": "jump",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": 1
                 },
                 {
                     "name": "🗣👻",
@@ -152,7 +154,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 1003,
                     "action": "jump",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": 1
                 },
                 {
                     "name": "💻⚙️",
@@ -165,7 +168,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 1004,
                     "action": "jump",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": 1
                 },
                 {
                     "name": "🙀👀",
@@ -178,7 +182,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 1005,
                     "action": "jump",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": 1
                 },
                 {
                     "name": "😡🤖",
@@ -191,7 +196,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 1006,
                     "action": "jump",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": 1
                 },
                 {
                     "name": "❓",
@@ -204,7 +210,8 @@
                     "nextStoryID": 20,
                     "nextPageID": -1,
                     "action": "swap",
-                    "nextStatus": "paused"
+                    "nextStatus": "paused",
+                    "nextGameID": 1
                 },
                 {
                     "name": "▶️",
@@ -217,7 +224,8 @@
                     "nextStoryID": -1,
                     "nextPageID": -1,
                     "action": "swap",
-                    "nextStatus": "paused"
+                    "nextStatus": "paused",
+                    "nextGameID": 1
                 },
                                 {
                     "name": "⮐",
@@ -230,7 +238,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 1000,
                     "action": "jump",
-                    "nextStatus": "ready"
+                    "nextStatus": "ready",
+                    "nextGameID": 1
                 }
             ]
         },
@@ -316,7 +325,8 @@
                     "nextStoryID": 10,
                     "nextPageID": -1,
                     "action": "swap",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": -1
                 },
                 {
                     "name": "👎",
@@ -329,7 +339,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 2001,
                     "action": "jump",
-                    "nextStatus": "paused"
+                    "nextStatus": "paused",
+                    "nextGameID": -1
                 },
                 {
                     "name": "👂",
@@ -342,7 +353,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 2002,
                     "action": "jump",
-                    "nextStatus": "paused"
+                    "nextStatus": "paused",
+                    "nextGameID": -1
                 },
                 {
                     "name": "👂",
@@ -355,7 +367,8 @@
                     "nextStoryID": -1,
                     "nextPageID": 2003,
                     "action": "jump",
-                    "nextStatus": "paused"
+                    "nextStatus": "paused",
+                    "nextGameID": -1
                 },
                 {
                     "name": "✅",
@@ -368,7 +381,8 @@
                     "nextStoryID": 10,
                     "nextPageID": -1,
                     "action": "swap",
-                    "nextStatus": "playing"
+                    "nextStatus": "playing",
+                    "nextGameID": -1
                 }
             ]
         }

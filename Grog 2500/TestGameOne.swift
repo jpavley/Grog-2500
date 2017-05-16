@@ -31,12 +31,12 @@ func initTestStoryOne() -> [GrogStorybook]? {
     
     let theme1 = GrogTheme(screenColor: UIColor.init(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0), textColor: UIColor.init(red: 0.0, green: 1.0, blue: 1.0, alpha: 1.0))
     
-    let cmd1 = GrogCommand(name: "Cat 😺", commandID: 101, buttonID: r1c1, healthCost: -50, movesCost: 1, pointsAward: -10, availability: .gameOn, nextStoryID: noStory, nextPageID: 1001, action: .jump, nextStatus: "playing")
-    let cmd2 = GrogCommand(name: "Switch 💡", commandID: 102, buttonID: r1c2, healthCost: -50, movesCost: 1, pointsAward: -20, availability: .gameOn, nextStoryID: noStory, nextPageID: 1002, action: .jump, nextStatus: "playing")
-    let cmd3 = GrogCommand(name: "Bed 🛏", commandID: 103, buttonID: r1c3, healthCost: 10, movesCost: 1, pointsAward: 110, availability: .gameOn, nextStoryID: noStory, nextPageID: 1003, action: .jump, nextStatus: "playing")
-    let cmd11 = GrogCommand(name: "Think 🤔", commandID: 111, buttonID: r2c2, healthCost: 20, movesCost: 1, pointsAward: 40, availability: .gameOn, nextStoryID: noStory, nextPageID: 1008, action: .jump, nextStatus: "playing")
-    let cmd4 = GrogCommand(name: "Restart 🎬", commandID: 104, buttonID: r4c1, healthCost: 0, movesCost: 1, pointsAward: 0, availability: .gameOver, nextStoryID: noStory, nextPageID: 1000, action: .clear, nextStatus: "ready")
-    let cmd5 = GrogCommand(name: "Help ❓", commandID: 105, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: 20, nextPageID: noPage, action: .swap, nextStatus: "paused")
+    let cmd1 = GrogCommand(name: "Cat 😺", commandID: 101, buttonID: r1c1, healthCost: -50, movesCost: 1, pointsAward: -10, availability: .gameOn, nextStoryID: noStory, nextPageID: 1001, action: .jump, nextStatus: "playing", nextGameID: noID)
+    let cmd2 = GrogCommand(name: "Switch 💡", commandID: 102, buttonID: r1c2, healthCost: -50, movesCost: 1, pointsAward: -20, availability: .gameOn, nextStoryID: noStory, nextPageID: 1002, action: .jump, nextStatus: "playing", nextGameID: noID)
+    let cmd3 = GrogCommand(name: "Bed 🛏", commandID: 103, buttonID: r1c3, healthCost: 10, movesCost: 1, pointsAward: 110, availability: .gameOn, nextStoryID: noStory, nextPageID: 1003, action: .jump, nextStatus: "playing", nextGameID: noID)
+    let cmd11 = GrogCommand(name: "Think 🤔", commandID: 111, buttonID: r2c2, healthCost: 20, movesCost: 1, pointsAward: 40, availability: .gameOn, nextStoryID: noStory, nextPageID: 1008, action: .jump, nextStatus: "playing", nextGameID: noID)
+    let cmd4 = GrogCommand(name: "Restart 🎬", commandID: 104, buttonID: r4c1, healthCost: 0, movesCost: 1, pointsAward: 0, availability: .gameOver, nextStoryID: noStory, nextPageID: 1000, action: .clear, nextStatus: "ready", nextGameID: noID)
+    let cmd5 = GrogCommand(name: "Help ❓", commandID: 105, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: 20, nextPageID: noPage, action: .swap, nextStatus: "paused", nextGameID: noID)
     
     let page1 = GrogPage(name: "The Bedroom", pageID: 1000, storyText: "You are in a dark room. There is a cat on a bed, a lamp on a nightstand, and a light switch on the wall. Maybe touching one of these things will do something interesting?", commands: [cmd1, cmd2, cmd3, cmd5, cmd11])
     let page2 = GrogPage(name: "Cat Scratch", pageID: 1001, storyText: "You reach out to pet the cat but it scraches your hand with its wicked sharp claws and runs out of the room. You might want to clean that wound when you get a chance.", commands: [cmd2, cmd3, cmd5])
@@ -84,12 +84,12 @@ func initTestStoryOne() -> [GrogStorybook]? {
 
     let theme2 = GrogTheme(screenColor: UIColor.init(red: 0.333, green: 0.333, blue: 0.333, alpha: 1.0), textColor: UIColor.init(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0))
     
-    let cmd6 = GrogCommand(name: "Yes 👍", commandID: 106, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: 10, nextPageID: noPage, action: .swap, nextStatus: "paused")
-    let cmd7 = GrogCommand(name: "No 👎", commandID: 107, buttonID: r4c2, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: noStory, nextPageID: 2001, action: .jump, nextStatus: "paused")
-    let cmd8 = GrogCommand(name: "Go On 👂", commandID: 108, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: noStory, nextPageID: 2002, action: .jump, nextStatus: "paused")
-    let cmd9 = GrogCommand(name: "Go On 👂", commandID: 109, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: noStory, nextPageID: 2003, action: .jump, nextStatus: "paused")
-    let cmd10 = GrogCommand(name: "Done ✅", commandID: 110, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: 10, nextPageID: noPage, action: .swap, nextStatus: "playing")
-    let cmd12 = GrogCommand(name: "Cheat 🕵️‍♀️", commandID: 112, buttonID: r4c2, healthCost: 0, movesCost: 10, pointsAward: 100, availability: .gameOn, nextStoryID: 10, nextPageID: 1003, action: .jump, nextStatus: "cheating")
+    let cmd6 = GrogCommand(name: "Yes 👍", commandID: 106, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: 10, nextPageID: noPage, action: .swap, nextStatus: "paused", nextGameID: noID)
+    let cmd7 = GrogCommand(name: "No 👎", commandID: 107, buttonID: r4c2, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: noStory, nextPageID: 2001, action: .jump, nextStatus: "paused", nextGameID: noID)
+    let cmd8 = GrogCommand(name: "Go On 👂", commandID: 108, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: noStory, nextPageID: 2002, action: .jump, nextStatus: "paused", nextGameID: noID)
+    let cmd9 = GrogCommand(name: "Go On 👂", commandID: 109, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: noStory, nextPageID: 2003, action: .jump, nextStatus: "paused", nextGameID: noID)
+    let cmd10 = GrogCommand(name: "Done ✅", commandID: 110, buttonID: r4c3, healthCost: 0, movesCost: 0, pointsAward: 0, availability: .always, nextStoryID: 10, nextPageID: noPage, action: .swap, nextStatus: "playing", nextGameID: noID)
+    let cmd12 = GrogCommand(name: "Cheat 🕵️‍♀️", commandID: 112, buttonID: r4c2, healthCost: 0, movesCost: 10, pointsAward: 100, availability: .gameOn, nextStoryID: 10, nextPageID: 1003, action: .jump, nextStatus: "cheating", nextGameID: noID)
     
     let page5 = GrogPage(name: "Help", pageID: 2000, storyText: "Welcome to Grog 2500 my friend. It's super to meet you. Do you want to play a game?", commands: [cmd6, cmd7])
     let page6 = GrogPage(name: "About Grog 2500", pageID: 2001, storyText: "Ah, you need a little convincing? Good! I like skeptical people! This is the story of Grog 2500, the app that's running on your phone. Back in the day, before GPUs and 4K screens, kids of all ages enjoyed playing text  games. Classic games like Adventure and Zork. You can still play these games, with emulation.", commands: [cmd8])
