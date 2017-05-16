@@ -121,6 +121,8 @@ class GrogGameEngine {
         // update() -- no update on clear
     }
     
+    // TODO: Reset the pints on a clear and a load (tracks the points for each game on another screen)
+    
     func loadGame(cmd: GrogCommand) {
         updateGameState(cmd: cmd)
         
