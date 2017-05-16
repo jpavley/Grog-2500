@@ -48,7 +48,6 @@ class GrogGameEngine {
     var currentStorybookID: GrogStoryID
     var currentGameName: String
     var currentGameID: Int
-    var nextGameID: Int
     var gameOver: Bool
     let prompt = "\n>"
     
@@ -57,7 +56,6 @@ class GrogGameEngine {
         currentStorybookID = game.firstStorybookID
         currentGameName = game.name
         currentGameID = game.gameID
-        nextGameID = noID
         
         gameOver = false
         
@@ -127,9 +125,7 @@ class GrogGameEngine {
         updateGameState(cmd: cmd)
         
         let validGameIDs = [mainMenuGameID, flagQuizGameID, testGameOneGameID]
-        if validGameIDs.contains(cmd.nextGameID) {
-            nextGameID = cmd.nextGameID
-        } else {
+        if !validGameIDs.contains(cmd.nextGameID) {
             print("Error: next gameID \(cmd.nextGameID) is not registered!")
         }
         

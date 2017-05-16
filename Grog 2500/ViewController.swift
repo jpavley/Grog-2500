@@ -32,12 +32,12 @@ class ViewController: UIViewController {
     
     // TODO: Implement an animated loading screen
     // TODO: Create a game store
-    // TODO: Save and load game to and from local device storage
     // TODO: Synch local and remote games (in the case of updates)
-    // TODO: Create an app and document icons
+    // TODO: Create an game editor app
     // TODO: Add sound effects
     // TODO: Add animation effects
     // TODO: Move all the game logic out of this here ViewController and into the Game Engine
+    // TODO: Only game name and page name are used, storybook name is not used by UI. Is this good, bad, or not a big deal?
     
     // UI functions
     
