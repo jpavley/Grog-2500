@@ -214,7 +214,7 @@
                     "nextGameID": -1
                 },
                 {
-                    "name": "Load 🎲🎮",
+                    "name": "Play 🎲🎮",
                     "commandID": 109,
                     "buttonID": "r1c2",
                     "healthCost": 0,
@@ -225,7 +225,7 @@
                     "nextPageID": -1,
                     "action": "load",
                     "nextStatus": "paused",
-                    "nextGameID": 1
+                    "nextGameID": 2
                 },
                 {
                     "name": "⮐",

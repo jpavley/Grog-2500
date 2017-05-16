@@ -301,7 +301,7 @@ class ViewController: UIViewController {
     func loadGame(cmd: GrogCommand) {
         game!.loadGame(cmd: cmd)
         
-        if let nextGameFileName = game!.gameFileName(for: game!.currentGameID) {
+        if let nextGameFileName = game!.gameFileName(for: cmd.nextGameID) {
             currentGameFileName = nextGameFileName
         }
         
