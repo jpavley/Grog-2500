@@ -134,7 +134,7 @@
                 "pageID": 1000,
                 "{{$0}}": "option1",
                 "{{$1}}": "option2",
-                "{{$2}}": "option3",
+                "{{$2}}": "option3"
             },
             "quizData": {
                 "pageID": 1000,

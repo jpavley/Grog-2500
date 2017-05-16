@@ -127,7 +127,7 @@
                     "nextPageID": 1001,
                     "action": "jump",
                     "nextStatus": "playing",
-                    "nextGameID": 1
+                    "nextGameID": -1
                 },
                 {
                     "name": "🇺🇸📋",
@@ -141,7 +141,7 @@
                     "nextPageID": 1002,
                     "action": "jump",
                     "nextStatus": "playing",
-                    "nextGameID": 1
+                    "nextGameID": -1
                 },
                 {
                     "name": "🗣👻",
@@ -155,7 +155,7 @@
                     "nextPageID": 1003,
                     "action": "jump",
                     "nextStatus": "playing",
-                    "nextGameID": 1
+                    "nextGameID": -1
                 },
                 {
                     "name": "💻⚙️",
@@ -169,7 +169,7 @@
                     "nextPageID": 1004,
                     "action": "jump",
                     "nextStatus": "playing",
-                    "nextGameID": 1
+                    "nextGameID": -1
                 },
                 {
                     "name": "🙀👀",
@@ -183,7 +183,7 @@
                     "nextPageID": 1005,
                     "action": "jump",
                     "nextStatus": "playing",
-                    "nextGameID": 1
+                    "nextGameID": -1
                 },
                 {
                     "name": "😡🤖",
@@ -197,7 +197,7 @@
                     "nextPageID": 1006,
                     "action": "jump",
                     "nextStatus": "playing",
-                    "nextGameID": 1
+                    "nextGameID": -1
                 },
                 {
                     "name": "❓",
@@ -211,10 +211,10 @@
                     "nextPageID": -1,
                     "action": "swap",
                     "nextStatus": "paused",
-                    "nextGameID": 1
+                    "nextGameID": -1
                 },
                 {
-                    "name": "▶️",
+                    "name": "Load 🎲🎮",
                     "commandID": 109,
                     "buttonID": "r1c2",
                     "healthCost": 0,
@@ -223,11 +223,11 @@
                     "availability": "always",
                     "nextStoryID": -1,
                     "nextPageID": -1,
-                    "action": "swap",
+                    "action": "load",
                     "nextStatus": "paused",
                     "nextGameID": 1
                 },
-                                {
+                {
                     "name": "⮐",
                     "commandID": 110,
                     "buttonID": "r1c3",
@@ -239,7 +239,7 @@
                     "nextPageID": 1000,
                     "action": "jump",
                     "nextStatus": "ready",
-                    "nextGameID": 1
+                    "nextGameID": -1
                 }
             ]
         },

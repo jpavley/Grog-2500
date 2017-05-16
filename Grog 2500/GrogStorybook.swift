@@ -45,6 +45,7 @@ enum StoryAction {
     case jump   // jump from current storybook page to a different page in the same or another storybook
     case clear  // restart the current game and storybooks
     case swap   // jump from the current storybook to the current page in a different storybook
+    case load   // load a new game from it's ID
 }
 
 enum CommandAvailability {
@@ -238,6 +239,7 @@ extension GrogCommand {
         case "clear": action = .clear
         case "jump": action = .jump
         case "swap": action = .swap
+        case "load": action = .load
         default:
             print("Error: found unknown actionStr \(actionStr)")
             return nil

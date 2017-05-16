@@ -11,6 +11,10 @@ import Foundation
 typealias GrogStoryID = Int
 typealias GrogStoryBackingStore = String
 
+// TODO: Define these values in JSON somewhere somehow (game register)
+let mainMenuGameID = 0
+let flagQuizGameID = 1
+let testGameOneGameID = 2
 
 struct GrogGameState {
     var stateID: GrogStoryID
@@ -47,6 +51,7 @@ class GrogGameEngine {
     var currentStorybookID: GrogStoryID
     var currentGameName: String
     var currentGameID: Int
+    var nextGameID: Int
     var gameOver: Bool
     let prompt = "\n>"
     
@@ -55,6 +60,7 @@ class GrogGameEngine {
         currentStorybookID = game.firstStorybookID
         currentGameName = game.name
         currentGameID = game.gameID
+        nextGameID = noID
         
         gameOver = false
         
@@ -120,6 +126,19 @@ class GrogGameEngine {
         // update() -- no update on clear
     }
     
+    func loadGame(cmd: GrogCommand) {
+        updateGameState(cmd: cmd)
+        
+        let validGameIDs = [mainMenuGameID, flagQuizGameID, testGameOneGameID]
+        if validGameIDs.contains(cmd.nextGameID) {
+            nextGameID = cmd.nextGameID
+        } else {
+            print("Error: next gameID \(cmd.nextGameID) is not registered!")
+        }
+        
+        // update() -- no update on load
+    }
+    
     func jumpPage(buttonLabel: String, cmd: GrogCommand) {
         // get all the things!
         var state = gameStates[currentStorybookID]!
@@ -151,6 +170,19 @@ class GrogGameEngine {
         
         player.location = page.name
         players.updateValue(player, forKey:currentStorybookID)
+    }
+    
+    func gameFileName(for gameID: Int) -> String? {
+        switch gameID {
+        case mainMenuGameID:
+            return "MainMenu"
+        case flagQuizGameID:
+            return "FlagsGame"
+        case testGameOneGameID:
+            return "TestGameOne"
+        default:
+            return nil
+        }
     }
     
     func updateStoryText(newText: String)  {

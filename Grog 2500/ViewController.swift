@@ -12,6 +12,7 @@ class ViewController: UIViewController {
         
     // by convention the starting and main storybook ID is 10
     let startStoryID = 10
+    var currentGameFileName = "MainMenu"
     
     // user labels
     
@@ -40,10 +41,10 @@ class ViewController: UIViewController {
     
     // UI functions
     
-    func loadUI() {
+    func loadUI(with filename: String) {
         
         if game == nil {
-            let (storybooks, gameData) = initLocalStory(fileName: "MainMenu")
+            let (storybooks, gameData) = initLocalStory(fileName: filename)
             if storybooks != nil && gameData != nil {
                 game = GrogGameEngine(storybooks: storybooks!, game: gameData!)
             }
@@ -177,7 +178,7 @@ class ViewController: UIViewController {
     }
     
     func renderView() {
-        loadUI()
+        loadUI(with: currentGameFileName)
         updateTheme()
         game!.calcStoryText()
         outputToScreen()
@@ -223,6 +224,8 @@ class ViewController: UIViewController {
                 
             case .swap:
                 swapStory(cmd: cmd!)
+            case .load:
+                loadGame(cmd: cmd!)
             }
         }else {
             print("cmd \(buttonID) does not exist on page \(page.pageID)")
@@ -261,7 +264,7 @@ class ViewController: UIViewController {
             renderView()
         } else {
             // load the UI and out the text
-            loadUI()
+            loadUI(with: currentGameFileName)
             updateTheme()
             outputToScreen()
         }
@@ -286,13 +289,25 @@ class ViewController: UIViewController {
         
         // load the UI and output the story
         if storybook.tracking {
-            loadUI()
+            loadUI(with: currentGameFileName)
         } else {
             updateCommandButtons(with: page.commands)
         }
         updateTheme()
         outputToScreen()
         
+    }
+    
+    func loadGame(cmd: GrogCommand) {
+        game!.loadGame(cmd: cmd)
+        
+        if let nextGameFileName = game!.gameFileName(for: game!.currentGameID) {
+            currentGameFileName = nextGameFileName
+        }
+        
+        // restart the new game
+        game = nil
+        renderView()
     }
 }
 
