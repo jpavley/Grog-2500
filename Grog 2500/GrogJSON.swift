@@ -17,10 +17,10 @@ func initLocalStory(fileName: String) -> ([GrogStorybook]?, String, Int)? {
             let json = try JSONSerialization.jsonObject(with: data, options: [])
             if let object = json as? [String: Any] {
                 // json is a dictionary
-                print("dictionary")
                 let gameName = object["name"] as! String
                 let firstStorybookID = object["firstStorybook"] as! Int
-                print("game \(gameName), first storybook ID \(firstStorybookID)")
+                let gameID = object["gameID"] as! Int
+                print("game \(gameName), gameID \(gameID), first storybook ID \(firstStorybookID)")
                 
                 var resultStorybooks = [GrogStorybook]()
                 var resultStorybook: GrogStorybook

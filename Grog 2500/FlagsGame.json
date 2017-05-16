@@ -1,6 +1,7 @@
 {
     "name": "Flags Game",
     "firstStorybook": 10,
+    "gameID": 1,
     "storybooks": [
         {
             "name": "Flags Quiz",

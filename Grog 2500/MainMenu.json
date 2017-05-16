@@ -1,6 +1,7 @@
 {
     "name": "Main Menu",
     "firstStorybook": 10,
+    "gameID": 0,
     "storybooks": [
         {
             "name": "Main Menu",

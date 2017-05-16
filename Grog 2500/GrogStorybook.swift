@@ -343,3 +343,27 @@ extension GrogStorybook {
         self.endGame = endGame
     }
 }
+
+struct GrogGame {
+    let name: String
+    let gameID: Int
+    let firstStorybookID: Int
+}
+
+extension GrogGame {
+    init?(json: [String: Any]) {
+        
+        guard let name = json["name"] as? String,
+            let gameID = json["gameID"] as? Int,
+            let firstStorybookID = json["firstStorybookID"] as? Int
+            else {
+                return nil
+        }
+        
+        // simple properties
+        
+        self.name = name
+        self.gameID = gameID
+        self.firstStorybookID = firstStorybookID
+    }
+}

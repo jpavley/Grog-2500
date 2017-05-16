@@ -1,6 +1,7 @@
 {
     "name": "Test Game",
     "firstStorybook": 10,
+    "gameID": 2,
     "storybooks": [
         {
             "name": "Main Story",
