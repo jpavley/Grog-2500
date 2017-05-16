@@ -45,13 +45,17 @@
                     "commands": [
                         101,
                         102,
-                        105
+                        103,
+                        104,
+                        105,
+                        106,
+                        107
                     ]
                 }
             ],
             "commands": [
                 {
-                    "name": "Test Game 🎮",
+                    "name": "Test 🎮",
                     "commandID": 101,
                     "buttonID": "r1c1",
                     "healthCost": 0,
@@ -64,7 +68,7 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Flag Quiz 🇺🇸",
+                    "name": "Quiz 🇺🇸",
                     "commandID": 102,
                     "buttonID": "r1c2",
                     "healthCost": 0,
@@ -77,8 +81,60 @@
                     "nextStatus": "playing"
                 },
                 {
-                    "name": "Help ❓",
+                    "name": "Cave 💀",
+                    "commandID": 103,
+                    "buttonID": "r1c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1003,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "Swift ⚙️",
+                    "commandID": 104,
+                    "buttonID": "r2c1",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1004,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "Who's 👀",
                     "commandID": 105,
+                    "buttonID": "r2c2",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1005,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "I Am 🤖",
+                    "commandID": 106,
+                    "buttonID": "r2c3",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "gameOn",
+                    "nextStoryID": -1,
+                    "nextPageID": 1006,
+                    "action": "jump",
+                    "nextStatus": "playing"
+                },
+                {
+                    "name": "Help ❓",
+                    "commandID": 107,
                     "buttonID": "r4c3",
                     "healthCost": 0,
                     "movesCost": 0,
