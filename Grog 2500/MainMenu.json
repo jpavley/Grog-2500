@@ -4,7 +4,7 @@
     "gameID": 0,
     "storybooks": [
         {
-            "name": "Main Menu",
+            "name": "Home",
             "storyID": 10,
             "firstPage": 1000,
             "tracking": false,
