@@ -48,7 +48,8 @@
                         102,
                         103,
                         105,
-                        111
+                        111,
+                        113
                     ]
                 },
                 {
@@ -58,7 +59,8 @@
                     "commands": [
                         102,
                         103,
-                        105
+                        105,
+                        113
                     ]
                 },
                 {
@@ -68,7 +70,8 @@
                     "commands": [
                         101,
                         103,
-                        105
+                        105,
+                        113
                     ]
                 },
                 {
@@ -78,7 +81,8 @@
                     "commands": [
                         101,
                         102,
-                        105
+                        105,
+                        113
                     ]
                 },
                 {
@@ -89,7 +93,8 @@
                         101,
                         102,
                         103,
-                        105
+                        105,
+                        113
                     ]
                 },
                 {
@@ -98,7 +103,8 @@
                     "storyText": "You've won the game by going back to bed. Nice work!",
                     "commands": [
                         104,
-                        105
+                        105,
+                        113
                     ]
                 },
                 {
@@ -107,7 +113,8 @@
                     "storyText": "You've won the game by going back to bed. And you made the decision quickly so you get extra points! Good Job!",
                     "commands": [
                         104,
-                        105
+                        105,
+                        113
                     ]
                 },
                 {
@@ -116,7 +123,8 @@
                     "storyText": "You've lost the game because you have died. You're health is 0%. Better luck next time.",
                     "commands": [
                         104,
-                        105
+                        105,
+                        113
                     ]
                 },
                 {
@@ -125,7 +133,8 @@
                     "storyText": "You've lost the game because you ran out of points. You're health is 0%. Maybe you should make better choices.",
                     "commands": [
                         104,
-                        105
+                        105,
+                        113
                     ]
                 }
             ],
@@ -189,7 +198,7 @@
                 {
                     "name": "🎬",
                     "commandID": 104,
-                    "buttonID": "r4c1",
+                    "buttonID": "r4c2",
                     "healthCost": 0,
                     "movesCost": 1,
                     "pointsAward": 0,
@@ -213,6 +222,20 @@
                     "action": "swap",
                     "nextStatus": "paused",
                     "nextGameID": -1
+                },
+                {
+                    "name": "🏠",
+                    "commandID": 113,
+                    "buttonID": "r4c1",
+                    "healthCost": 0,
+                    "movesCost": 0,
+                    "pointsAward": 0,
+                    "availability": "gameOver",
+                    "nextStoryID": -1,
+                    "nextPageID": -1,
+                    "action": "load",
+                    "nextStatus": "paused",
+                    "nextGameID": 0
                 }
             ]
         },
