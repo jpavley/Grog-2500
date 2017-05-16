@@ -91,6 +91,9 @@ class ViewController: UIViewController {
         // get all the things!
         let storybook = game!.storybooks[game!.currentStorybookID]!
         
+        // TODO: Not hiding UI with test game one's help storybook
+        trackedUI(show: !storybook.tracking)
+        
         if storybook.tracking {
             let state = game!.gameStates[game!.currentStorybookID]!
 
@@ -101,6 +104,13 @@ class ViewController: UIViewController {
         }
         
         updateLocationUI()
+    }
+    
+    func trackedUI(show: Bool) {
+        score.isHidden = show
+        health.isHidden = show
+        time.isHidden = show
+        status.isHidden = show
     }
     
     func updateLocationUI() {
