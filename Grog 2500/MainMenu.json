@@ -56,7 +56,7 @@
                 {
                     "name": "Test Game",
                     "pageID": 1001,
-                    "storyText": "The first game written specially for the Grog 2500 Emoji Adventure Platform. You can play it honest or hunt for easter egg.",
+                    "storyText": "The first game written specially for the Grog 2500 Emoji Adventure Platform. You can play it honest or hunt for the easter egg.",
                     "commands": [
                         109,
                         110,
